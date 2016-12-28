@@ -4,7 +4,7 @@ import mysql.connector
 webscraper.__main__()
 
 
-cnx = mysql.connector.connect(user='root', password='hackpass', host='127.0.0.1', database='Hackathon')
+cnx = mysql.connector.connect(user='ERICS_LAPTOP\Eric', password='indyxena0998', host='127.0.0.1', database='erics_laptop')
 cursor = cnx.cursor()
 cursor.execute("DELETE FROM contentHeader")
 cursor.execute("DELETE FROM courseContent")

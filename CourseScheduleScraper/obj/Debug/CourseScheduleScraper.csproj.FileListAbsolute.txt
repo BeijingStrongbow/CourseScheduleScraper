@@ -1,0 +1,11 @@
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\bin\Debug\CourseScheduleScraper.exe.config
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\obj\Debug\CourseScheduleScraper.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\obj\Debug\CourseScheduleScraper.InitializationDialog.resources
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\obj\Debug\CourseScheduleScraper.UserInterface.resources
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\obj\Debug\CourseScheduleScraper.Properties.Resources.resources
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\obj\Debug\CourseScheduleScraper.csproj.GenerateResource.Cache
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\bin\Debug\CourseScheduleScraper.exe
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\bin\Debug\CourseScheduleScraper.pdb
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\obj\Debug\CourseScheduleScraper.exe
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\obj\Debug\CourseScheduleScraper.pdb
+C:\Users\Eric\Documents\CodeProjects\CourseScheduleScraper\CourseScheduleScraper\obj\Debug\CourseScheduleScraper.LoadDatabaseProgress.resources

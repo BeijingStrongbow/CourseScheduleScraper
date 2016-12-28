@@ -2,20 +2,19 @@ from bs4 import BeautifulSoup
 import requests
 import regex
 import unicodedata
+import sys
 
 import urllib
 
 def __main__():
-    year = input("What year would you like to make a schedule for? (All four digits of year entered.)\n")
-    semester = input("What semester would you like to make a schedule for? (Spring/Summer/Fall)\n")
+    year = sys.argv[1];
+    semester = sys.argv[2];
 
     schedulePull = semester + str(year) + "/schedule.html"
-    print (schedulePull)
 
     data = requests.get("https://courses.k-state.edu/" + schedulePull)
 
     scheduleURLS = data.text
-    print("https://courses.k-state.edu/" + schedulePull)
 
     soup = BeautifulSoup(scheduleURLS, "html.parser")
 
@@ -23,19 +22,17 @@ def __main__():
     for link in soup.find_all('a'):
         if( len(str(link.get("href"))) < 7 and (str(link.get("href")) != "/" and str(link.get("href")) != "None") ):
             urlList.append(str(link.get("href")))
-
+    print(len(urlList))
+    sys.stdout.flush()
     courseHeadWrite = open('courseNum.txt', 'w')
-    courseHeadWrite.write("INSERT INTO contentHeader\n")
-    courseHeadWrite.write("VALUES \n")
 
     courseContentWrite = open('courseCont.txt', 'w')
-    courseContentWrite.write("INSERT INTO courseContent\n")
-    courseContentWrite.write("VALUES \n")
 
     urlCounter = 0
     for url in urlList:
         fullURL = "https://courses.ksu.edu/" + semester + str(year) + "/" + url
         print(fullURL)
+        sys.stdout.flush()
         r = urllib.request.urlopen(fullURL).read()
         urlSoup = BeautifulSoup(r, "html.parser")
         coursesHeader = urlSoup.find_all('tr', class_='course')
