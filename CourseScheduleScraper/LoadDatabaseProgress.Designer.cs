@@ -57,7 +57,7 @@
             this.Controls.Add(this.uxLoadingLabel);
             this.Controls.Add(this.uxProgressBar);
             this.Name = "LoadDatabaseProgress";
-            this.Text = "LoadDatabaseProgress";
+            this.Text = "Progress";
             this.ResumeLayout(false);
             this.PerformLayout();
 

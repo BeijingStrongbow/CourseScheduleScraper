@@ -1,0 +1,946 @@
+("GENAG","000","Agriculture Scholars Program"),
+	("A","11716","Appointment","","Washburn, Shannon GBoggs, Donald L")
+	("B","11717","Appointment","","Washburn, Shannon GBoggs, Donald L")
+("GENAG","020","University Honors Program"),
+	("A","11718","Appointment","","Washburn, Shannon GBoggs, Donald L")
+("GENAG","101","Ag Orientation"),
+	("A","11720","TU","8:30 - 9:20 a.m.","Washburn, Shannon G")
+	("B","14008","Appointment","","Washburn, Shannon G")
+("GENAG","189","Introduction To The University Honors Program"),
+	("A","11721","Appointment","","Kastner, Justin")
+("GENAG","200","Topics/Ag - Top/College-Career"),
+	("A","13597","U","5:30 - 7:20 p.m.","Washburn, Shannon GBoggs, Donald L")
+	("B","14058","U","5:30 - 7:20 p.m.","Washburn, Shannon GBoggs, Donald L")
+("GENAG","200","Topics/Ag - Top/Intl Student Orientation"),
+	("F","15902","U","5:30 - 7:30 p.m.","Washburn, Shannon GBoggs, Donald L")
+("GENAG","200","Topics/Ag - Top/Leadership/Agric Advocacy"),
+	("E","15580","T","9:30 - 10:20 a.m.","Klein, Sandra J")
+("GENAG","200","Topics/Ag - Top/Need for Feed: Grain Scien"),
+	("G","16495","T","11:30 a.m. - 12:20 p.m.","Krishock, David A")
+("GENAG","200","Topics/Ag - Top/Profit Livestock Enterpris"),
+	("D","14264","M","3:30 - 4:20 p.m.","Boggs, Donald L")
+("GENAG","200","Topics/Ag - Top/Vary By Student"),
+	("C","11722","Appointment","","Thielen, Sharon LeAnneWashburn, Shannon GWiley, Zelia ZBoggs, Donald L")
+("GENAG","396","Research Topic and Proposal Development"),
+	("A","17143","MW","4:30 - 5:20 p.m.","Washburn, Shannon G")
+("GENAG","505","Comparative Ag - Top/Communications in Ireland"),
+("GENAG","505","Comparative Agriculture"),
+	("A","11723","Appointment","","Boggs, Donald L")
+("GENAG","515","Honors/Scholars Project"),
+	("A","11724","Appointment","","Washburn, Shannon GBoggs, Donald L")
+("GENAG","582","Natural Resources/Environmental Sciences Project"),
+	("A","11725","TU","11:30 a.m. - 12:20 p.m.","Hutchinson, James Michael Shawn")
+	("01B","11726","Appointment","","Hutchinson, James Michael Shawn")
+("AGEC","105","Agricultural Economics And Agribusiness Orientation"),
+	("A","10060","MW","1:30 - 2:20 p.m.","Hodgson, Cherie L")
+("AGEC","115","Decision Tools for Agricultural Economics and Agribusiness"),
+	("A","14523","TU","7:30 - 8:20 a.m.","Regmi, Madhav")
+	("B","14524","TU","8:30 - 9:20 a.m.","Nti, Frank")
+	("C","15272","MW","10:30 - 11:20 a.m.","Ramsey, Steve")
+	("E","15864","TU","4:00 - 4:50 p.m.","Torrez Galeano, Christian Rene")
+("AGEC","120","Agricultural Economics And Agribusiness"),
+	("A","10061","MWF","12:30 - 1:20 p.m.","Schurle, Bryan W")
+	("B","14496","MWF","2:30 - 3:20 p.m.","Schwab, Benjamin B")
+("AGEC","121","Honors Agricultural Economics and Agribusiness"),
+("AGEC","202","Small Business Operations"),
+	("A","10062","TU","8:05 - 9:20 a.m.","Arata, Joseph O")
+("AGEC","308","Farm And Ranch Management"),
+	("A","10063","TU","2:30 - 3:45 p.m.","Yeager, Elizabeth")
+("AGEC","315","Contemporary Issues in Global Food and Agricultural Systems"),
+	("A","14168","MWF","10:30 - 11:20 a.m.","Williams, Jeffery R")
+("AGEC","318","Food And Agribusiness Management"),
+	("A","10067","MWF","11:30 a.m. - 12:20 p.m.","Harris, Keith D")
+("AGEC","410","Agricultural Policy"),
+	("A","10068","MWF","2:30 - 3:45 p.m.","Flinchbaugh, Barry L")
+("AGEC","420","Commodity Futures"),
+	("A","10069","MWF","7:30 - 8:20 a.m.","Hodgson, Cherie LFox, John A")
+("AGEC","441","Sem/Agec/Agribus - Top/Mktg Team"),
+	("B","13608","Appointment","","Lehman, David E")
+("AGEC","441","Sem/Agec/Agribus - Top/Quiz Bowl"),
+	("A","10070","Appointment","","Featherstone, Allen M")
+("AGEC","445","Agribusiness Internship"),
+	("A","10071","Appointment","","Hodgson, Cherie L")
+("AGEC","450","Agr Econ/Agrbus Prb - Top/Cooperative Management"),
+("AGEC","450","Agricultural Economics And Agribusiness Problems"),
+	("A","10072","Appointment","","Featherstone, Allen M")
+("AGEC","500","Production Economics"),
+	("A","10073","TU","11:30 a.m. - 12:45 p.m.","Coffey, Brian")
+("AGEC","501","Data Analysis and Optimization"),
+	("A","15104","TU","1:05 - 2:20 p.m.","Villoria Siegert, Nelson Benjamin")
+("AGEC","505","Agricultural Market Structures"),
+	("A","13354","TU","8:05 - 9:20 a.m.","Barkley, Andrew P")
+("AGEC","513","Agricultural Finance"),
+	("A","10074","MWF","10:30 - 11:20 a.m.","Yeager, ElizabethWilson, Christine A")
+	("B","16111","MWF","8:30 - 9:20 a.m.","Yeager, Elizabeth")
+("AGEC","515","Food And Agribusiness Marketing"),
+	("A","13902","MW","3:55 - 5:10 p.m.","Lehman, David E")
+("AGEC","520","Market Fundamentals And Futures/Options Trading"),
+	("A","10075","TU","3:55 - 5:10 p.m.","Coffey, Brian")
+("AGEC","525","Natural Resource And Environmental Economics"),
+	("A","10076","TU","9:30 - 10:45 a.m.","Williams, Jeffery R")
+("AGEC","550","Undergraduate Research in Agricultural Economics"),
+	("A","15581","Appointment","","Featherstone, Allen M")
+("AGEC","570","Food Manufacturing, Distribution And Retailing"),
+	("A","13433","MWF","12:30 - 1:20 p.m.","Hodgson, Cherie LAmanor-Boadu, Vincent R")
+("AGEC","598","Farm Management Strategy"),
+	("A","10077","TU","2:30 - 3:45 p.m.","Ibendahl, Gregory A")
+("AGEC","599","Food And Agribusiness Management Strategy"),
+	("A","14403","TU","1:05 - 2:20 p.m.","Harris, Keith D")
+("AGEC","615","Global Agric Development"),
+	("A","14340","MWF","11:30 a.m. - 12:20 p.m.","Schwab, Benjamin B")
+("AGEC","623","International Agricultural Trade"),
+	("A","10078","TU","1:05 - 2:20 p.m.","Xia, Tian")
+("AGEC","632","Agribusiness Logistics"),
+	("A","10079","MWF","9:30 - 10:20 a.m.","Harris, Keith D")
+("AGEC","701","Introduction To Computer Decision Tools For Agribusiness"),
+("AGEC","713","Agribusiness Financial Management"),
+("AGEC","720","Agribusiness Risk Management"),
+("AGEC","730","Applied Agribusiness Logistics"),
+("AGEC","740","Seminar In Agricultural Economics Analysis"),
+("AGEC","750","Prb/Agr Econ/Bus - Top/Agric Economics"),
+	("A","10080","Appointment","","Featherstone, Allen M")
+("AGEC","750","Prb/Agr Econ/Bus - Top/Risk Mangt Fellows Seminar"),
+	("B","15358","Appointment","","Schroeder, Ted C")
+("AGEC","761","Optimization Techniques For Agribusiness"),
+("AGEC","810","Pri/Inc/Trade Pol for Ag"),
+	("B","18151","TU","10:45 a.m. - 12:00 p.m.","Hendricks, Nathan P")
+("AGEC","812","Advanced Farm Economics"),
+("AGEC","815","International Agricultural Development"),
+	("B","17524","TU","8:05 - 9:20 a.m.","Dalton, Timothy John")
+("AGEC","823","Production Economics "),
+	("A","10082","MWF","10:30 - 11:45 a.m.","Lambert, David K")
+("AGEC","825","Natural Resource Policy"),
+	("A","13571","MW","12:30 - 1:45 p.m.","Sampson, Gabriel S")
+("AGEC","890","Advanced Food And Agribusiness Management"),
+("AGEC","899","Agricultural Economics Masters Research"),
+	("A","10083","Appointment","","Featherstone, Allen M")
+("AGEC","923","Economics Of Agricultural Production"),
+	("A","10084","MWF","9:00 - 10:15 a.m.","Hodgson, Cherie LTack, Jesse B")
+("AGEC","955","Independent Study Of Advanced Topics In Agricultural Economi"),
+("AGEC","955","Is/Adv Top/Agec - Top/Dis Ch Model & Adv Comp"),
+("AGEC","999","Agricultural Economics Phd Research"),
+	("A","10086","Appointment","","Featherstone, Allen M")
+("AGRON","101","Agronomy Orientation"),
+	("A","15511","U","4:30 - 5:20 p.m.","Kerschen, Kim J")
+("AGRON","220","Crop Science"),
+	("A","10088","MWF","9:30 - 10:20 a.m.","Donnelly, Kevin J")
+	("02B","10090","U","12:30 - 2:20 p.m.","Hay, Marshall M")
+	("04B","13618","F","12:30 - 2:20 p.m.","Donnelly, Kevin J")
+	("06B","15860","F","2:30 - 4:20 p.m.","Donnelly, Kevin J")
+("AGRON","305","Soils"),
+	("A","10095","MWF","8:30 - 9:20 a.m.","Moorberg, Colby J")
+	("01B","10093","T","9:30 - 11:20 a.m.","Moorberg, Colby J")
+	("03B","10091","T","2:30 - 4:20 p.m.","Stropes, Kyle Scott")
+	("04B","10094","U","9:30 - 11:20 a.m.","Newsum, Andrew Michael")
+	("05B","10096","U","12:30 - 2:20 p.m.","Hsiao, Che-Jen")
+("AGRON","330","Weed Science"),
+	("A","10100","TU","8:30 - 9:20 a.m.","Dille, Johanna Adriana")
+	("02B","10098","T","12:30 - 2:20 p.m.","Gundy, Garrison James")
+	("03B","10099","T","2:30 - 4:20 p.m.","Menzer, Seth Brandon")
+	("04B","14585","T","4:30 - 6:20 p.m.","Albers, Jeffrey J")
+("AGRON","335","Environmental Quality"),
+	("A","10101","TU","1:05 - 2:20 p.m.","Hettiarachchi, Ganga")
+("AGRON","340","Grain Grading"),
+("AGRON","360","Crop Growth And Development"),
+	("A","10103","MWF","8:30 - 9:20 a.m.","Roozeboom, Kraig L")
+("AGRON","400","Topics In Agronomy - Top/Forage Bowl Competition"),
+("AGRON","405","Internship In Agronomy"),
+	("A","10104","Appointment","","Kerschen, Kim J")
+	("B","13576","Appointment","","Kerschen, Kim J")
+("AGRON","415","Soils Judging"),
+	("A","10105","F","2:30 - 5:20 p.m.","Ransom, Michel D")
+("AGRON","450","Crops Team"),
+	("A","10106","U    Meets August 22 - December 9, 2016:","2:30 - 4:20 p.m.","Donnelly, Kevin J")
+	("A","10106","T    Meets August 22 - December 9, 2016:","9:30 - 11:20 a.m.","Donnelly, Kevin J")
+("AGRON","501","Range Management"),
+	("A","10107","TU","9:30 - 10:45 a.m.","Owensby, Clenton E")
+("AGRON","598","Undergraduate Research in Agronomy"),
+	("A","15335","Appointment","","Min, DoohongMoorberg, Colby J")
+("AGRON","600","Prb/Crop - Top/Agricultural Meteorology"),
+("AGRON","600","Prb/Crop - Top/Australian Crops Contest"),
+	("C","13619","Appointment","","Donnelly, Kevin J")
+("AGRON","600","Prb/Crop - Top/Crop Modeling"),
+("AGRON","600","Prb/Crop - Top/Crop/Weed Resist Herbicide"),
+	("G","17878","TU","2:30 - 3:45 p.m.","Jugulam, Mithila")
+("AGRON","600","Prb/Crop - Top/Intro Crop Physiology"),
+	("F","16394","TU","9:30 - 10:45 a.m.","Min, Doohong")
+("AGRON","600","Prb/Crop - Top/Vary By Student"),
+	("A","10108","Appointment","","Min, Doohong")
+("AGRON","610","Biotechnology"),
+	("A","13067","MWF","2:30 - 3:20 p.m.","Trick, Harold N")
+("AGRON","615","Prb/Soil - Top/Vary By Student"),
+	("A","10110","Appointment","","Ransom, Michel D")
+("AGRON","625","Applications of Nutrient Management"),
+	("A","13430","TU","11:30 a.m. - 12:45 p.m.","Mengel, David B")
+("AGRON","635","Soil and Water Conservation"),
+	("A","10112","MW","10:30 - 11:20 a.m.","Moorberg, Colby J")
+	("01B","10111","U","2:30 - 5:20 p.m.","Moorberg, Colby J")
+("AGRON","640","Cropping Systems"),
+	("A","10113","M","2:30 - 5:20 p.m.","Roozeboom, Kraig L")
+("AGRON","645","Soil Microbiology"),
+	("A","10114","MWF","8:30 - 9:20 a.m.","Rice, Charles W")
+("AGRON","646","Soil Microbiology Laboratory"),
+	("A","10115","U","2:30 - 4:20 p.m.","Rivera Zayas, Johanie")
+("AGRON","660","Grassland Monitoring and Assessment"),
+	("A","13739","TU","9:30 - 10:45 a.m.","Fick, Walter H")
+("AGRON","661","Grassland Monitoring and Assessment Lab"),
+	("A","14405","T","11:30 a.m. - 12:20 p.m.","Fick, Walter H")
+	("01B","14406","T","12:30 - 1:20 p.m.","Fick, Walter H")
+("AGRON","670","Prb/Range Management - Top/Vary By Student"),
+	("A","10117","Appointment","","Owensby, Clenton E")
+("AGRON","700","Agricultural Meteorology"),
+	("A","18052","TU","2:30 - 3:45 p.m.","Alvarez Santos, Eduardo")
+("AGRON","732","Introduction to Plant Resistance to Pests"),
+	("A","14407","MTWU","9:30 - 10:20 a.m.","Todd, Timothy CSmith, C MichaelJugulam, Mithila")
+("AGRON","762","Range Grasses"),
+	("A","13740","M","2:30 - 4:20 p.m.","Owensby, Clenton E")
+("AGRON","810","Agronomy Seminar"),
+	("A","10119","WF","3:30 - 5:20 p.m.","Min, Doohong")
+("AGRON","880","Plant Molecular Biology"),
+	("A","17141","MW","11:30 a.m. - 12:45 p.m.","Morris, Geoffrey Preston")
+("AGRON","881","Grazing Ecology and Management"),
+("AGRON","893","Agricultural Simulation Modeling"),
+	("A","13956","MWF","1:30 - 2:20 p.m.","Welch, Stephen M")
+("AGRON","898","Master's Report"),
+	("A","10120","Appointment","","Ransom, Michel D")
+("AGRON","899","Master's Research"),
+	("A","10121","Appointment","","Ransom, Michel D")
+("AGRON","905","Advanced Soil Chemistry"),
+	("A","13742","TU","8:05 - 9:20 a.m.","Hettiarachchi, Ganga")
+("AGRON","910","Topics In Plant Breeding"),
+	("A","10122","Appointment","","Schapaugh Jr, William T")
+("AGRON","930","Top/Plant Genetics - Top/Vary By Student"),
+	("A","10123","Appointment","","Morris, Geoffrey Preston")
+("AGRON","935","Top/Soils - Top/Vary By Student"),
+	("A","10124","Appointment","","Ransom, Michel D")
+("AGRON","960","Top/Crop Phys & Ecol - Top/Vary By Student"),
+	("A","10125","Appointment","","SV, Krishna Jagadish")
+("AGRON","999","Phd Research"),
+	("A","10127","Appointment","","Ransom, Michel D")
+("ASI","101","Foundations in Animal Sciences & Industry"),
+	("B","15144","T","12:30 - 1:20 p.m.","Schaake, Scott L")
+	("C","15145","T","1:30 - 2:20 p.m.","Schaake, Scott L")
+	("D","15146","T","3:30 - 4:20 p.m.","Schaake, Scott L")
+	("E","15147","U","10:30 - 11:20 a.m.","Schaake, Scott L")
+("ASI","102","Principles Of Animal Science"),
+	("A","10311","MWF","11:30 a.m. - 12:20 p.m.","Nichols, David A")
+	("B","10312","TU","8:05 - 9:20 a.m.","Nichols, David A")
+	("C","14544","MWF","1:30 - 2:20 p.m.","Nichols, David A")
+("ASI","105","Animal Sciences And Industry"),
+	("A","15279","W","8:30 - 10:20 a.m.","Mullinix, Christopher A")
+	("B","10313","W","10:30 a.m. - 12:20 p.m.","Mullinix, Christopher A")
+	("C","10316","W","2:30 - 4:20 p.m.","Pope, Ronald V")
+	("D","10315","U","10:30 a.m. - 12:20 p.m.","Langemeier, Austin James")
+	("E","10314","U","12:30 - 2:20 p.m.","Schaake, Scott L")
+	("F","14337","U","2:30 - 4:20 p.m.","Vierck, Kelly Rose")
+("ASI","106","Dairy And Poultry Science"),
+	("A","10317","M","12:30 - 2:20 p.m.","Beyer, R ScottStevenson, Jeffrey S")
+	("C","10319","W","12:30 - 2:20 p.m.","Beyer, R ScottStevenson, Jeffrey S")
+("ASI","107","Companion Animal And Horse Lab"),
+	("A","10320","M","12:30 - 2:20 p.m.","Sinclair, Chelsea")
+	("B","10321","M","2:30 - 4:20 p.m.","Scaletti, Ciana Marie")
+	("C","10322","W","12:30 - 2:20 p.m.","Sinclair, Chelsea")
+("ASI","200","Introduction To Research In Animal Science"),
+	("A","10323","W","12:30 - 1:20 p.m.","Davis, Duane L")
+("ASI","290","Microcomputer Applications In Animal Sciences And Industry"),
+	("A","10345","MWF","9:30 - 10:20 a.m.","Carson, Tim")
+	("B","10344","MWF","10:30 - 11:20 a.m.","Carson, Tim")
+("ASI","310","Poultry And Poultry Product Evaluation"),
+	("A","10324","TU","3:30 - 4:45 p.m.","Beyer, R Scott")
+("ASI","318","Fundamentals Of Nutrition"),
+	("A","10325","MWF","1:30 - 2:20 p.m.","Bradford, Barry J")
+("ASI","320","Principles Of Feeding"),
+	("A","10326","TU","9:30 - 10:20 a.m.","Lattimer, James M")
+	("02B","10328","T","2:30 - 4:20 p.m.","Lattimer, James M")
+	("03B","10329","U","12:30 - 2:20 p.m.","Lattimer, James M")
+	("04B","13590","U","2:30 - 4:20 p.m.","Lattimer, James M")
+("ASI","326","Advanced Horse Evaluation"),
+	("A","10330","TU","4:30 - 5:20 p.m.","Jordan, Katherine Van")
+("ASI","333","Equine Enterprise Management"),
+	("A","13438","W","2:30 - 4:20 p.m.","Kouba, Joann M")
+("ASI","345","Beginning Horse Training And Management"),
+("ASI","350","Meat Science"),
+("ASI","361","Meat Animal Processing"),
+("ASI","370","Principles Of Meat Evaluation"),
+	("A","10335","MW","2:30 - 4:20 p.m.","Houser, Terry A")
+("ASI","385","Wool Grading And Evaluation"),
+	("A","10336","M","6:30 - 9:20 p.m.","Odde, Kenneth G")
+("ASI","400","Farm Animal Reproduction"),
+	("A","14336","MWF","9:30 - 10:20 a.m.","Fike, Karol E")
+("ASI","405","Fundamentals Of Milk Processing"),
+	("A","10339","MW","11:30 a.m. - 12:20 p.m.","Schmidt, Karen A")
+	("01B","10338","T","8:30 - 11:20 a.m.","Schmidt, Karen A")
+("ASI","420","Advanced Dairy Cattle Judging"),
+	("A","10340","F","2:30 - 5:20 p.m.","Blackburn, Jarrod Jeffrey")
+("ASI","422","Livestock Sales Management"),
+	("A","10341","M","4:30 - 5:20 p.m.","Nichols, David ALeonhard, John TWeaber, Robert Lewis")
+("ASI","444","Equine Health"),
+("ASI","445","Advanced Horse Training And Management"),
+("ASI","450","Principles Of Livestock Selection"),
+("ASI","470","Form And Function In Livestock"),
+	("A","10343","Appointment","","Mullinix, Christopher A")
+("ASI","495","Advanced Meat Evaluation"),
+	("A","10337","Appointment","","Houser, Terry A")
+("ASI","500","Genetics"),
+	("A","10346","TU","1:05 - 2:20 p.m.","Rolf, Megan")
+("ASI","502","Principles Of Equine Reproductive Management"),
+("ASI","510","Animal Breeding Principles"),
+	("A","10347","MWF","10:30 - 11:20 a.m.","Bormann, Jennifer Minick")
+("ASI","512","Bovine Reproductive Technologies"),
+	("A","10349","U","12:30 - 5:20 p.m.","Grieger, David M")
+("ASI","515","Beef Science"),
+	("A","10351","MWF","8:30 - 9:20 a.m.","Olson, K C")
+("ASI","520","Companion And Laboratory Animal Management"),
+	("A","10352","MWF","10:30 - 11:20 a.m.","Beyer, R Scott")
+("ASI","521","Horse Science"),
+("ASI","524","Sheep and Meat Goat Science"),
+("ASI","533","Anatomy & Physiology"),
+	("01B","10355","T","1:30 - 3:20 p.m.","Rozell, Timothy GSteichen, Philip L")
+	("02B","14522","T","3:30 - 5:20 p.m.","Rozell, Timothy GSteichen, Philip L")
+	("03B","15887","U","1:30 - 3:20 p.m.","Rozell, Timothy GSteichen, Philip L")
+	("04B","15986","U","3:30 - 5:20 p.m.","Rozell, Timothy GSteichen, Philip L")
+	("A","10356","TU","11:30 a.m. - 12:45 p.m.","Rozell, Timothy G")
+("ASI","535","Swine Science"),
+	("A","10358","MW","9:30 - 10:20 a.m.","Goodband, Robert D")
+	("01B","10357","W","2:30 - 4:20 p.m.","Goodband, Robert D")
+("ASI","540","Principles Of Animal Disease Control"),
+("ASI","561","Undergrad Research in ASI"),
+	("A","15743","Appointment","","Jones, Cassandra K")
+("ASI","580","Animal Sciences and Industry Career Preparation"),
+	("B","15142","T","3:30 - 4:20 p.m.","Fike, Karol E")
+("ASI","595","Contemporary Issues In Animal Science And Agriculture"),
+	("A","15532","W    Meets August 22 - December 9, 2016:","10:30 - 11:20 a.m.","Drouillard, James SHulbert, Lindsey E")
+	("A","15532","F    Meets August 22 - December 9, 2016:","9:30 - 11:20 a.m.","Drouillard, James SHulbert, Lindsey E")
+("ASI","598","Bioscience Internship in Animal Science"),
+	("A","15169","Appointment","","Fike, Karol E")
+("ASI","599","Animal Science Internship"),
+	("A","10360","Appointment","","Fike, Karol E")
+("ASI","601","Physiology Of Lactation"),
+	("A","10362","MW","9:30 - 10:20 a.m.","Rozell, Timothy GBradford, Barry J")
+	("01B","10361","W","2:30 - 4:20 p.m.","Rozell, Timothy GBradford, Barry J")
+("ASI","602","Equine Breeding and Genetics"),
+	("A","13933","TU","9:30 - 10:20 a.m.","Bormann, Jennifer Minick")
+("ASI","621","Dairy Cattle Management"),
+	("A","13586","MW","1:30 - 2:20 p.m.","Odde, Kenneth GJohnson, Jared R")
+	("01B","13587","M","2:30 - 4:20 p.m.","Johnson, Jared R")
+("ASI","640","Poultry Products Technology"),
+("ASI","650","Identification And Data Management Of Food Animals"),
+	("A","10363","MW","8:30 - 9:45 a.m.","Blasi, Dale A")
+("ASI","655","Behavior Of Domestic Animals"),
+("ASI","661","Anim Sci & Ind Prob - Top/Intro to Biotechnology Lab"),
+	("B","15741","T","9:30 - 10:20 a.m.","Grieger, David MGonzalez, John M")
+	("01B","15742","U","8:30 - 10:20 a.m.","Grieger, David MGonzalez, John M")
+("ASI","661","Anim Sci & Ind Prob - Top/Rodeo/Equine Event Mgmt"),
+	("C","17842","T","4:30 - 5:20 p.m.","Winn, Casy Chad")
+("ASI","661","Anim Sci & Ind Prob - Top/Vary By Student"),
+	("A","10366","Appointment","","Titgemeyer, Evan C")
+("ASI","662","Spec Top in An Sci - Top/Bovine Artificial Insemin"),
+("ASI","662","Spec Top in An Sci - Top/Equine Diet Formulation"),
+	("B","16340","TU","8:05 - 9:20 a.m.","Lattimer, James M")
+("ASI","662","Spec Top in An Sci - Top/Humane Livestock Handling"),
+	("D","18160","","5:00 - 8:00 p.m.","Hulbert, Lindsey E")
+("ASI","675","Monogastric Nutrition"),
+	("A","10367","MWF","8:30 - 9:20 a.m.","Hancock, Joe Dan")
+("ASI","676","Avian Nutrition"),
+	("A","13959","MWF","8:30 - 9:20 a.m.","Beyer, R Scott")
+("ASI","677","Companion Animal Nutrition"),
+	("A","15588","MWF","8:30 - 9:20 a.m.","Aldrich, GregHancock, Joe DanBeyer, R Scott")
+("ASI","678","Equine Nutrition"),
+	("A","10368","TU","8:05 - 9:20 a.m.","Douthit, Teresa Lea")
+("ASI","679","Swine Nutrition"),
+	("A","10369","MWF","8:30 - 9:20 a.m.","Goodband, Robert D")
+("ASI","682","Formulation Of Livestock And Poultry Diets"),
+	("A","10371","T","8:05 - 9:20 a.m.","Drouillard, James S")
+	("01L","10370","U","8:05 - 9:20 a.m.","Drouillard, James S")
+("ASI","695","Principles of Equine Exercise Physiology"),
+("ASI","741","Quantitative Genetics Applications of Matrix Algebra"),
+("ASI","742","Cybersheep: A Genetic Simulation Game"),
+("ASI","776","Meat Industry Technology"),
+("ASI","799","Graduate Internship In Animal Sciences And Industry"),
+	("A","10372","Appointment","","Fike, Karol E")
+("ASI","802","Gametes, Embroyos, And Stem Cells"),
+	("A","13439","Appointment","","Davis, Duane L")
+("ASI","810","History and Perspectives in Animal Breeding and Genetics"),
+("ASI","825","Stress Physiology Of Livestock"),
+("ASI","860","Analytical Techniques"),
+	("A","10374","TU","12:30 - 1:20 p.m.","Titgemeyer, Evan C")
+	("01B","10373","TU","1:30 - 5:20 p.m.","Titgemeyer, Evan C")
+("ASI","861","Analytical Techniques-Mineral Analyses"),
+	("A","10376","TU","12:30 - 1:20 p.m.","Titgemeyer, Evan C")
+	("01B","10375","TU","1:30 - 5:20 p.m.","Titgemeyer, Evan C")
+("ASI","862","Analytical Techniques-Carbohydrate And Lipid Analyses"),
+	("A","10378","TU","12:30 - 1:20 p.m.","Titgemeyer, Evan C")
+	("01B","10377","TU","1:30 - 5:20 p.m.","Titgemeyer, Evan C")
+("ASI","865","Analytical Techniques: mRNA and Protein Analysis"),
+	("A","15797","TU","12:30 - 1:20 p.m.","Bradford, Barry JMamedova, Laman")
+	("01B","15798","TU","1:30 - 5:20 p.m.","Bradford, Barry JMamedova, Laman")
+("ASI","870","Linear Models in Animal Breeding"),
+("ASI","871","Genetic Prediction"),
+("ASI","872","Applied Variance Component Estimation in Livestock Genetics"),
+("ASI","873","Prediction and Control of Inbreeding in Breeding Programs"),
+("ASI","890","Sem Animal Sci & Ind - Top/Meats"),
+	("A","10379","Appointment","","Gonzalez, John M")
+("ASI","890","Sem Animal Sci & Ind - Top/Non-Ruminnt"),
+	("B","10380","Appointment","","DeRouchey, Joel M")
+("ASI","890","Sem Animal Sci & Ind - Top/Phys An Brd"),
+	("C","10381","Appointment","","Stevenson, Jeffrey S")
+("ASI","890","Sem Animal Sci & Ind - Top/Ruminant"),
+	("D","10382","Appointment","","Drouillard, James S")
+("ASI","898","Masters Report"),
+	("A","10383","Appointment","","Titgemeyer, Evan C")
+("ASI","899","Master's Research In Animal Sciences And Industry"),
+	("A","10384","Appointment","","Titgemeyer, Evan C")
+("ASI","902","Top/Animal Science - Top/Meat Science Muscle Biol"),
+("ASI","902","Top/Animal Science - Top/Stem Cell Biotec"),
+	("B","13073","Appointment","","Weiss, Mark Louis SDavis, Duane L")
+("ASI","902","Top/Animal Science - Top/Vary By Student"),
+("ASI","921","Protein And Amino Acid Utilization In Domestic Livestock"),
+	("A","13883","TU","11:30 a.m. - 12:20 p.m.","Titgemeyer, Evan C")
+("ASI","961","Grad Prb ASI - Top/Vary By Student"),
+	("A","10386","Appointment","","Titgemeyer, Evan C")
+("ASI","990","Sem ASI Research - Top/Meats"),
+	("A","10387","U","1:30 - 2:20 p.m.","Gonzalez, John M")
+("ASI","990","Sem ASI Research - Top/Non Ruminnt"),
+	("B","10388","Appointment","","DeRouchey, Joel M")
+("ASI","990","Sem ASI Research - Top/Physiology"),
+	("C","10389","Appointment","","Stevenson, Jeffrey S")
+("ASI","990","Sem ASI Research - Top/Ruminant"),
+	("D","10390","Appointment","","Drouillard, James S")
+("ASI","999","Doctoral Research In Animal Sciences And Industry"),
+	("A","10391","Appointment","","Titgemeyer, Evan C")
+("AGCOM","110","Introduction To Agricultural Communications"),
+	("A","10052","TU","2:30 - 3:20 p.m.","Ellis, Jason DKing, Audrey Ellen Holderness")
+("AGCOM","400","Agricultural Business Communications"),
+	("A","10053","MWF","8:30 - 9:20 a.m.","Baker, Richard PBaker, Lauri May")
+("AGCOM","410","Agricultural Student Magazine"),
+("AGCOM","420","Topics In Agricultural Communications"),
+	("A","10057","Appointment","","Baker, Lauri May")
+("AGCOM","425","Undergraduate Research in Agricultural Communications"),
+	("A","14633","Appointment","","Ellis, Jason DBaker, Lauri May")
+	("B","15193","Appointment","","Ellis, Jason DBaker, Lauri May")
+("AGCOM","550","Internship In Agricultural Communications"),
+	("A","10058","Appointment","","Ellis, Jason DBaker, Lauri May")
+("AGCOM","590","New Media Technology"),
+	("A","13301","TU","11:30 a.m. - 12:45 p.m.","King, Audrey Ellen HoldernessBaker, Lauri May")
+("AGCOM","610","Crisis Communication"),
+("AGCOM","786","Topics in Agric Communications - Top/Vary by Student"),
+	("A","16451","Appointment","","Ellis, Jason DBaker, Lauri May")
+("AGCOM","810","Scientific Communication"),
+	("A","10059","M","2:30 - 5:20 p.m.","Ellis, Jason DBoone, Kristina M")
+("AGCOM","844","Theory in Agricultural Communications"),
+("AGCOM","890","Master's Project"),
+	("A","15338","Appointment","","Ellis, Jason DBaker, Lauri May")
+("AGCOM","899","Master's Thesis"),
+	("A","15460","Appointment","","Ellis, Jason DBaker, Lauri May")
+("AGED","300","Introduction To Agricultural Education"),
+	("A","13459","T","3:30 - 4:20 p.m.","Hock, Gaea Ashley")
+	("B","13456","W","3:30 - 4:20 p.m.","Ulmer, Jonathan David")
+("AGED","400","Leadership And Professional Development In Agric Educ"),
+	("A","13457","TU","8:05 - 8:55 a.m.","Ulmer, Jonathan David")
+("AGED","500","Methods of Teaching Agriculture in the Secondary and Middle Schools"),
+	("A","13458","TU    Meets August 22 - December 9, 2016:","10:30 - 11:20 a.m.","Hock, Gaea Ashley")
+	("A","13458","T    Meets August 22 - December 9, 2016:","1:30 - 3:20 p.m.","Staff")
+("AGED","505","Field Experience In Agricultural Education"),
+	("A","13469","U","3:30 - 4:20 p.m.","Disberger, Brandie Sue")
+("AGED","520","Block II Lab:  Content Area Methods and Field Experience"),
+	("A","13470","U","1:30 - 3:20 p.m.","Hock, Gaea Ashley")
+("AGED","615","Laboratory And Safety Techniques In Teaching Agriculture"),
+	("A","13471","TU","3:30 - 4:45 p.m.","Ulmer, Jonathan David")
+("AGED","621","Program Planning in Agricultural Education"),
+	("A","13472","TU","9:05 - 10:20 a.m.","Disberger, Brandie SueHarbstreit, Steven R")
+("AGED","786","Topics/Ag Education - Top/Guided Practice"),
+	("A","13667","TU","11:30 a.m. - 12:45 p.m.","Baker, Lauri MayUlmer, Jonathan David")
+("AGED","786","Topics/Ag Education - Top/New Media Technologies"),
+	("B","15230","TU","9:30 - 10:45 a.m.","Harbstreit, Steven RBaker, Lauri May")
+("AGED","810","Social Data Analysis in Communications and Agricultural Education"),
+("AGED","820","History and Philosophy of Agricultural and Extension Education"),
+("AGED","823","Agricultural Education For Beginning Teachers"),
+("AGED","840","Advanced Theory and Methods of Teaching Agriculture"),
+("AGED","850","Curriculum Development in Agriculture "),
+	("A","13473","Appointment","","Washburn, Shannon G")
+("AGED","852","Curriculum Development In Agriculture "),
+	("A","14308","Appointment","","Harbstreit, Steven R")
+("AGED","858","Program Planning and Evaluation in Agricultural and Extension Education"),
+("AGED","890","Master's Project"),
+	("A","15458","Appointment","","Washburn, Shannon G")
+	("B","16119","Appointment","","Harbstreit, Steven R")
+("AGED","899","Master's Thesis"),
+	("A","15459","Appointment","","Washburn, Shannon G")
+	("B","16120","Appointment","","Harbstreit, Steven R")
+("ENTOM","301","Insects And People"),
+	("A","11557","MWF","10:30 - 11:20 a.m.","Zolnerowich, Gregory")
+	("B","15101","MWF","1:30 - 2:20 p.m.","Ruberson, John R")
+("ENTOM","305","Animal Health Entomology"),
+("ENTOM","306","Animal Health Entomology Laboratory"),
+	("A","11559","W","12:30 - 2:20 p.m.","Zurek, Ludek")
+("ENTOM","312","General Entomology"),
+	("A","11560","MW","9:30 - 10:20 a.m.","Marshall, JeremyPhillips, Thomas W")
+	("01B","15538","M","12:30 - 2:20 p.m.","Zolnerowich, GregoryMarshall, JeremyPhillips, Thomas W")
+	("02B","15540","T","12:30 - 2:20 p.m.","Zolnerowich, GregoryMarshall, JeremyPhillips, Thomas W")
+	("03B","15539","M","2:30 - 4:20 p.m.","Zolnerowich, GregoryMarshall, JeremyPhillips, Thomas W")
+("ENTOM","320","Horticultural Entomology"),
+	("A","14195","TU","8:30 - 9:20 a.m.","Nechols, James R")
+	("01B","14196","U","12:30 - 2:20 p.m.","Nechols, James R")
+	("02B","14197","U","2:30 - 4:20 p.m.","Nechols, James R")
+("ENTOM","499","Undergraduate Research Experience"),
+	("A","18140","Appointment","","Marshall, JeremyRuberson, John R")
+("ENTOM","589","Turfgrass Insects and Their Management"),
+	("A","16890","MW","9:30 - 10:20 a.m.","Nechols, James R")
+	("01B","16891","F","9:30 - 11:20 a.m.","Nechols, James R")
+("ENTOM","732","Introduction To Plant Resistance of Pests"),
+	("A","16895","MTWU","9:30 - 10:20 a.m.","Todd, Timothy CSmith, C MichaelJugulam, Mithila")
+("ENTOM","745","Plant Resistance To Insects"),
+	("A","16896","MTWU","9:30 - 10:20 a.m.","Smith, C Michael")
+("ENTOM","767","Insect Pest Mngt"),
+	("A","16893","MW","10:30 - 11:20 a.m.","McCornack, Brian P")
+	("02B","17885","W","2:30 - 4:20 p.m.","McCornack, Brian P")
+("ENTOM","799","Prb/Entomology - Top/Vary By Student"),
+("ENTOM","830","Molecular Entomology"),
+	("A","16897","TU","12:30 - 2:20 p.m.","Zhu, Kun Yan")
+("ENTOM","898","Report In Entomology"),
+	("A","11562","Appointment","","Ruberson, John R")
+("ENTOM","899","Master's Research In Entomology"),
+	("A","11563","Appointment","","Ruberson, John R")
+("ENTOM","930","Top/Env Physiol Ent - Top/Vary By Student"),
+	("A","13279","Appointment","","Ruberson, John R")
+("ENTOM","930","Topics In Environmental And Physiological Entomology"),
+	("B","16924","TU","2:30 - 5:00 p.m.","Park, Yoonseong")
+("ENTOM","932","Top/Gen Sys Entom - Top/Vary By Student"),
+	("A","13280","Appointment","","Ruberson, John R")
+("ENTOM","950","Conceptual Issues In Evolution"),
+	("A","16941","TU","10:30 - 11:45 a.m.","Marshall, Jeremy")
+("ENTOM","995","Entomology Seminar"),
+	("A","11564","T","4:00 - 5:00 p.m.","Oppert, BrendaRuberson, John R")
+("ENTOM","999","Research In Entomology"),
+	("A","11565","Appointment","","Ruberson, John R")
+("FDSCI","101","Foundations in Food Science & Industry"),
+	("A","14545","U","10:30 - 11:20 a.m.","Getty, Kelly J Karr")
+("FDSCI","302","Introduction To Food Science"),
+	("A","11586","MWF","12:30 - 1:20 p.m.","Phebus, Randall K")
+("FDSCI","305","Fundamentals Of Food Processing"),
+("FDSCI","307","Applied Microbiology For Meat And Poultry Processors"),
+("FDSCI","500","Food Science Seminar"),
+	("A","11587","U","12:30 - 1:20 p.m.","Nutsch, Abbey L")
+("FDSCI","600","Food Microbiology"),
+	("A","15127","TU","10:30 - 11:20 a.m.","Trinetta, Valentina")
+("FDSCI","601","Food Microbiology Lab"),
+	("A","15128","TU","12:30 - 2:20 p.m.","Trinetta, Valentina")
+	("B","15129","TU","2:30 - 4:20 p.m.","Hatesohl, Pamela RTrinetta, Valentina")
+("FDSCI","603","Int/Food Science - Top/Vary By Student"),
+	("A","11588","Appointment","","Schmidt, Karen A")
+("FDSCI","630","Prb/Food Science - Top/Farm to Fork/Produce Safe"),
+	("B","15629","W","2:30 - 4:20 p.m.","Gragg, Sara Elizabeth")
+("FDSCI","630","Prb/Food Science - Top/Flavor Chemistry"),
+("FDSCI","630","Prb/Food Science - Top/Food Processing Unit Ops"),
+	("C","17812","MWF","10:30 - 11:20 a.m.","Yucel, Umut")
+("FDSCI","630","Prb/Food Science - Top/Vary By Student"),
+	("A","11589","Appointment","","Schmidt, Karen A")
+("FDSCI","690","Principles of HACCP and HARPC"),
+	("A","11590","MWF","11:30 a.m. - 12:20 p.m.","Aramouni, Fadi MBoyle, Elizabeth A E")
+("FDSCI","695","Quality Assurance Of Food Products"),
+	("A","11591","MWF","9:30 - 10:20 a.m.","Schmidt, Karen A")
+("FDSCI","710","Kosher and Halal Food Regulations"),
+("FDSCI","725","Food Analysis"),
+("FDSCI","727","Chemical Methods Of Food Analysis"),
+	("A","11593","TU","8:30 - 9:45 a.m.","Smith, J Scott")
+	("01B","11592","W","1:30 - 4:20 p.m.","Smith, J Scott")
+("FDSCI","728","Physical Methods Of Food Analysis"),
+	("A","14267","TU","8:30 - 9:45 a.m.","Amamcharla, Jayendra Kumar")
+	("01B","14268","W","1:30 - 4:20 p.m.","Amamcharla, Jayendra Kumar")
+("FDSCI","730","A Multidisciplinary Overview Of Food Safety And Security"),
+("FDSCI","740","Research & Development Of Food Products"),
+	("A","11595","MW","12:30 - 1:20 p.m.","Getty, Kelly J KarrAmamcharla, Jayendra Kumar")
+	("01B","11594","M","1:30 - 5:20 p.m.","Getty, Kelly J KarrAmamcharla, Jayendra Kumar")
+("FDSCI","750","Food Toxicants"),
+("FDSCI","815","Advanced Food Chemistry"),
+("FDSCI","840","Public Health Field Experience"),
+	("A","11596","Appointment","","Retzlaff, Deanna D")
+("FDSCI","850","Food Science Graduate Seminar"),
+("FDSCI","898","Master's Report In Food Science"),
+	("A","11598","Appointment","","Smith, J Scott")
+("FDSCI","899","Master's Research In Food Science"),
+	("A","11599","Appointment","","Smith, J Scott")
+("FDSCI","961","Grad Prb Fdsci - Top/Vary By Student"),
+	("A","11600","Appointment","","Smith, J Scott")
+("FDSCI","961","Graduate Problem In Food Science"),
+("FDSCI","999","Doctoral Research In Food Science"),
+	("A","11601","Appointment","","Smith, J Scott")
+("GRSC","100","Grain Science/Industry Orient"),
+	("A","15172","TU","12:30 - 1:20 p.m.","Dogan, Hulya")
+("GRSC","101","Introduction To Grain Science And Industry"),
+	("A","11845","MWF","12:30 - 1:20 p.m.","Jones, Cassandra K")
+("GRSC","150","Principles of Milling"),
+	("A","11846","TU","1:30 - 2:20 p.m.","Churchill, Frances Maria")
+("GRSC","151","Principles of Milling Laboratory"),
+	("01B","15173","T","8:30 - 11:20 a.m.","Churchill, Frances Maria")
+	("02B","15274","U","8:30 - 11:20 a.m.","Churchill, Frances Maria")
+("GRSC","201","Fundamental Baking Calculations"),
+("GRSC","210","CAD Flow Sheets for Grain Processes"),
+	("A","14073","TU","8:30 - 11:20 a.m.","Dogan, Huseyin Adam")
+	("B","14074","T    Meets August 22 - December 9, 2016:","8:30 - 11:20 a.m.","Dogan, Huseyin Adam")
+	("B","14074","U    Meets August 22 - December 9, 2016:","2:30 - 5:20 p.m.","Dogan, Huseyin Adam")
+("GRSC","499","Undergraduate Research in Grain Science"),
+	("A","15174","Appointment","","Regan, Rebecca AnnDogan, Hulya")
+("GRSC","502","Milling Science "),
+	("A","11852","TU","8:30 - 9:20 a.m.","Watt, Jason W")
+("GRSC","503","Milling Science "),
+	("A","11853","T","10:30 a.m. - 4:20 p.m.","Watt, Jason W")
+	("B","14445","F","9:30 a.m. - 3:20 p.m.","Watt, Jason W")
+("GRSC","510","Feed Technology "),
+	("A","14202","MWF","9:30 - 10:20 a.m.","Stark, Charles R")
+("GRSC","511","Feed Technology I Laboratory"),
+	("01B","15175","T","2:30 - 5:20 p.m.","Stark, Charles R")
+("GRSC","530","Management Applications In Grain Processing Industries"),
+	("A","15176","MWF","11:30 a.m. - 12:20 p.m.","Vadlani, Praveen V")
+("GRSC","556","Pneumatic Conveying of Dry Solids"),
+	("A","14368","W","2:30 - 4:20 p.m.","Dogan, Hulya")
+	("01B","14369","M","2:30 - 4:20 p.m.","Dogan, Hulya")
+("GRSC","584","Milling Processing Technology Management"),
+	("A","13052","MWF","8:30 - 9:20 a.m.","Churchill, Frances Maria")
+("GRSC","590","Grain Science Problems - Top/Swine Feed Mill Mngt"),
+("GRSC","590","Grain Science Problems - Top/Vary by Student"),
+	("A","14013","Appointment","","Dogan, Hulya")
+("GRSC","591","Internship in Grain Science"),
+	("A","11847","T","7:30 - 8:20 a.m.","Stark, Charles RWatt, Jason WKrishock, David A")
+	("B","17860","W","4:30 - 5:20 p.m.","Stark, Charles RKrishock, David A")
+("GRSC","602","Cereal Science"),
+	("A","11848","MWF","8:30 - 9:20 a.m.","Faubion, Jon M")
+("GRSC","620","Extrusion Processing In The Food And Feed Industries"),
+	("B","17649","MWF","10:30 - 11:20 a.m.","Alavi, Sajid")
+	("02B","17650","W","12:30 - 3:30 p.m.","Alavi, Sajid")
+("GRSC","635","Baking Science "),
+	("A","11849","MW","9:30 - 10:20 a.m.","Krishock, David A")
+("GRSC","636","Baking Science "),
+	("A","11850","M","10:30 a.m. - 4:20 p.m.","Moore, Michael WKrishock, David A")
+("GRSC","645","Pet Food Processing"),
+("GRSC","646","Pet Food Proc Lab"),
+("GRSC","740","Biomaterials Processing"),
+	("B","17648","MWF","11:30 a.m. - 12:20 p.m.","Sun, Xiuzhi")
+("GRSC","790","Prb/Grain Science - Top/Adv Feed Tech "),
+	("A","11854","Appointment","","Faubion, Jon MDogan, Hulya")
+("GRSC","790","Prb/Grain Science - Top/Buhler Flour Milling"),
+("GRSC","815","Fundamentals Of Processing Grains For Food"),
+("GRSC","820","Advanced Extrusion Processing"),
+("GRSC","899","Research In Grain Science"),
+	("A","11855","Appointment","","Faubion, Jon M")
+("GRSC","900","Graduate Seminar In Grain Science"),
+	("A","11856","U","4:00 - 4:50 p.m.","Faubion, Jon M")
+("GRSC","910","Top/Grain Science - Top/Vary By Student"),
+	("A","11857","Appointment","","Faubion, Jon M")
+("GRSC","999","Research In Grain Science"),
+	("A","11858","Appointment","","Faubion, Jon M")
+("FOR","741","Prb/Forestry - Top/Interpretive Master Plan"),
+("FOR","741","Prb/Forestry - Top/Outdoor Rec Behavior"),
+	("B","16494","MW","10:30 - 11:45 a.m.","Sharp, Ryan L")
+("FOR","741","Prb/Forestry - Top/Research Methods"),
+	("C","17659","TU","9:30 - 10:45 a.m.","Skibins, Jeffrey C")
+("FOR","741","Prb/Forestry - Top/Vary By Student"),
+	("A","11628","Appointment","","Skibins, Jeffrey C")
+("HORT","190","Pre-Internship In Horticulture"),
+	("A","11904","M","4:30 - 5:20 p.m.","Lavis, Catherine CamilleMiller, Chad T")
+("HORT","201","Principles Of Horticultural Science"),
+	("A","11905","MWF","10:30 - 11:20 a.m.","Keeley, Steven J")
+	("01B","11908","T","9:30 - 11:20 a.m.","Keeley, Steven J")
+	("02B","11907","T","12:30 - 2:20 p.m.","Keeley, Steven J")
+	("03B","11906","U","12:30 - 2:20 p.m.","Keeley, Steven J")
+	("04B","15672","U","9:30 - 11:20 a.m.","Keeley, Steven J")
+("HORT","210","Concepts Of Floral Design"),
+	("A","11909","WF","11:30 a.m. - 12:20 p.m.","Sheshukova, Irina Petrovna")
+	("B","16492","WF","12:30 - 1:20 p.m.","Sheshukova, Irina Petrovna")
+	("01B","11911","M","12:30 - 2:20 p.m.","Sheshukova, Irina Petrovna")
+	("02B","11910","M","2:30 - 4:20 p.m.","Sheshukova, Irina Petrovna")
+	("03B","16493","W","2:30 - 4:20 p.m.","Sheshukova, Irina Petrovna")
+("HORT","275","Horticultural Design "),
+	("A","11915","MW","9:30 - 10:20 a.m.","Davis, Gregory L")
+	("01S","11913","M","12:30 - 2:20 p.m.","Davis, Gregory L")
+	("02S","11914","M","2:30 - 4:20 p.m.","Davis, Gregory L")
+("HORT","301","Horticulture Practicum"),
+	("A","11916","Appointment","","Davis, Gregory L")
+("HORT","374","Landscape Plants I"),
+	("A","14170","MW","12:30 - 1:20 p.m.","Miller, Chad T")
+	("02B","14172","W","2:30 - 4:20 p.m.","Miller, Chad T")
+	("05B","15305","T","9:30 - 11:20 a.m.","Miller, Chad T")
+("HORT","390","Horticulture Topics - Top/Vary By Student"),
+	("A","11917","Appointment","","Davis, Gregory L")
+("HORT","495","Undergraduate Research in Horticulture"),
+	("A","18066","Appointment","","Park, Sunghun")
+("HORT","508","Sustainable Landscape Maintenance Practices"),
+	("A","11919","TU","10:30 - 11:20 a.m.","Lavis, Catherine Camille")
+	("03B","11921","F","9:30 - 11:20 a.m.","Lavis, Catherine Camille")
+("HORT","517","Golf Course & Sports Turf Operations"),
+	("A","14390","MW","1:30 - 2:20 p.m.","Fry, Jack D")
+	("01B","14391","W","2:30 - 4:20 p.m.","Fry, Jack D")
+("HORT","550","Landscape Irrigation Systems"),
+	("A","11931","MW","8:30 - 9:20 a.m.","Lavis, Catherine Camille")
+	("01B","11933","W","12:30 - 2:20 p.m.","Lavis, Catherine Camille")
+	("02B","11932","W","9:30 - 11:20 a.m.","Lavis, Catherine Camille")
+("HORT","570","Greenhouse Operations Management"),
+	("A","11935","TU","11:30 a.m. - 12:20 p.m.","Williams, Kimberly A")
+	("01B","11934","W","2:30 - 5:20 p.m.","Williams, Kimberly A")
+("HORT","582","Foundations of Horticultural Pest Management"),
+	("A","11937","U","9:30 - 10:20 a.m.","Keeley, Steven J")
+("HORT","587","Turfgrass Diseases and Their Management"),
+	("A","13186","MW","9:30 - 10:20 a.m.","Keeley, Steven J")
+	("01B","13187","F","2:30 - 4:20 p.m.","Keeley, Steven J")
+("HORT","588","Turfgrass Weeds and Their Management"),
+	("A","13188","MW","9:30 - 10:20 a.m.","Keeley, Steven J")
+	("01B","13189","F","2:30 - 4:20 p.m.","Keeley, Steven J")
+("HORT","590","Horticulture Internship"),
+	("A","11938","Appointment","","Williams, Kimberly A")
+	("B","13443","Appointment","","Bremer, Dale J")
+	("C","13444","Appointment","","Rajashekar, Channa B")
+	("D","13445","Appointment","","Lavis, Catherine Camille")
+	("E","13446","Appointment","","Miller, Chad T")
+	("F","13447","Appointment","","Keeley, Steven J")
+	("G","13448","Appointment","","Fry, Jack D")
+	("H","13449","Appointment","","Davis, Gregory L")
+("HORT","599","The Horticultural Professional"),
+	("A","13752","Appointment","","Davis, Gregory L")
+("HORT","630","General Viticulture"),
+("HORT","640","Horticultural Problems - Top/Landscape Software Apps"),
+	("C","18010","T","1:30 - 2:20 p.m.","Davis, Gregory L")
+	("01B","18007","TU","2:30 - 4:20 p.m.","Davis, Gregory L")
+("HORT","640","Horticultural Problems - Top/Vary by Student"),
+	("A","18008","Appointment","","Bremer, Dale J")
+("HORT","751","Human Issues In Horticultural Therapy"),
+("HORT","753","Clinical Skills in Horticultural Therapy"),
+("HORT","755","Practicum in Horticultural Therapy"),
+("HORT","775","Plant Breeding Methods in Horticulture"),
+("HORT","791","Urban Agriculture"),
+	("A","14108","U","3:30 - 5:20 p.m.","Pliakoni, Eleni")
+("HORT","792","Urban Food Production Practicum"),
+	("C","15450","Appointment","","Shoemaker, Candice A")
+("HORT","793","Farm to Fork Produce Safety"),
+	("A","17783","W","2:30 - 4:20 p.m.","Pliakoni, EleniGragg, Sara Elizabeth")
+("HORT","795","Urban Agriculture Study Tour"),
+	("A","16475","TU","1:30 - 2:20 p.m.","Pliakoni, Eleni")
+("HORT","796","Professional Development in Urban Food Systems"),
+	("A","17769","T","2:30 - 3:20 p.m.","Pliakoni, Eleni")
+("HORT","880","Top/Horticulture - Top/Vary By Student"),
+	("A","11940","Appointment","","Bremer, Dale J")
+("HORT","898","Master's Report"),
+	("A","11941","Appointment","","Bremer, Dale J")
+("HORT","899","Masters Research"),
+	("A","11942","Appointment","","Bremer, Dale J")
+("HORT","951","Horticulture Graduate Seminar"),
+	("A","11943","T","3:30 - 5:20 p.m.","Bremer, Dale J")
+	("B","13617","Appointment","","Bremer, Dale J")
+("HORT","960","Environmental Plant Stress"),
+	("A","13943","TU","9:30 - 10:45 a.m.","Rajashekar, Channa B")
+("HORT","999","Research In Horticulture,Phd"),
+	("A","11945","Appointment","","Bremer, Dale J")
+("PMC","110","Environmental Education and Leadership"),
+	("A","15526","F","10:30 a.m. - 1:20 p.m.","Stevenson, Sidney James")
+("PMC","112","Boat Safety and Navigation"),
+	("A","15531","F","10:30 a.m. - 1:20 p.m.","Stevenson, Sidney James")
+("PMC","114","Kansas Park and Wildlife Regulations"),
+	("A","16124","F","10:30 a.m. - 1:20 p.m.","Stevenson, Sidney James")
+("PMC","120","Outdoor Recreation Certification"),
+	("A","16125","Appointment","","Stevenson, Sidney James")
+("PMC","210","Intro to Outdoor Recreation"),
+	("A","12873","MWF","9:30 - 10:20 a.m.","Skibins, Jeffrey C")
+("PMC","275","Introduction To Natural Resource Management"),
+	("A","11625","MW","3:30 - 4:45 p.m.","Sharp, Ryan L")
+("PMC","330","Dendrology"),
+("PMC","350","Parks and  Outdoor Recreation Practicum"),
+	("A","17979","Appointment","","Stevenson, Sidney James")
+("PMC","441","Top/Park Mgmt & Conservation - Top/Hunter Educ Instructor"),
+	("B","18041","Appointment","","Ahlers, Adam A")
+("PMC","441","Top/Park Mgmt & Conservation - Top/Vary by Student"),
+	("A","16142","Appointment","","Stevenson, Sidney James")
+("PMC","475","Natural History for Park Professionals"),
+	("A","15528","W","9:30 - 10:20 a.m.","Cable, Ted T")
+	("02B","15530","W","2:30 - 5:20 p.m.","Cable, Ted T")
+("PMC","492","Internship In Parks And Recreation"),
+("PMC","580","Park Operations and Maintenance Management"),
+	("A","12874","TU","2:30 - 5:20 p.m.","Stevenson, Sidney James")
+("PMC","620","Park Planning & Design"),
+("PMC","635","Methods Of Environmental Interpretation"),
+	("A","13581","TU","10:30 - 11:20 a.m.","Cable, Ted T")
+	("01B","13582","U","11:30 a.m. - 2:20 p.m.","Cable, Ted T")
+("RRES","200","Top/Recreatn Resourc - Top/Archery"),
+	("ZA","16829","M","6:30 - 7:30 p.m.","Korte, Thomas W")
+	("ZAA","16828","M","7:40 - 8:40 p.m.","Korte, Thomas W")
+	("ZAB","16832","T","8:15 - 9:15 p.m.","Korte, Thomas W")
+	("ZAC","16831","M","8:50 - 9:50 p.m.","Korte, Thomas W")
+("RRES","200","Top/Recreatn Resourc - Top/Backcountry Experience"),
+	("ZAH","17264","W    Meets November 2 - November 13, 2016:","6:00 - 8:00 p.m.","Schapaugh, Daniel T")
+("RRES","200","Top/Recreatn Resourc - Top/Backcountry Skills"),
+	("ZAI","17253","W    Meets November 30 - December 4, 2016:","6:00 - 8:00 p.m.","Schapaugh, Daniel T")
+	("ZAI","17253","    Meets November 30 - December 4, 2016:","11:00 a.m. - 6:00 p.m.","Schapaugh, Daniel T")
+("RRES","200","Top/Recreatn Resourc - Top/Beginning Bowling"),
+	("ZAK","16830","T","10:30 - 11:20 a.m.","Gibson, Jesse Scott")
+	("ZAL","16834","T","2:30 - 3:20 p.m.","Gibson, Jesse Scott")
+	("ZAM","16835","W","2:30 - 3:20 p.m.","Gibson, Jesse Scott")
+	("ZAN","16827","M","10:30 - 11:30 a.m.","Gibson, Jesse Scott")
+("RRES","200","Top/Recreatn Resourc - Top/Beginning Fencing"),
+	("ZAO","17414","M","6:00 - 7:30 p.m.","Gabbard, R Todd")
+("RRES","200","Top/Recreatn Resourc - Top/Beginning Tennis"),
+	("ZAT","16837","T","1:00 - 2:30 p.m.","Hoover, David L")
+	("ZAU","16836","W","1:00 - 2:30 p.m.","Hoover, David L")
+("RRES","200","Top/Recreatn Resourc - Top/Boxing "),
+	("ZAV","17236","MW","2:00 - 3:00 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZAW","17223","TU","6:30 - 7:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZAX","17228","TU","6:30 - 7:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZAY","17229","TU","2:00 - 3:00 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZAZ","17230","TU","2:00 - 3:00 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZB","17231","MW","6:30 - 7:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBA","17232","MW","6:30 - 7:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBB","17233","MW","4:20 - 5:20 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBC","17234","MW","4:20 - 5:20 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBD","17235","MW","2:00 - 3:00 p.m.","Ridley-Fink, Lorissa Lynn")
+("RRES","200","Top/Recreatn Resourc - Top/Boxing "),
+	("ZBE","17201","TU","5:30 - 6:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBF","17206","MW","5:30 - 6:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBG","17203","TU","5:30 - 6:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBH","17204","MW","5:30 - 6:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBJ","17212","MW","7:30 - 8:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBK","17213","TU","7:30 - 8:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBL","17210","TU","7:30 - 8:30 p.m.","Ridley-Fink, Lorissa Lynn")
+("RRES","200","Top/Recreatn Resourc - Top/Boxing "),
+	("ZBO","17177","MW","7:30 - 8:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBR","17216","TU","5:30 - 6:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBS","17215","TU","7:30 - 8:30 p.m.","Ridley-Fink, Lorissa Lynn")
+("RRES","200","Top/Recreatn Resourc - Top/Boxing "),
+	("ZBV","17221","MW","7:30 - 8:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBW","17222","TU","7:30 - 8:30 p.m.","Ridley-Fink, Lorissa Lynn")
+	("ZBX","17218","TU","7:30 - 8:30 p.m.","Ridley-Fink, Lorissa Lynn")
+("RRES","200","Top/Recreatn Resourc - Top/First Aid CPR/AED"),
+	("ZBY","17254","","12:00 - 7:30 p.m.","Brown, Henry A")
+	("ZBZ","17258","","12:00 - 7:30 p.m.","Brown, Henry A")
+	("ZCA","17252","","12:00 - 7:30 p.m.","Brown, Henry A")
+	("ZCD","17257","","12:00 - 7:30 p.m.","Brown, Henry A")
+("RRES","200","Top/Recreatn Resourc - Top/Fund Canoeing"),
+("RRES","200","Top/Recreatn Resourc - Top/Golf"),
+	("ZCH","16819","W","2:30 - 4:30 p.m.","Myers, Chad K")
+	("ZCI","16821","U","5:30 - 7:30 p.m.","Myers, Chad K")
+	("ZCJ","16820","F","1:30 - 3:30 p.m.","Myers, Chad K")
+("RRES","200","Top/Recreatn Resourc - Top/Intermediate Bowling"),
+	("ZCK","16833","M","2:30 - 3:30 p.m.","Gibson, Jesse Scott")
+("RRES","200","Top/Recreatn Resourc - Top/Intermediate Fencing"),
+("RRES","200","Top/Recreatn Resourc - Top/Respond to Emergencies"),
+	("ZCM","17263","","12:00 - 6:30 p.m.","Brown, Henry A")
+("RRES","200","Top/Recreatn Resourc - Top/Rock Climbing "),
+("RRES","200","Top/Recreatn Resourc - Top/Scuba Diving"),
+	("ZCN","17542","M","6:00 - 10:00 p.m.","Freeborn, William J")
+("RRES","200","Top/Recreatn Resourc - Top/Tae Kwon Do I"),
+	("ZCP","17251","TU","8:00 - 9:00 p.m.","Moore, David Paul")
+("RRES","200","Top/Recreatn Resourc - Top/Traditional Self Bow"),
+	("ZCV","17408","W    Meets October 5 - October 16, 2016:","6:00 - 8:00 p.m.","Schapaugh, Daniel T")
+	("ZCV","17408","    Meets October 5 - October 16, 2016:","11:00 a.m. - 6:00 p.m.","Schapaugh, Daniel T")
+("RRES","200","Top/Recreatn Resourc - Top/Women's Self Defense"),
+	("ZCS","17262","","1:00 - 4:00 p.m.","Johansen, Pamela Kay")
+	("ZCT","17261","","1:00 - 4:00 p.m.","Johansen, Pamela Kay")
+("WOEM","201","Firearms Cartridges and Ballistics"),
+("WOEM","202","Rifle and Handgun Range Design, Construction and Operations"),
+("WOEM","203","Bowhunting Equipment and Skills"),
+	("A","18040","M","5:30 - 8:20 p.m.","Ahlers, Adam A")
+("WOEM","250","Introduction to Wildlife and Outdoor Enterprise Management"),
+	("A","13612","W","10:30 - 11:20 a.m.","Ahlers, Adam A")
+("WOEM","561","Waterfowl and Wetlands Management"),
+	("A","16157","TU","11:30 a.m. - 12:20 p.m.","Ahlers, Adam A")
+	("01B","16158","U","1:30 - 3:20 p.m.","Ahlers, Adam A")
+("WOEM","570","Internship for Wildlife and Outdoor Enterprise Management"),
+	("A","14578","Appointment","","Ahlers, Adam A")
+("WOEM","590","Problems in Wildlife and Outdoor Enterprise Management"),
+	("A","15631","Appointment","","Ahlers, Adam A")
+("WOEM","595","Wildlife and Outdoor Enterprise Management Senior Seminar"),
+	("A","17242","T","3:30 - 4:20 p.m.","Ahlers, Adam A")
+("PLPTH","575","Topics In Plant Pathology"),
+	("A","12744","Appointment","","Draper, Martin A")
+("PLPTH","576","Special Topics in Plant Pathology"),
+	("A","13310","Appointment","","Draper, Martin A")
+("PLPTH","585","Crop Diseases"),
+	("A","12746","TU","10:30 - 11:20 a.m.","O'Mara, Judith A")
+	("02B","15100","TU","2:30 - 4:20 p.m.","O'Mara, Judith A")
+("PLPTH","599","Res/Plant Pathology - Top/Vary by Student"),
+	("A","12747","Appointment","","Draper, Martin A")
+("PLPTH","610","Biotechnology"),
+	("A","12748","MWF","2:30 - 3:20 p.m.","Trick, Harold N")
+("PLPTH","732","Introduction To Plant Resistance To Pests"),
+	("A","14446","MTWU","9:30 - 10:20 a.m.","Todd, Timothy CO'Mara, Judith ASmith, C Michael")
+("PLPTH","750","Prb/Plant Pathology - Top/Vary By Student"),
+	("A","12749","Appointment","","Draper, Martin A")
+("PLPTH","755","Plant Resistance To Diseases"),
+	("A","14450","TU","9:30 - 11:20 a.m.","Todd, Timothy CValent, Barbara")
+("PLPTH","837","Plant Virus-Vector Interactions"),
+	("A","14451","MW","10:30 - 11:20 a.m.","Whitfield, Anna E")
+("PLPTH","845","Plant Pathogenic Fungi"),
+	("A","14398","MW","1:30 - 2:20 p.m.","Little, Christopher R")
+	("01B","14399","F","8:30 a.m. - 12:20 p.m.","Little, Christopher R")
+("PLPTH","870","Sem/Pl Path"),
+	("A","12750","W","4:05 - 5:20 p.m.","Fellers, John")
+("PLPTH","880","Plant Molecular Biology"),
+	("A","14866","MW","11:30 a.m. - 12:45 p.m.","Fellers, JohnMorris, Geoffrey Preston")
+("PLPTH","898","Master's Report"),
+	("A","12751","Appointment","","Draper, Martin A")
+("PLPTH","899","Research In Plant Pathology For The Ms Degree"),
+	("A","12752","Appointment","","Draper, Martin A")
+("PLPTH","920","Top/Plant Pathology - Top/Cont Molecular Virus-host"),
+	("B","13738","MWF","2:30 - 3:20 p.m.","Trick, Harold N")
+("PLPTH","921","Special Topics in Plant Pathology"),
+	("A","13178","Appointment","","Draper, Martin A")
+("PLPTH","922","Teaching Practicum in Plant Pathology"),
+	("A","13179","Appointment","","Draper, Martin A")
+("PLPTH","999","Research In Pathology For The Phd Degree"),
+	("A","12754","Appointment","","Draper, Martin A")
+("ENVD","200","Student Success Seminar"),
+("ENVD","201","Environmental Design Studio "),
+	("A","11577","MWF","8:30 - 11:20 a.m.","Lewis, Katrina M")
+	("B","11566","MWF","8:30 - 11:20 a.m.","Tank, Robyn Marie")
+	("C","11567","MWF","8:30 - 11:20 a.m.","Johnson, Bruce A")
+	("D","11568","MWF","8:30 - 11:20 a.m.","Clement, Laurence A")
+	("E","11569","MWF","8:30 - 11:20 a.m.","Molina, Adriana")
+	("F","11570","MWF","8:30 - 11:20 a.m.","Ewanow, Lynn")
+	("J","11574","MWF","2:30 - 5:20 p.m.","Hunt, Jon D")
+	("K","11575","MWF","2:30 - 5:20 p.m.","Molina, Adriana")
+	("L","11576","MWF","2:30 - 5:20 p.m.","Ewanow, Lynn")
+("ENVD","203","Survey Of The Design Professions "),
+	("A","11578","U","2:30 - 3:20 p.m.","Ewanow, Lynn")
+("ENVD","204","Studio Seminar"),
+	("A","17583","T","2:30 - 3:20 p.m.","Lewis, Katrina MLast, Lisa S")
+	("B","17592","T","2:30 - 3:20 p.m.","Lewis, Katrina MLast, Lisa S")
+	("C","17609","T","2:30 - 3:20 p.m.","Lewis, Katrina MLast, Lisa S")
+("ENVD","210","Indian Art, Architecture & Culture"),
+("ENVD","240","Design Drawing - Top/Design Drawing"),
+	("A","17727","TU","9:30 - 11:20 a.m.","Clement, Laurence A")
+("ENVD","250","History Of The Designed Environment "),
+	("A","11579","MWF","1:30 - 2:20 p.m.","Charney, Wayne M")
+("ENVD","299","Prb/Basic Design - Top/Design Drawing"),
+("ENVD","299","Prb/Basic Design - Top/Design Matters"),
+("ENVD","299","Prb/Basic Design - Top/ENVD Studio Seminar"),
+("ENVD","299","Prb/Basic Design - Top/Innovation & Creativity"),
+("ENVD","299","Prb/Basic Design - Top/NOMAS"),
+	("C","13253","Appointment","","Wigfall, LaBarbara James")
+("ENVD","299","Prb/Basic Design - Top/Study Abroad"),
+	("B","13252","Appointment","","Ewanow, Lynn")
+("ENVD","400","Undergraduate Research"),
+	("A","16619","Appointment","","Knox, Matthew A")
+	("C","16621","Appointment","","Rolley, Stephanie A")
+("ENVD","650","Italian, Art, History and Culture"),
+("ENVD","654","Study Abroad Orientation"),
+	("A","16143","T","5:30 - 7:00 p.m.","Ewanow, Lynn")
+("ENVD","655","International Field Study"),
+("ENVD","699","Prb/Environ Design - Top/IAPD Field Study"),
+	("D","17975","Appointment","","Ewanow, Lynn")
+("ENVD","699","Prb/Environ Design - Top/NOMAS"),
+	("B","13254","Appointment","","Wigfall, LaBarbara James")
+("ENVD","699","Prb/Environ Design - Top/NOMAS Leadership"),
+	("C","14125","Appointment","","Wigfall, LaBarbara James")
+("ENVD","699","Problems In Environmental Design"),
+	("A","11581","Appointment","","Ewanow, Lynn")
+("ENVD","899","Prb/Environmental Design/Plan - TopHist/Thry of Landscape Arch"),
+	("C","18047","M    Meets August 22 - December 9, 2016:","9:30 - 11:20 a.m.","Beamish, Anne Elizabeth")
+	("C","18047","W    Meets August 22 - December 9, 2016:","10:30 - 11:20 a.m.","Staff")
+("ENVD","899","Problems in Environmental Design & Planning"),
+	("A","14253","Appointment","","Charney, Wayne M")
+	("B","18046","Appointment","","Sachs, David H")
+("ENVD","901","Research Methods In Design And Planning"),
+	("A","11582","MW    Meets August 22 - December 9, 2016:","8:30 - 9:20 a.m.","Gibson, Huston JBeamish, Anne Elizabeth")
+	("A","11582","F    Meets August 22 - December 9, 2016:","8:30 - 9:20 a.m.","Staff")
+("ENVD","999","Dissertation Research"),
+	("A","13272","Appointment","","Condia, Robert J")
+	("B","13636","Appointment","","Keane, Timothy D")
+	("C","14312","Appointment","","Skabelund, Lee R")
+	("D","14676","Appointment","","Charney, Wayne M")
+	("F","15796","Appointment","","Keller, John W")

@@ -78,6 +78,7 @@
             // 
             // uxLoadButton
             // 
+            this.uxLoadButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxLoadButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.uxLoadButton.Location = new System.Drawing.Point(301, 135);
             this.uxLoadButton.Name = "uxLoadButton";
@@ -119,6 +120,7 @@
             // 
             // InitializationDialog
             // 
+            this.AcceptButton = this.uxLoadButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(466, 204);

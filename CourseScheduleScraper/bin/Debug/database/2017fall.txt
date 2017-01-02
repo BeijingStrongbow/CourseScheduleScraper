@@ -1,0 +1,114 @@
+("GENAG","000","Agriculture Scholars Program"),
+	("A","11628","Appointment","","Boggs, Donald L")
+("GENAG","020","University Honors Program"),
+	("A","11629","Appointment","","Boggs, Donald L")
+("GENAG","189","Introduction To The University Honors Program"),
+	("A","11630","Appointment","","Kastner, Justin")
+("GENAG","200","Topics/Ag - Top/College-Career"),
+	("A","11632","Appointment","","Boggs, Donald L")
+("GENAG","200","Topics/Ag - Top/Intl Student Orientation"),
+	("C","15998","Appointment","","Thielen, Sharon LeAnne")
+("GENAG","200","Topics/Ag - Top/Vary By Student"),
+	("B","11631","Appointment","","Thielen, Sharon LeAnneWiley, Zelia ZBoggs, Donald L")
+("GENAG","210","Human and Cultural Diversity in the Food and Agricultural Sciences"),
+	("A","14313","MWF","10:30 - 11:20 a.m.","Wiley, Zelia Z")
+("GENAG","396","Research Topic and Proposal Development"),
+	("A","11633","MW","4:30 - 5:20 p.m.","Washburn, Shannon G")
+("GENAG","505","Comparative Agriculture"),
+	("A","11634","Appointment","","Boggs, Donald L")
+("GENAG","515","Honors/Scholars Project"),
+	("A","11635","Appointment","","Boggs, Donald L")
+("GENAG","582","Natural Resources/Environmental Sciences Project"),
+	("A","11636","TU","11:30 a.m. - 12:20 p.m.","Hutchinson, James Michael Shawn")
+	("01B","11637","Appointment","","STAFF")
+("GENAG","690","Seminar in International Agriculture"),
+	("A","14312","W","12:30 - 1:20 p.m.","Boggs, Donald L")
+("AGEC","115","Decision Tools for Agricultural Economics and Agribusiness"),
+	("A","14144","MWF","9:30 - 10:20 a.m.","Wilson, Christine A")
+("AGEC","120","Agricultural Economics And Agribusiness"),
+	("A","10053","MW","1:30 - 2:20 p.m.","Bergtold, Jason Scott")
+	("01B","13565","F","8:30 - 9:20 a.m.","Bergtold, Jason Scott")
+	("03B","13567","F","9:30 - 10:20 a.m.","Bergtold, Jason Scott")
+	("05B","13569","F","2:30 - 3:20 p.m.","Bergtold, Jason Scott")
+("AGEC","220","Grain And Livestock Marketing Systems"),
+	("A","10054","MWF","12:30 - 1:20 p.m.","Yeager, Elizabeth")
+("AGEC","315","Contemporary Issues in Global Food and Agricultural Systems"),
+	("A","13841","MWF","8:30 - 9:20 a.m.","Hendricks, Nathan P")
+("AGEC","318","Food And Agribusiness Management"),
+	("A","10059","MWF","1:30 - 2:20 p.m.","Shanoyan, Aleksan")
+("AGEC","420","Commodity Futures"),
+	("A","10060","MWF","9:30 - 10:20 a.m.","Hodgson, Cherie LFox, John A")
+("AGEC","441","Sem/Agec/Agribus - Top/Mktg Team"),
+	("A","10061","Appointment","","Lehman, David E")
+("AGEC","445","Agribusiness Internship"),
+	("A","10062","Appointment","","Hodgson, Cherie L")
+("AGEC","450","Agr Econ/Agrbus Prb"),
+	("A","10063","Appointment","","Featherstone, Allen M")
+	("B","13810","Appointment","","Schroeder, Ted C")
+("AGEC","460","International Food and Agribusiness Study Tour"),
+	("ZA","17697","T    Meets March 22 - May 3, 2016:","4:30 - 6:30 p.m.","Fox, John A")
+("AGEC","500","Production Economics"),
+	("A","10064","MWF","11:30 a.m. - 12:20 p.m.","Coffey, Brian")
+("AGEC","501","Data Analysis and Optimization"),
+	("A","14187","TU","1:05 - 2:20 p.m.","Pendell, Dustin L")
+("AGEC","505","Agricultural Market Structures"),
+	("A","12971","TU","8:05 - 9:20 a.m.","Barkley, Andrew P")
+("AGEC","513","Agricultural Finance"),
+("AGEC","515","Food And Agribusiness Marketing"),
+	("A","10066","MWF","11:30 a.m. - 12:20 p.m.","Lehman, David E")
+("AGEC","516","Agricultural Law And Economics"),
+	("A","10067","TU","8:05 - 9:20 a.m.","Irvine, Paul BernardHodgson, Cherie L")
+("AGEC","520","Market Fundamentals And Futures/Options Trading"),
+	("A","10068","TU","3:55 - 5:10 p.m.","Coffey, Brian")
+("AGEC","550","Undergraduate Research in Agricultural Economics"),
+	("A","15728","Appointment","","Featherstone, Allen M")
+("AGEC","570","Food Manufacturing, Distribution And Retailing"),
+	("A","10069","MWF","12:30 - 1:20 p.m.","Ross, KaraL")
+("AGEC","599","Food And Agribusiness Management Strategy"),
+	("A","10070","TU","9:30 - 10:45 a.m.","Shanoyan, Aleksan")
+("AGEC","605","Price Analysis And Forecasting"),
+	("A","10071","TU","11:30 a.m. - 12:45 p.m.","Llewelyn, Richard V")
+("AGEC","610","Current Agricultural And Natural Resource Policy Issues"),
+("AGEC","680","Risk Management"),
+	("A","13301","MWF","1:30 - 3:00 p.m.","Schurle, Bryan W")
+("AGEC","700","Applied Agribusiness Economics"),
+("AGEC","701","Introduction To Computer Decision Tools For Agribusiness"),
+("AGEC","710","Comparative Food And Agriculture Systems"),
+("AGEC","712","Optimization Techniques For Agricultural Economics"),
+	("A","10072","MWF","11:30 a.m. - 12:20 p.m.","Bergtold, Jason Scott")
+("AGEC","713","Agribusiness Financial Management"),
+	("ZA","17086","M    Meets January 4 - January 4, 2016:","7:00 a.m. - 5:00 p.m.","Featherstone, Allen M")
+	("ZA","17086","TWUF    Meets January 5 - January 8, 2016:","7:00 a.m. - 11:00 p.m.","Featherstone, Allen M")
+("AGEC","720","Agribusiness Risk Management"),
+("AGEC","730","Applied Agribusiness Logistics"),
+("AGEC","740","Seminar In Agricultural Economics Analysis"),
+("AGEC","750","Prb/Agr Econ/Bus - Top/Finan Engineer Risk Mngt"),
+("AGEC","750","Prb/Agr Econ/Bus - Top/Risk Mangt Fellows Seminar"),
+	("B","14492","Appointment","","Schroeder, Ted C")
+("AGEC","750","Prb/Agr Econ/Bus - Top/Vary By Student"),
+	("A","10073","Appointment","","Featherstone, Allen M")
+("AGEC","760","Applied Econometric Analysis"),
+("AGEC","761","Optimization Techniques For Agribusiness"),
+("AGEC","770","International Agribusiness And Policy Analysis"),
+	("ZA","17043","M    Meets January 4 - January 4, 2016:","7:00 a.m. - 5:00 p.m.","Wilson, Christine A")
+	("ZA","17043","TWUF    Meets January 5 - January 8, 2016:","7:00 a.m. - 11:00 p.m.","Wilson, Christine A")
+("AGEC","805","Agricultural Marketing"),
+	("A","10074","MW","9:40 - 11:10 a.m.","Schroeder, Ted C")
+("AGEC","812","Advanced Farm Economics"),
+("AGEC","840","International Markets And Agricultural Trade"),
+	("A","10075","MW","8:05 - 9:40 a.m.","Villoria Siegert, Nelson Benjamin")
+("AGEC","880","Agribusiness Industry Structures"),
+	("A","13842","TU","1:30 - 2:45 p.m.","Shanoyan, Aleksan")
+("AGEC","890","Advanced Food And Agribusiness Management"),
+("AGEC","899","Agricultural Economics Masters Research"),
+	("A","10076","Appointment","","Featherstone, Allen M")
+("AGEC","901","Research Methods In Economics"),
+	("A","10077","Appointment","","Lambert, David K")
+("AGEC","905","Agricultural Demand And Commodity Marketing"),
+	("A","10078","MW","9:30 - 10:45 a.m.","Xia, Tian")
+("AGEC","925","Advanced Resource And Environmental Economics"),
+("AGEC","936","Quantitative Topics In Agricultural Economics"),
+	("A","10079","MWF","8:05 - 9:20 a.m.","Bergtold, Jason Scott")
+("AGEC","955","Is/Adv Top/Agec - Top/Res & Envir Econ"),
+("AGEC","999","Agricultural Economics Phd Research"),
+	("A","10080","Appointment","","Featherstone, Allen M")

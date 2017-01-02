@@ -59,6 +59,12 @@
     <Compile Include="LoadDatabaseProgress.Designer.cs">
       <DependentUpon>LoadDatabaseProgress.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleViewer.Designer.cs">
+      <DependentUpon>ScheduleViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Section.cs" />
     <Compile Include="UserInterface.cs">
       <SubType>Form</SubType>
@@ -73,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoadDatabaseProgress.resx">
       <DependentUpon>LoadDatabaseProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleViewer.resx">
+      <DependentUpon>ScheduleViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface.resx">
       <DependentUpon>UserInterface.cs</DependentUpon>

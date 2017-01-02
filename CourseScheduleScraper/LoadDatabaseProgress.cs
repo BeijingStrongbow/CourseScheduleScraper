@@ -12,8 +12,6 @@ namespace CourseScheduleScraper
 {
     public partial class LoadDatabaseProgress : Form
     {
-        private int _value = 0;
-
         public int Progress
         {
             get
