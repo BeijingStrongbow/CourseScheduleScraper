@@ -1,4 +1,4 @@
-package com.gmail.ericdhiggins;
+package com.github.beijingstrongbow;
 
 import java.util.ArrayList;
 import java.util.HashMap;
