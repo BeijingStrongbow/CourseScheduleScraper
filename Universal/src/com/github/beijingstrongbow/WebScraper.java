@@ -23,6 +23,7 @@ import org.jsoup.select.Elements;
  */
 public class WebScraper {
 	
+	//temporary
 	public static void main(String[] args){
 		populateDatabases("2017", "spring");
 	}
@@ -36,13 +37,39 @@ public class WebScraper {
 	 */
 	public static void populateDatabases(String year, String semester){
 		ArrayList<URL> urls = getUrls(year, semester);
-		/*for(URL url : urls){
+		for(URL url : urls){
 			scrapeUrl(url);
+		}
+		
+		/*for(String key : Course.courses.keySet()){
+			System.out.println(key + ", " + Course.courses.get(key));
+			for(Section s : Course.courses.get(key).getSections()){
+				if(s != null){
+					System.out.println("\t" + s);
+				}
+			}
+			if(Course.courses.get(key).getLab() != null){
+				for(Section s : Course.courses.get(key).getLab().getSections()){
+					if(s != null){
+						System.out.println("\t" + s);
+					}
+				}
+			}
+			if(Course.courses.get(key).getQuiz() != null){
+				for(Section s : Course.courses.get(key).getQuiz().getSections()){
+					if(s != null){
+						System.out.println("\t" + s);
+					}
+				}
+			}
+			if(Course.courses.get(key).getRec() != null){
+				for(Section s : Course.courses.get(key).getRec().getSections()){
+					if(s != null){
+						System.out.println("\t" + s);
+					}
+				}
+			}
 		}*/
-		System.out.println(urls.get(1).getPath());
-		scrapeUrl(urls.get(1));
-		System.out.println("IIIIIIII'MM DDDDOOONNNNEEEE!!!");
-		//Thread[] threads = new Thread[urls.size()];
 	}
 	
 	/**
@@ -116,7 +143,7 @@ public class WebScraper {
 			if(headers.contains(e)){
 				number = e.getElementsByClass("number").text();
 				name = e.getElementsByClass("name").text();
-				addCourseToDatabase(number, name, UserInterface.Courses);
+				addCourseToDatabase(number, name, Course.courses);
 			}
 			else if(!closed.contains(e) && !cancelled.contains(e)){
 				for(Element r : e.getElementsByTag("tr")){
@@ -130,22 +157,10 @@ public class WebScraper {
 						}
 						
 						if(data.size() == 10 && (!data.get(5).text().equals("") || !data.get(6).text().equals(""))){
-							System.out.println("10\t(\"" + sanitizeText(data.get(0).text(), "something") + "\"" + "|" +
-									"\"" + sanitizeText(data.get(1).text(), "something") + "\"" + "|" +
-									"\"" + sanitizeText(data.get(2).text(), "something") + "\"" + "|" +
-									"\"" + sanitizeText(data.get(5).text(), "day") + "\"" + "|" +
-									"\"" + sanitizeText(data.get(6).text(), "something") + "\"" + "|" +
-									"\"" + sanitizeText(data.get(8).text(), "something") + "\"" + ")");
-							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), data.get(5).text(), data.get(8).text());
+							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(8).text());
 						}
 						else if(data.size() == 11 && (!data.get(5).text().equals("") || !data.get(6).text().equals(""))){
-							System.out.println("11\t(\"" + sanitizeText(data.get(0).text(), "something") + "\"" + "|" + 
-									"\"" + sanitizeText(data.get(1).text(), "something") + "\"" + "|" +
-									"\"" + sanitizeText(data.get(2).text(), "something") + "\"" + "|" +
-									"\"" + sanitizeText(data.get(5).text(), "day") + "\"" + "|" +
-									"\"" + sanitizeText(data.get(6).text(), "something") + "\"" + "|" + 
-									"\"" + sanitizeText(data.get(9).text(), "something") + "\"" + ")");
-							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), data.get(5).text(), data.get(9).text());
+							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(9).text());
 						}
 						else if(data.size() == 9){
 							section = sanitizeText(data.get(0).text(), "something");
@@ -153,32 +168,44 @@ public class WebScraper {
 							number = sanitizeText(data.get(2).text(), "something");
 						}
 						else if(data.size() == 6 && (!data.get(0).text().equals("") || !data.get(1).text().equals(""))){							
-							/*courseContentWrite.write("\t(\"" + section + "\"" + "|" +
-						"\"" + type + "\"" + "|" +
-						"\"" + number + "\"" + "|" +
-						"\"" + sanitize(data[0].get_text(), "day") + " " + sanitize(sectionRow.find('td', class_='session-label').get_text(), "something") + "\"" + "|" +
-						"\"" + sanitize(data[1].get_text(), "something") + "\"" + "|" +
-						"\"" + sanitize(data[4].get_text(), "something") + "\"" + ")\n")*/
-							addSectionToDatabase(section, type, Integer.parseInt(number), data.get(1).text(), data.get(0).text(), data.get(4).text());
+							addSectionToDatabase(section, type, Integer.parseInt(number), data.get(1).text(), sanitizeText(data.get(0).text(), "day") + sessionLabel.text(), data.get(4).text());
 						}
 					}
 				}
-				//System.out.println();
-
 			}
 		}
 	}
 	
+	/**
+	 * Represents the current course being processed in addCourseToDatabase and addSectionToDatabase
+	 */
 	private static Course current = new Course();
 	
+	/**
+	 * Adds a new Course to the database
+	 * 
+	 * @param number The number of the course to add (i.e. PHYS214)
+	 * @param name The name of the course to add (i.e. Engineering Physics 2)
+	 * @param database The database to add the Course to
+	 */
 	private static void addCourseToDatabase(String number, String name, HashMap<String, Course> database){
 		if(!database.containsKey(number)){
-			current.finishProcessing();
 			current = new Course(number, name);
 			database.put(number, current);
 		}
 	}
 	
+	/**
+	 * Adds a new Section to the database. This method call must directly follow the call to 
+	 * addCourseToDatabase for the course this section belongs to!
+	 * 
+	 * @param letter The letter of the section
+	 * @param type The section's type (i.e. LAB)
+	 * @param number The section's number (i.e. 13408)
+	 * @param time The time of class for this section
+	 * @param daysAndDate The days of the week and starting and ending date (if applicable) for this section
+	 * @param instructor The instructor for this section
+	 */
 	private static void addSectionToDatabase(String letter, String type, int number, String time, String daysAndDate, String instructor){
 		GregorianCalendar startDate = new GregorianCalendar();
 		GregorianCalendar endDate = new GregorianCalendar();
@@ -218,13 +245,13 @@ public class WebScraper {
 		
 		if (time.length() > 15)
         {
-            String start = time.substring(0, time.indexOf('-') - 1);
-            int startHour = Integer.parseInt(start.substring(0, start.indexOf(':')));
-            int startMinute = Integer.parseInt(start.substring(start.indexOf(':') + 1, 2));
+            String start = time.substring(0, time.indexOf("-") - 1);
+            int startHour = Integer.parseInt(start.substring(0, start.indexOf(":")));
+            int startMinute = Integer.parseInt(start.substring(start.indexOf(":") + 1, start.indexOf(":") + 3));
 
-            String end = time.substring(time.indexOf('-') + 2);
-            int endHour = Integer.parseInt(end.substring(0, end.indexOf(':')));
-            int endMinute = Integer.parseInt(end.substring(end.indexOf(':') + 1, 2));
+            String end = time.substring(time.indexOf("-") + 2);
+            int endHour = Integer.parseInt(end.substring(0, end.indexOf(":")));
+            int endMinute = Integer.parseInt(end.substring(end.indexOf(":") + 1, end.indexOf(":") + 3));
 
             if(end.contains("p") && !start.contains("a") && startHour != 12)
             {
@@ -260,6 +287,12 @@ public class WebScraper {
         }
 	}
 	
+	/**
+	 * Convert the name of a month to an integer representation of that month
+	 * 
+	 * @param month The month to convert
+	 * @return The integer representation of month
+	 */
 	private static int monthStringToInt(String month)
     {
         month = month.toLowerCase();
@@ -341,31 +374,6 @@ public class WebScraper {
 		else{
 			cleanText = text;
 		}
-		
 		return cleanText;
-	}
-	
-	/**
-	 * Whether an element should be loaded into the database, based on its CSS class
-	 * 
-	 * @param cssClass The CSS class of the element
-	 * @return Whether the element should be loaded
-	 */
-	private static boolean shouldLoad(String cssClass){
-		return cssClass.equals("section");
-	}
-	
-	/**
-	 * Run by the individual threads to parse each URL
-	 * 
-	 * @author Eric
-	 */
-	private class UrlParser implements Runnable{
-
-		@Override
-		public void run() {
-			
-		}
-		
 	}
 }

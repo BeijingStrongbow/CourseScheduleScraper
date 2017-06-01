@@ -144,6 +144,12 @@ public class Course {
 			case "STD":
 				if(_lab == null) _lab = new Course(_number, _name + " Lab");
 				
+				for(Section sec : _lab.getSections()){
+					if(sec.equals(s)){
+						return;
+					}
+				}
+				
 				type = "LAB";
 				s.setCourse(_lab);
 				_lab._sections.add(s);
@@ -151,70 +157,40 @@ public class Course {
 			case "REC":
 				if(_rec == null) _rec = new Course(_number, _name + " Recitation");
 				
+				for(Section sec : _rec.getSections()){
+					if(sec.equals(s)){
+						return;
+					}
+				}
+				
 				s.setCourse(_rec);
 				_rec._sections.add(s);
 				break;
 			case "QZ":
 				if(_qz == null) _qz = new Course(_number, _name + " Quiz");
 				
+				for(Section sec : _qz.getSections()){
+					if(sec.equals(s)){
+						return;
+					}
+				}
+				
 				s.setCourse(_qz);
 				_qz._sections.add(s);
 				break;
 			default:
 				type = "LEC";
+				
+				for(Section sec : getSections()){
+					if(sec.equals(s)){
+						return;
+					}
+				}
+				
 				_sections.add(s);
 				break;
 		}
 		s.setType(type);
-	}
-	
-	/**
-	 * Finish processing this Course
-	 */
-	public void finishProcessing(){
-		int labLength = 0;
-		int qzLength = 0;
-		int recLength = 0;
-		
-		if(_lab != null) labLength = _lab.getNumberOfSections();
-		
-		if(_qz != null) qzLength = _qz.getNumberOfSections();
-		
-		if(_rec != null) recLength = _rec.getNumberOfSections();
-	
-		int mostSections = Math.max(labLength, Math.max(qzLength, recLength));
-		
-		if(mostSections == 0) return;
-		
-		else if(mostSections == labLength){
-			_sections = _lab._sections;
-			
-			for(Section s : _sections){
-				s.setCourse(this);
-			}
-			
-			_lab = null;
-		}
-		
-		else if(mostSections == qzLength){
-			_sections = _qz._sections;
-			
-			for(Section s : _sections){
-				s.setCourse(this);
-			}
-			
-			_qz = null;
-		}
-		
-		else{
-			_sections = _rec._sections;
-			
-			for(Section s : _sections){
-				s.setCourse(this);
-			}
-			
-			_rec = null;
-		}
 	}
 	
 	/**
@@ -224,6 +200,6 @@ public class Course {
 	 */
 	@Override
 	public String toString(){
-		return _number + ":" + _name;
+		return _number + ": " + _name;
 	}
 }

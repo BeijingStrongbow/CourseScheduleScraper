@@ -330,38 +330,60 @@ public class Section implements Comparable<Section>{
 	 */
 	@Override
 	public String toString(){
-		int startHour = _startTime.getHour();
-		int startMinute = _startTime.getMinute();
-		int endHour = _endTime.getHour();
-		int endMinute = _endTime.getMinute();
+		int startHour;
+		int startMinute;
+		int endHour;
+		int endMinute;
 		
 		String time;
 		
-		String stringStartMinute = Integer.toString(startMinute);
-		String stringEndMinute = Integer.toString(endMinute);
-		
-		if(startMinute < 10){
-			stringStartMinute = "0" + stringStartMinute;
-		}
-		if(endMinute < 10){
-			stringEndMinute = "0" + stringEndMinute;
-		}
-		
-		if(startHour < 12 && endHour < 12){
-			time = startHour + ":" + stringStartMinute + " - " + endHour + ":" + stringEndMinute + " a.m.";
-		}
-		else if(startHour < 12 && endHour >= 12){
-			if(endHour >= 13) endHour -= 12;
-			
-			time = startHour + ":" + stringStartMinute + " a.m. - " + endHour + ":" + stringEndMinute + " p.m.";
+		if(_isAppointment){
+			time = "";
 		}
 		else{
-			if(startHour >= 13) startHour -= 12;
-			if(endHour >= 13) endHour -= 12;
+
+			startHour = _startTime.getHour();
+			startMinute = _startTime.getMinute();
+			endHour = _endTime.getHour();
+			endMinute = _endTime.getMinute();
+						
+			String stringStartMinute = Integer.toString(startMinute);
+			String stringEndMinute = Integer.toString(endMinute);
 			
-			time = startHour + ":" + stringStartMinute + " - " + endHour + ":" + stringEndMinute + " p.m.";
+			if(startMinute < 10){
+				stringStartMinute = "0" + stringStartMinute;
+			}
+			if(endMinute < 10){
+				stringEndMinute = "0" + stringEndMinute;
+			}
+			
+			if(startHour < 12 && endHour < 12){
+				time = startHour + ":" + stringStartMinute + " - " + endHour + ":" + stringEndMinute + " a.m.";
+			}
+			else if(startHour < 12 && endHour >= 12){
+				if(endHour >= 13) endHour -= 12;
+				
+				time = startHour + ":" + stringStartMinute + " a.m. - " + endHour + ":" + stringEndMinute + " p.m.";
+			}
+			else{
+				if(startHour >= 13) startHour -= 12;
+				if(endHour >= 13) endHour -= 12;
+				
+				time = startHour + ":" + stringStartMinute + " - " + endHour + ":" + stringEndMinute + " p.m.";
+			}
 		}
 		
 		return _course.getNumber() + ": " + _course.getName() + " (" + _number + ") " + _weekDays + " " + time + " " + _instructor;
+	}
+	
+	@Override
+	public boolean equals(Object other){
+		if(other instanceof Section){
+			Section s = (Section) other;
+			return s._number == this._number && s._fromDate == this._fromDate && s._toDate == this._toDate;
+		}
+		else{
+			return false;
+		}
 	}
 }
