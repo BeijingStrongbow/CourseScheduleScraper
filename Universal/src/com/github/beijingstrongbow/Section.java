@@ -1,7 +1,6 @@
 package com.github.beijingstrongbow;
 
 import java.time.LocalTime;
-import java.util.GregorianCalendar;
 
 /**
  * Represents a specitic section of a course
@@ -58,12 +57,12 @@ public class Section implements Comparable<Section>{
 	/**
 	 * The date of the first day of class for this Section
 	 */
-	private GregorianCalendar _fromDate;
+	private Date _fromDate;
 	
 	/**
 	 * The date of the last day of class for this Section
 	 */
-	private GregorianCalendar _toDate;
+	private Date _toDate;
 	
 	/**
 	 * Initialize the Section as an appointment with the default start and end date
@@ -96,7 +95,7 @@ public class Section implements Comparable<Section>{
 	 * @param toDate The date of the last day of class for this Section
 	 * @param course The Course taught in this Section
 	 */
-	public Section(String letter, int number, String days, String instructor, GregorianCalendar fromDate, GregorianCalendar toDate, Course course){
+	public Section(String letter, int number, String days, String instructor, Date fromDate, Date toDate, Course course){
 		
 		_letter = letter;
 		_number = number;
@@ -145,7 +144,7 @@ public class Section implements Comparable<Section>{
 	 * @param toDate The date of the last day of class for this Section
 	 * @param course The Course taught in this Section
 	 */
-	public Section(String letter, int number, LocalTime startTime, LocalTime endTime, String days, String instructor, GregorianCalendar fromDate, GregorianCalendar toDate, Course course){
+	public Section(String letter, int number, LocalTime startTime, LocalTime endTime, String days, String instructor, Date fromDate, Date toDate, Course course){
 		
 		_letter = letter;
 		_number = number;
@@ -220,7 +219,7 @@ public class Section implements Comparable<Section>{
 	 * 
 	 * @return The date of the first day of class
 	 */
-	public GregorianCalendar getFromDate(){
+	public Date getFromDate(){
 		return _fromDate;
 	}
 	
@@ -229,7 +228,7 @@ public class Section implements Comparable<Section>{
 	 * 
 	 * @return The date of the last day of class
 	 */
-	public GregorianCalendar getToDate(){
+	public Date getToDate(){
 		return _toDate;
 	}
 	
@@ -298,7 +297,7 @@ public class Section implements Comparable<Section>{
 						return false;
 					}
 					else if(_fromDate != null && s._fromDate != null && _toDate != null && s._toDate != null &&
-							!_fromDate.equals(new GregorianCalendar()) && !s._fromDate.equals(new GregorianCalendar()) &&
+							!_fromDate.equals(new Date()) && !s._fromDate.equals(new Date()) &&
 							(_toDate.compareTo(s._fromDate) < 0 || _fromDate.compareTo(s._toDate) > 0)){
 						return false;
 						

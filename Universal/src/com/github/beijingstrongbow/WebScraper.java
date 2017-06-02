@@ -5,11 +5,7 @@ import java.net.URL;
 import java.text.Normalizer;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.jar.Attributes.Name;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -39,9 +35,10 @@ public class WebScraper {
 		ArrayList<URL> urls = getUrls(year, semester);
 		for(URL url : urls){
 			scrapeUrl(url);
+			System.out.println(url.getPath());
 		}
 		
-		/*for(String key : Course.courses.keySet()){
+		for(String key : Course.courses.keySet()){
 			System.out.println(key + ", " + Course.courses.get(key));
 			for(Section s : Course.courses.get(key).getSections()){
 				if(s != null){
@@ -69,7 +66,7 @@ public class WebScraper {
 					}
 				}
 			}
-		}*/
+		}
 	}
 	
 	/**
@@ -157,10 +154,10 @@ public class WebScraper {
 						}
 						
 						if(data.size() == 10 && (!data.get(5).text().equals("") || !data.get(6).text().equals(""))){
-							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(8).text());
+							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(8).text(), "");
 						}
 						else if(data.size() == 11 && (!data.get(5).text().equals("") || !data.get(6).text().equals(""))){
-							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(9).text());
+							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(9).text(), "");
 						}
 						else if(data.size() == 9){
 							section = sanitizeText(data.get(0).text(), "something");
@@ -168,7 +165,7 @@ public class WebScraper {
 							number = sanitizeText(data.get(2).text(), "something");
 						}
 						else if(data.size() == 6 && (!data.get(0).text().equals("") || !data.get(1).text().equals(""))){							
-							addSectionToDatabase(section, type, Integer.parseInt(number), data.get(1).text(), sanitizeText(data.get(0).text(), "day") + sessionLabel.text(), data.get(4).text());
+							addSectionToDatabase(section, type, Integer.parseInt(number), data.get(1).text(), sanitizeText(data.get(0).text(), "day") + sessionLabel.text(), data.get(4).text(), sessionLabel.text());
 						}
 					}
 				}
@@ -203,45 +200,48 @@ public class WebScraper {
 	 * @param type The section's type (i.e. LAB)
 	 * @param number The section's number (i.e. 13408)
 	 * @param time The time of class for this section
-	 * @param daysAndDate The days of the week and starting and ending date (if applicable) for this section
+	 * @param days The days of the week and starting and ending date (if applicable) for this section
 	 * @param instructor The instructor for this section
+	 * @param date The start and end dates for this Section, or "" if default
 	 */
-	private static void addSectionToDatabase(String letter, String type, int number, String time, String daysAndDate, String instructor){
-		GregorianCalendar startDate = new GregorianCalendar();
-		GregorianCalendar endDate = new GregorianCalendar();
+	private static void addSectionToDatabase(String letter, String type, int number, String time, String days, String instructor, String date){
+		Date startDate = new Date();
+		Date endDate = new Date();
 		
-		String[] data = daysAndDate.split("\\s+");
-		
-		if (data.length > 7 && daysAndDate != "Appointment")
-        {
-            if (data.length == 12)
-            {
-                if (data[6].contains(","))
-                {
-                    startDate.set(Integer.parseInt(data[7]), monthStringToInt(data[5]), Integer.parseInt(data[6].substring(0, data[6].length() - 1)));
-                }
-                else
-                {
-                    startDate.set(Integer.parseInt(data[7]), monthStringToInt(data[5]), Integer.parseInt(data[6]));
-                }
-                endDate.set(Integer.parseInt(data[11].substring(0, data[11].length() - 1)), monthStringToInt(data[9]), Integer.parseInt(data[10].substring(0, data[10].length() - 1)));
-            }
-            else
-            {
-                if (data.length == 12)
-                {
-                    if (data[6].contains(","))
-                    {
-                        startDate.set(Integer.parseInt(data[10]), monthStringToInt(data[5]), Integer.parseInt(data[6].substring(0, data[6].length() - 1)));
-                    }
-                    else
-                    {
-                        startDate.set(Integer.parseInt(data[10]), monthStringToInt(data[5]), Integer.parseInt(data[6]));
-                    }
-                    endDate.set(Integer.parseInt(data[10].substring(0, data[11].length() - 1)), monthStringToInt(data[8]), Integer.parseInt(data[9].substring(0, data[9].length() - 1)));
-                }
-            }
-        }
+		if(!date.equals("")){
+			String[] data = date.split("\\s+");
+			
+			String startMonth = data[1];
+			if(data[2].contains(",")) data[2] = data[2].substring(0, data[2].indexOf(","));
+			int startDay = Integer.parseInt(data[2]);
+			
+			String endMonth;
+			int endDay;
+			int endYear;
+			int startYear;
+			
+			if(data.length == 7){
+				endMonth = data[4];
+				if(data[5].contains(",")) data[5] = data[5].substring(0, data[5].indexOf(","));
+				endDay = Integer.parseInt(data[5]);
+				
+				if(data[6].contains(":")) data[6] = data[6].substring(0, data[6].indexOf(":"));
+				startYear = Integer.parseInt(data[6]);
+				endYear = startYear;
+			}
+			else{
+				startYear = Integer.parseInt(data[3]);
+				endMonth = data[5];
+				if(data[6].contains(",")) data[6] = data[6].substring(0, data[6].indexOf(","));
+				endDay = Integer.parseInt(data[6]);
+				
+				if(data[7].contains(":")) data[7] = data[7].substring(0, data[7].indexOf(":"));
+				endYear = Integer.parseInt(data[7]);
+			}
+			
+			startDate = new Date(startDay, startMonth, startYear);
+			endDate = new Date(endDay, endMonth, endYear);
+		}
 		
 		if (time.length() > 15)
         {
@@ -265,67 +265,28 @@ public class WebScraper {
             LocalTime startTime = LocalTime.of(startHour, startMinute);
             LocalTime endTime = LocalTime.of(endHour, endMinute);
 
-            if(!startDate.equals(new GregorianCalendar()))
+            if(!startDate.equals(new Date()))
             {
-                current.AddSection(new Section(letter, number, startTime, endTime, data[0], instructor, startDate, endDate, current), type);
+                current.AddSection(new Section(letter, number, startTime, endTime, days, instructor, startDate, endDate, current), type);
             }
             else
             {
-                current.AddSection(new Section(letter, number, startTime, endTime, data[0], instructor, current), type);
+                current.AddSection(new Section(letter, number, startTime, endTime, days, instructor, current), type);
             }
         }
         else
         {
-            if(!startDate.equals(new GregorianCalendar()))
+            if(!startDate.equals(new Date()))
             {
-                current.AddSection(new Section(letter, number, data[0], instructor, startDate, endDate, current), type);
+                current.AddSection(new Section(letter, number, days, instructor, startDate, endDate, current), type);
             }
             else
             {
-                current.AddSection(new Section(letter, number, data[0], instructor, current), type);
+                current.AddSection(new Section(letter, number, days, instructor, current), type);
             }
         }
 	}
 	
-	/**
-	 * Convert the name of a month to an integer representation of that month
-	 * 
-	 * @param month The month to convert
-	 * @return The integer representation of month
-	 */
-	private static int monthStringToInt(String month)
-    {
-        month = month.toLowerCase();
-        switch (month)
-        {
-            case "january":
-                return 1;
-            case "february":
-                return 2;
-            case "march":
-                return 3;
-            case "april":
-                return 4;
-            case "may":
-                return 5;
-            case "june":
-                return 6;
-            case "july":
-                return 7;
-            case "august":
-                return 8;
-            case "september":
-                return 9;
-            case "october":
-                return 10;
-            case "november":
-                return 11;
-            case "december":
-                return 12;
-            default:
-                return -1;
-        }
-    }
 	
 	/**
 	 * Sanitizes the input strings by removing any unicode characters and properly formatting the day string
