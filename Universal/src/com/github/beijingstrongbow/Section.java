@@ -105,6 +105,7 @@ public class Section implements Comparable<Section>{
 		_toDate = toDate;
 		_isAppointment = true;
 		_course = course;
+		System.out.println("From: " + fromDate + " To: " + toDate);
 	}
 	
 	/**
@@ -156,6 +157,8 @@ public class Section implements Comparable<Section>{
 		_toDate = toDate;
 		_isAppointment = false;
 		_course = course;
+		System.out.println("From: " + fromDate + " To: " + toDate);
+
 		
 	}
 	

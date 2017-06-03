@@ -19,5 +19,7 @@
 			<attribute name="javadoc_location" value="jar:file:/C:/Users/ericd/Downloads/jsoup-1.10.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ericd/workspace/CourseScheduleScraper/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ericd/workspace/CourseScheduleScraper/jgoodies-common-1.8.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
