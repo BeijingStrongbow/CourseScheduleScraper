@@ -1,5 +1,4 @@
 package com.github.beijingstrongbow.userinterface;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import com.jgoodies.forms.layout.FormLayout;
@@ -28,13 +27,16 @@ public class ScheduleBuilderWindow {
 	private JList<Course> uxSearchResultsList;
 	
 	private JList<Course> uxSelectedCoursesList;
+	
+	private DefaultListModel<Course> searchResults;
+	
+	private DefaultListModel<Course> selectedCourses;
 
 	/**
 	 * Create the application.
 	 */
 	public ScheduleBuilderWindow(ScheduleBuilderManager manager) {
 		initialize(manager);
-		frame.setVisible(true);
 	}
 
 	/**
@@ -105,7 +107,8 @@ public class ScheduleBuilderWindow {
 		uxCourseNumberLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxCourseNumberLabel, "3, 6, 8, 1");
 		
-		uxSearchResultsList = new JList();
+		searchResults = new DefaultListModel<Course>();
+		uxSearchResultsList = new JList<Course>(searchResults);
 		uxSearchResultsList.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxSearchResultsList, "8, 6, 3, 24, fill, fill");
 		uxSearchResultsList.addMouseListener(manager.new ResultsDoubleClickListener());
@@ -131,17 +134,25 @@ public class ScheduleBuilderWindow {
 		frame.getContentPane().add(uxSearchButton, "6, 14, 1, 1");
 		uxSearchButton.addActionListener(manager.new SearchButtonListener());
 		
-		uxSelectedCoursesList = new JList();
-		uxSelectedCoursesList.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		selectedCourses = new DefaultListModel<Course>();
+		uxSelectedCoursesList = new JList<Course>(selectedCourses);
+		uxSelectedCoursesList.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxSelectedCoursesList, "3, 16, 4, 14, default, fill");
 		
 		JButton uxRemoveCourseButton = new JButton("Remove Course");
 		uxRemoveCourseButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxRemoveCourseButton, "4, 31, 3, 1");
+		uxRemoveCourseButton.addActionListener(manager.new RemoveItemButtonListener());
 		
 		JButton uxCreateScheduleButton = new JButton("Create Schedule");
 		uxCreateScheduleButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxCreateScheduleButton, "10, 31, 1, 1");
+		
+		frame.getRootPane().setDefaultButton(uxSearchButton);
+	}
+	
+	public void setVisible(boolean visible){
+		frame.setVisible(visible);
 	}
 	
 	public String getCourseNameSearchText(){
@@ -161,14 +172,20 @@ public class ScheduleBuilderWindow {
 	}
 	
 	public DefaultListModel<Course> getSearchResults(){
-		return (DefaultListModel<Course>) uxSearchResultsList.getModel();
+		return searchResults;
 	}
 	
 	public DefaultListModel<Course> getSelectedCourses(){
-		return (DefaultListModel<Course>) uxSelectedCoursesList.getModel();
+		return selectedCourses;
 	}
 	
 	public void removeSelectedCourse(){
-		getSelectedCourses().remove(uxSelectedCoursesList.getSelectedIndex());
+		int selectedIndex = uxSelectedCoursesList.getSelectedIndex();
+		if(selectedCourses.size() > 1 && selectedIndex >= 0){
+			selectedCourses.remove(selectedIndex);
+		}
+		else if(selectedCourses.size() == 1){
+			selectedCourses.remove(0);
+		}
 	}
 }

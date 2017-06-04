@@ -3,7 +3,6 @@ package com.github.beijingstrongbow.webscraper;
 import java.io.IOException;
 import java.net.URL;
 import java.text.Normalizer;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,6 +14,7 @@ import org.jsoup.select.Elements;
 import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Date;
 import com.github.beijingstrongbow.Section;
+import com.github.beijingstrongbow.Time;
 
 /**
  * Contains functions related to scraping the course database
@@ -30,42 +30,12 @@ public class WebScraper {
 	 * @param year
 	 * @param semester
 	 */
-	public static void populateDatabases(String year, String semester){
+	public void populateDatabases(String year, String semester){
 		ArrayList<URL> urls = getUrls(year, semester);
 		for(URL url : urls){
 			scrapeUrl(url);
 			System.out.println(url.getPath());
 		}
-		
-		/*for(String key : Course.courses.keySet()){
-			System.out.println(key + ", " + Course.courses.get(key));
-			for(Section s : Course.courses.get(key).getSections()){
-				if(s != null){
-					System.out.println("\t" + s);
-				}
-			}
-			if(Course.courses.get(key).getLab() != null){
-				for(Section s : Course.courses.get(key).getLab().getSections()){
-					if(s != null){
-						System.out.println("\t" + s);
-					}
-				}
-			}
-			if(Course.courses.get(key).getQuiz() != null){
-				for(Section s : Course.courses.get(key).getQuiz().getSections()){
-					if(s != null){
-						System.out.println("\t" + s);
-					}
-				}
-			}
-			if(Course.courses.get(key).getRec() != null){
-				for(Section s : Course.courses.get(key).getRec().getSections()){
-					if(s != null){
-						System.out.println("\t" + s);
-					}
-				}
-			}
-		}*/
 	}
 	
 	/**
@@ -75,7 +45,7 @@ public class WebScraper {
 	 * @param semester The semester to be parsed
 	 * @return The list of all URLs that need to be parsed to input all courses
 	 */
-	private static ArrayList<URL> getUrls(String year, String semester){
+	private ArrayList<URL> getUrls(String year, String semester){
 		String url = "https://courses.k-state.edu/" + semester.toLowerCase() + year + "/schedule.html";
 		
 		//the URLs that need to be parsed to get all the courses
@@ -90,7 +60,7 @@ public class WebScraper {
 			for(Element e : links){
 				String link = e.attr("href");
 				if(link.length() < 7 && !link.equals("/") && !link.equals("None")){
-					urls.add(new URL("https://courses.k-state.edu/" + semester + year + "/" + link));
+					urls.add(new URL("https://courses.k-state.edu/" + semester.toLowerCase() + year + "/" + link));
 				}
 				
 				i++;
@@ -110,7 +80,7 @@ public class WebScraper {
 	 * 
 	 * @param url The URL to process
 	 */
-	private static void scrapeUrl(URL url){
+	private void scrapeUrl(URL url){
 		
 		Document html;
 		
@@ -175,7 +145,7 @@ public class WebScraper {
 	/**
 	 * Represents the current course being processed in addCourseToDatabase and addSectionToDatabase
 	 */
-	private static Course current = new Course();
+	private Course current = new Course();
 	
 	/**
 	 * Adds a new Course to the database
@@ -184,7 +154,7 @@ public class WebScraper {
 	 * @param name The name of the course to add (i.e. Engineering Physics 2)
 	 * @param database The database to add the Course to
 	 */
-	private static void addCourseToDatabase(String number, String name, HashMap<String, Course> database){
+	private void addCourseToDatabase(String number, String name, HashMap<String, Course> database){
 		if(!database.containsKey(number)){
 			current = new Course(number, name);
 			database.put(number, current);
@@ -203,7 +173,7 @@ public class WebScraper {
 	 * @param instructor The instructor for this section
 	 * @param date The start and end dates for this Section, or "" if default
 	 */
-	private static void addSectionToDatabase(String letter, String type, int number, String time, String days, String instructor, String date){
+	private void addSectionToDatabase(String letter, String type, int number, String time, String days, String instructor, String date){
 		Date startDate = new Date();
 		Date endDate = new Date();
 		
@@ -261,8 +231,8 @@ public class WebScraper {
                 endHour += 12;
             }
 
-            LocalTime startTime = LocalTime.of(startHour, startMinute);
-            LocalTime endTime = LocalTime.of(endHour, endMinute);
+            Time startTime = new Time(startHour, startMinute);
+            Time endTime = new Time(endHour, endMinute);
 
             if(!startDate.equals(new Date()))
             {
@@ -294,7 +264,7 @@ public class WebScraper {
 	 * @param unit The type of text that is being sanitized
 	 * @return The sanitized text
 	 */
-	private static String sanitizeText(String text, String unit){
+	private String sanitizeText(String text, String unit){
 		String cleanText = "";
 		if(unit.equals("day")){
 			if(text.equals("Appointment") && !Normalizer.isNormalized(text, Normalizer.Form.NFKD)){

@@ -12,6 +12,8 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import com.github.beijingstrongbow.Course;
+import com.github.beijingstrongbow.Main;
+import com.github.beijingstrongbow.Main.ProgramState;
 import com.github.beijingstrongbow.userinterface.ScheduleBuilderWindow;
 
 public class ScheduleBuilderManager {
@@ -20,6 +22,10 @@ public class ScheduleBuilderManager {
 	
 	public ScheduleBuilderManager(){
 		window = new ScheduleBuilderWindow(this);
+	}
+	
+	public void showWindow(){
+		window.setVisible(true);
 	}
 	
 	public class SearchButtonListener implements ActionListener{
@@ -51,6 +57,7 @@ public class ScheduleBuilderManager {
                     if(n.toUpperCase().contains(number.toUpperCase())){
                     	Course c = Course.courses.get(n);
                     	searchResults.addElement(c);
+                    	found = true;
                     }
                 }
                 if (!found){
@@ -126,6 +133,7 @@ public class ScheduleBuilderManager {
 		        }
 		    }
 		    //open the schedule viewer and generate the schedule
+		    Main.setState(ProgramState.SCHEDULE_VIEWER);
 		}
 	}
 	
@@ -138,19 +146,15 @@ public class ScheduleBuilderManager {
 	private SearchMethod getSearchMethod(){
 		String name = window.getCourseNameSearchText();
 		String number = window.getCourseNumSearchText();
-		
 		if (name.length() > 0 && name.charAt(0) != '(' &&
-                (number.length() == 0 || number.charAt(0) == '('))
-            {
+                (number.length() == 0 || number.charAt(0) == '(')){
                 return SearchMethod.COURSE_NAME;
             }
             else if (number.length() > 0 && number.charAt(0) != '(' &&
-                (name.length() == 0 || name.charAt(0) == '('))
-            {
-                return SearchMethod.COURSE_NAME;
+                (name.length() == 0 || name.charAt(0) == '(')){
+                return SearchMethod.COURSE_NUMBER;
             }
-            else
-            {
+            else{
                 return SearchMethod.INVALID;
             }
 

@@ -1,7 +1,5 @@
 package com.github.beijingstrongbow;
 
-import java.time.LocalTime;
-
 /**
  * Represents a specitic section of a course
  * 
@@ -22,12 +20,12 @@ public class Section implements Comparable<Section>{
 	/**
 	 * The time at which class begins for this Section
 	 */
-	private LocalTime _startTime;
+	private Time _startTime;
 	
 	/**
 	 * The time at which class ends for this Section
 	 */
-	private LocalTime _endTime;
+	private Time _endTime;
 	
 	/**
 	 * Whether this class is scheduled on an appointment basis
@@ -105,7 +103,6 @@ public class Section implements Comparable<Section>{
 		_toDate = toDate;
 		_isAppointment = true;
 		_course = course;
-		System.out.println("From: " + fromDate + " To: " + toDate);
 	}
 	
 	/**
@@ -119,7 +116,7 @@ public class Section implements Comparable<Section>{
 	 * @param instructor The instructor for this Section
 	 * @param course The Course taught in this Section
 	 */
-	public Section(String letter, int number, LocalTime startTime, LocalTime endTime, String days, String instructor, Course course){
+	public Section(String letter, int number, Time startTime, Time endTime, String days, String instructor, Course course){
 		
 		_letter = letter;
 		_number = number;
@@ -145,7 +142,7 @@ public class Section implements Comparable<Section>{
 	 * @param toDate The date of the last day of class for this Section
 	 * @param course The Course taught in this Section
 	 */
-	public Section(String letter, int number, LocalTime startTime, LocalTime endTime, String days, String instructor, Date fromDate, Date toDate, Course course){
+	public Section(String letter, int number, Time startTime, Time endTime, String days, String instructor, Date fromDate, Date toDate, Course course){
 		
 		_letter = letter;
 		_number = number;
@@ -157,8 +154,6 @@ public class Section implements Comparable<Section>{
 		_toDate = toDate;
 		_isAppointment = false;
 		_course = course;
-		System.out.println("From: " + fromDate + " To: " + toDate);
-
 		
 	}
 	
@@ -185,7 +180,7 @@ public class Section implements Comparable<Section>{
 	 * 
 	 * @return The time at which class begins
 	 */
-	public LocalTime getStartTime(){
+	public Time getStartTime(){
 		return _startTime;
 	}
 	
@@ -195,7 +190,7 @@ public class Section implements Comparable<Section>{
 	 * 
 	 * @return The time at which class ends
 	 */
-	public LocalTime getEndTime(){
+	public Time getEndTime(){
 		return _endTime;
 	}
 	
