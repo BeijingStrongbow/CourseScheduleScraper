@@ -8,7 +8,7 @@ import java.util.HashMap;
  * 
  * @author Eric
  */
-public class Course {
+public class Course implements Comparable<Course>{
 	
 	/**
 	 * The list of all courses
@@ -138,6 +138,9 @@ public class Course {
 	 * @param type The type of this Section (i.e. LEC (lecture))
 	 */
 	public void AddSection(Section s, String type){
+		if(contains(s, type)){
+			return;
+		}
 		
 		switch(type){
 			case "LAB":
@@ -201,5 +204,127 @@ public class Course {
 	@Override
 	public String toString(){
 		return _number + ": " + _name;
+	}
+	
+	/**
+	 * Whether this course contains a section with the same number as s
+	 * 
+	 * @param s The section to check
+	 * @return Whether this course contains a section with the same number as s
+	 */
+	public boolean contains(Section s, String type){
+		if(type.equalsIgnoreCase("rec") && _rec != null){
+			for(Section e : _rec._sections){
+				if(e.getNumber() == s.getNumber()){
+					return true;
+				}
+			}
+		}
+		else if((type.equalsIgnoreCase("lab") || type.equalsIgnoreCase("std")) && _lab != null){
+			for(Section e : _lab._sections){
+				if(e.getNumber() == s.getNumber()){
+					return true;
+				}
+			}
+		}
+		else if(type.equalsIgnoreCase("qz") && _qz != null){
+			for(Section e : _qz._sections){
+				if(e.getNumber() == s.getNumber()){
+					return true;
+				}
+			}
+		}
+		else if(type.equalsIgnoreCase("lec") && _sections != null){
+			for(Section e : _sections){
+				if(e.getNumber() == s.getNumber()){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static void sort(ArrayList<Course> list){
+		Course element;
+		for(int i = 0; i < list.size(); i++){
+			element = list.get(i);
+			int j;
+			for(j = i-1; j >= 0; j--){
+				if(list.get(j).compareTo(element) > 0){
+					list.set(j+1, list.get(j));
+				}
+				else{
+					break;
+				}
+			}
+			list.set(j+1, element);
+		}
+	}
+
+	@Override
+	public int compareTo(Course other) {
+		String thisLetters;
+		String otherLetters;
+		int thisNumbers;
+		int otherNumbers;
+		
+		int index = indexOfFirstNumber(_number);
+		thisLetters = _number.substring(0, index);
+		thisNumbers = Integer.parseInt(_number.substring(index));
+		
+		index = indexOfFirstNumber(other._number);
+		otherLetters = other._number.substring(0, index);
+		otherNumbers = Integer.parseInt(other._number.substring(index));
+		
+		if(!thisLetters.equalsIgnoreCase(otherLetters)){
+			int[] thisLettersAscii = stringToAsciiValues(thisLetters);
+			int[] otherLettersAscii = stringToAsciiValues(otherLetters);
+			
+			for(int i = 0; i < Math.min(thisLettersAscii.length, otherLettersAscii.length); i++){
+				if(thisLettersAscii[i] != otherLettersAscii[i]){
+					return thisLettersAscii[i] - otherLettersAscii[i];
+				}
+			}
+			
+			return thisLettersAscii.length - otherLettersAscii.length;
+		}
+		else{
+			return thisNumbers - otherNumbers;
+		}
+	}
+	
+	/**
+	 * Get the index of the first numerical value in the string
+	 * 
+	 * @param s The string to process
+	 * @return The index of the first numerical value
+	 */
+	private int indexOfFirstNumber(String s){
+		for(int i = 0; i < s.length(); i++){
+			if(s.charAt(i) == '0' ||
+					s.charAt(i) == '1' ||
+					s.charAt(i) == '2' ||
+					s.charAt(i) == '3' ||
+					s.charAt(i) == '4' ||
+					s.charAt(i) == '5' ||
+					s.charAt(i) == '6' ||
+					s.charAt(i) == '7' ||
+					s.charAt(i) == '8' ||
+					s.charAt(i) == '9'){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	private int[] stringToAsciiValues(String s){
+		char[] chars = s.toCharArray();
+		int[] ints = new int[chars.length];
+		
+		for(int i = 0; i < chars.length; i++){
+			ints[i] = (int) chars[i];
+		}
+		
+		return ints;
 	}
 }

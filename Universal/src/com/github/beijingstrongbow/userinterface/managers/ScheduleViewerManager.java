@@ -32,22 +32,28 @@ public class ScheduleViewerManager {
 	}
 	
 	public void showWindow(){
-		window.getSchedulesList().removeAllElements();
 		window.getDetailsList().removeAllElements();
 		window.setVisible(true);
 	}
 	
 	public void generateSchedules(ArrayList<Course> selected){
-		System.out.println("here");
+		if(selected.size() <= 0){
+			JOptionPane.showMessageDialog(null, "No courses were selected", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+        validSchedules.clear();
+
         iterateSections(selected, 0, new ArrayList<Section>());
+        
         if(validSchedules.size() <= 0){
             JOptionPane.showMessageDialog(null, "No valid schedules found", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        window.getSchedulesList().removeAllElements();
         for (int i = 1; i <= validSchedules.size(); i++){
-            window.getSchedulesList().addElement(i);
+            window.getSchedulesList().addElement(Integer.toString(i));
         }
+        
         showWindow();
     }
 	
@@ -55,7 +61,7 @@ public class ScheduleViewerManager {
         for(Section s : courses.get(index).getSections()){
             schedule.add(s);
             boolean valid = true;
-            
+            System.out.println(s);
             if(index == courses.size() - 1){
                 for(int i = 0; i < schedule.size(); i++){
                     for(int j = i+1; j < schedule.size(); j++){
@@ -71,7 +77,7 @@ public class ScheduleViewerManager {
                 if (valid){
                     ArrayList<Section> temp = new ArrayList<Section>();
                     for(Section v : schedule){
-                        temp.add(v);
+                    	temp.add(v);
                     }
                     validSchedules.add(temp);
                 }
@@ -138,11 +144,14 @@ public class ScheduleViewerManager {
 		
 		private void showDetails(){
             window.getDetailsList().removeAllElements();
-            ArrayList<Section> schedule = validSchedules.get(window.getSelectedSchedule());
+            int index = window.getSelectedSchedule();
             
-            Section.sort(schedule);
-            for(Section s : schedule){
-                window.getDetailsList().addElement(s);
+            if(index >= 0){
+            	ArrayList<Section> schedule = validSchedules.get(window.getSelectedSchedule());
+                Section.sort(schedule);
+                for(Section s : schedule){
+                    window.getDetailsList().addElement(s);
+                }
             }
         }
 	}

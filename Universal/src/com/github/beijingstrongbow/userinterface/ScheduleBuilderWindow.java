@@ -8,6 +8,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 
 import java.awt.Dimension;
@@ -117,8 +118,10 @@ public class ScheduleBuilderWindow {
 		searchResults = new DefaultListModel<Course>();
 		uxSearchResultsList = new JList<Course>(searchResults);
 		uxSearchResultsList.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxSearchResultsList, "8, 6, 3, 24, fill, fill");
 		uxSearchResultsList.addMouseListener(manager.new ResultsDoubleClickListener());
+		
+		JScrollPane scrollPane = new JScrollPane(uxSearchResultsList);
+		frame.getContentPane().add(scrollPane, "8, 6, 3, 24, fill, fill");
 		
 		uxCourseNumberField = new JTextField();
 		uxCourseNumberField.setText("(e.g. CHM110)");
@@ -154,6 +157,7 @@ public class ScheduleBuilderWindow {
 		JButton uxCreateScheduleButton = new JButton("Create Schedule");
 		uxCreateScheduleButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxCreateScheduleButton, "10, 31, 1, 1");
+		uxCreateScheduleButton.addActionListener(manager.new CreateScheduleListener());
 		
 		frame.getRootPane().setDefaultButton(uxSearchButton);
 				

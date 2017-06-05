@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Main;
 import com.github.beijingstrongbow.Main.ProgramState;
+import com.github.beijingstrongbow.Section;
 import com.github.beijingstrongbow.userinterface.ScheduleBuilderWindow;
 
 public class ScheduleBuilderManager {
@@ -34,6 +35,7 @@ public class ScheduleBuilderManager {
 		public void actionPerformed(ActionEvent e) {
 			SearchMethod searchMethod = getSearchMethod();
 			DefaultListModel<Course> searchResults = window.getSearchResults();
+			ArrayList<Course> unsortedResults = new ArrayList<Course>();
 			
             boolean found = false;
             searchResults.removeAllElements();
@@ -42,7 +44,7 @@ public class ScheduleBuilderManager {
                 String name = window.getCourseNameSearchText().trim();
                 for(Course c : Course.courses.values()){
                     if (c.getName().toUpperCase().contains(name.toUpperCase())){
-                        searchResults.addElement(c);
+                        unsortedResults.add(c);
                         found = true;
                     }
                 }
@@ -56,7 +58,7 @@ public class ScheduleBuilderManager {
                 for(String n : Course.courses.keySet()){
                     if(n.toUpperCase().contains(number.toUpperCase())){
                     	Course c = Course.courses.get(n);
-                    	searchResults.addElement(c);
+                    	unsortedResults.add(c);
                     	found = true;
                     }
                 }
@@ -67,6 +69,13 @@ public class ScheduleBuilderManager {
             else{
                 JOptionPane.showMessageDialog(null, "Invalid search criteria", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            
+            Course.sort(unsortedResults);
+            
+            for(Course c : unsortedResults){
+            	searchResults.addElement(c);
+            }
+            
             window.setCourseNameSearchText("");
             window.setCourseNumSearchText("");
 		}
@@ -113,25 +122,6 @@ public class ScheduleBuilderManager {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ArrayList<Course> schedule = new ArrayList<Course>();
-			DefaultListModel<Course> selectedCourses = window.getSelectedCourses();
-			
-			for(int i = 0; i < selectedCourses.size(); i++){
-				schedule.add(selectedCourses.getElementAt(i));
-			}
-		    ArrayList<Course> temp = new ArrayList<Course>();
-		    for(Course c : schedule){
-		        temp.add(c);
-		        if(c.getLab() != null){
-		        	temp.add(c.getLab());
-		        }
-		        if(c.getRec() != null){
-		            temp.add(c.getRec());
-		        }
-	            if(c.getQuiz() != null){
-	            	temp.add(c.getQuiz());
-		        }
-		    }
 		    Main.setState(ProgramState.SCHEDULE_VIEWER);
 		}
 	}
@@ -160,13 +150,27 @@ public class ScheduleBuilderManager {
 	}
 	
 	public ArrayList<Course> getSelectedCourses(){
-		DefaultListModel<Course> selected = window.getSelectedCourses();
-		ArrayList<Course> list = new ArrayList<Course>();
-		
-		for(int i = 0; i < selected.size(); i++){
-			list.add(selected.getElementAt(i));
+		ArrayList<Course> schedule = new ArrayList<Course>();
+		DefaultListModel<Course> selectedCourses = window.getSelectedCourses();
+
+		for(int i = 0; i < selectedCourses.size(); i++){
+			schedule.add(selectedCourses.getElementAt(i));
 		}
-		return list;
+	    ArrayList<Course> temp = new ArrayList<Course>();
+	    for(Course c : schedule){
+	        if(c.getSections().size() > 0){
+	        	temp.add(c);
+	        }
+	        if(c.getLab() != null){
+	        	temp.add(c.getLab());
+	        }
+	        if(c.getRec() != null){
+	            temp.add(c.getRec());
+	        }
+            if(c.getQuiz() != null){
+            	temp.add(c.getQuiz());
+	        }
+	    }
+	    return temp;
 	}
-	
 }

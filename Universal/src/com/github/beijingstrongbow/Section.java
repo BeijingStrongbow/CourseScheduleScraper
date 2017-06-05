@@ -319,7 +319,15 @@ public class Section implements Comparable<Section>{
 	 */
 	@Override
 	public int compareTo(Section arg0) {
-		return _startTime.compareTo(arg0._startTime);
+		if(this._isAppointment){
+			return 1;
+		}
+		else if(arg0._isAppointment){
+			return -1;
+		}
+		else{
+			return _startTime.compareTo(arg0._startTime);
+		}
 	}
 
 	/**

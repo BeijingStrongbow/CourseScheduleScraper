@@ -13,6 +13,7 @@ import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -26,11 +27,11 @@ public class ScheduleViewerWindow {
 	private JTextField uxSectionNumberField;
 	private JTextField uxInstructorField;
 	
-	private JList<Integer> uxSchedulesList;
+	private JList<String> uxSchedulesList;
 	
 	private ScheduleViewerManager manager;
 	
-	private DefaultListModel<Integer> schedules;
+	private DefaultListModel<String> schedules;
 	
 	private DefaultListModel<Section> details;
 
@@ -38,7 +39,7 @@ public class ScheduleViewerWindow {
 	 * Create the application.
 	 */
 	public ScheduleViewerWindow(ScheduleViewerManager manager) {
-		schedules = new DefaultListModel<Integer>();
+		schedules = new DefaultListModel<String>();
 		details = new DefaultListModel<Section>();
 		
 		this.manager = manager;
@@ -93,18 +94,27 @@ public class ScheduleViewerWindow {
 		uxDetailsLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxDetailsLabel, "8, 2");
 		
-		uxSchedulesList = new JList<Integer>();
+		uxSchedulesList = new JList<String>();
+		uxSchedulesList.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		uxSchedulesList.setModel(schedules);
-		frame.getContentPane().add(uxSchedulesList, "4, 4, 1, 3");
 		uxSchedulesList.addMouseListener(manager.new ShowDetailsListener());
 		
+		JScrollPane scrollPane1 = new JScrollPane();
+		scrollPane1.setViewportView(uxSchedulesList);
+		frame.getContentPane().add(scrollPane1, "4, 4, 1, 3");
+		
 		JList<Section> uxDetailsList = new JList<Section>();
+		uxDetailsList.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		uxDetailsList.setModel(details);
-		frame.getContentPane().add(uxDetailsList, "8, 4, 7, 3, fill, fill");
+		
+		JScrollPane scrollPane2 = new JScrollPane();
+		scrollPane2.setViewportView(uxDetailsList);
+		frame.getContentPane().add(scrollPane2, "8, 4, 7, 3, fill, fill");
 		
 		JButton uxViewSchedulesButton = new JButton("View Schedule");
 		uxViewSchedulesButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxViewSchedulesButton, "6, 5");
+		uxViewSchedulesButton.addActionListener(manager.new ShowDetailsListener());
 		
 		JLabel uxNarrowResultsLabel = new JLabel("Narrow Results");
 		uxNarrowResultsLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -185,7 +195,7 @@ public class ScheduleViewerWindow {
 		frame.dispose();
 	}
 	
-	public DefaultListModel<Integer> getSchedulesList(){
+	public DefaultListModel<String> getSchedulesList(){
 		return schedules;
 	}
 	
