@@ -1,10 +1,12 @@
 package com.github.beijingstrongbow.userinterface;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -12,6 +14,8 @@ import com.github.beijingstrongbow.userinterface.managers.InitializationDialogMa
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -26,16 +30,12 @@ public class InitializationDialog{
 	
 	private JDialog dialog;
 
-	private int year;
-	
-	private int semester;
-
 	/**
 	 * Create the dialog.
 	 */
 	public InitializationDialog(InitializationDialogManager manager) {
 		dialog = new JDialog();
-		dialog.setBounds(100, 100, 340, 230);
+		dialog.addWindowListener(manager.new CloseWindowListener());
 		dialog.getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(15, 5, 15, 15));
 		dialog.getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -75,6 +75,12 @@ public class InitializationDialog{
 			}
 		}
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		dialog.pack();
+		
+		Dimension frameSize = dialog.getSize();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		
+		dialog.setLocation((int) (0.5 * (screenSize.getWidth() - frameSize.getWidth())), (int) (0.5 * (screenSize.getHeight() - frameSize.getHeight())));
 	}
 	
 	public void setVisible(boolean visible){

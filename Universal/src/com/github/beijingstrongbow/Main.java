@@ -2,9 +2,11 @@ package com.github.beijingstrongbow;
 
 import java.awt.EventQueue;
 
+import com.github.beijingstrongbow.userinterface.LoadingProgressWindow;
 import com.github.beijingstrongbow.userinterface.ScheduleBuilderWindow;
 import com.github.beijingstrongbow.userinterface.managers.InitializationDialogManager;
 import com.github.beijingstrongbow.userinterface.managers.ScheduleBuilderManager;
+import com.github.beijingstrongbow.userinterface.managers.ScheduleViewerManager;
 import com.github.beijingstrongbow.webscraper.WebScraper;
 
 public class Main {
@@ -14,6 +16,10 @@ public class Main {
 	private static WebScraper scraper;
 	
 	private static InitializationDialogManager initDialog;
+	
+	private static ScheduleViewerManager scheduleViewer;
+	
+	private static LoadingProgressWindow progressWindow;
 	
 	private static ProgramState state;
 	
@@ -33,6 +39,8 @@ public class Main {
 		initDialog = new InitializationDialogManager();
 		builder = new ScheduleBuilderManager();
 		scraper = new WebScraper();
+		scheduleViewer = new ScheduleViewerManager();
+		progressWindow = new LoadingProgressWindow();
 		state = ProgramState.INITIALIZATION;
 		
 		while(true){
@@ -42,15 +50,20 @@ public class Main {
 					state = ProgramState.WAITING;
 					break;
 				case PROCESS_WEB_DATA:
-					scraper.populateDatabases(Integer.toString(initDialog.getYear()), initDialog.getSemester());
+					initDialog.hideWindow();
+					progressWindow.showWindow();
+					scraper.populateDatabases(Integer.toString(initDialog.getYear()), initDialog.getSemester(), progressWindow);
 					state = ProgramState.SCHEDULE_BUILDER;
 					break;
 				case SCHEDULE_BUILDER:
 					builder.showWindow();
+					progressWindow.dispose();
 					state = ProgramState.WAITING;
 					break;
 				case SCHEDULE_VIEWER:
-					//todo
+					scheduleViewer.generateSchedules(builder.getSelectedCourses());
+					scheduleViewer.showWindow();
+					state = ProgramState.WAITING;
 					break;
 			}
 		}

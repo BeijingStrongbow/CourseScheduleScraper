@@ -15,6 +15,7 @@ import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Date;
 import com.github.beijingstrongbow.Section;
 import com.github.beijingstrongbow.Time;
+import com.github.beijingstrongbow.userinterface.LoadingProgressWindow;
 
 /**
  * Contains functions related to scraping the course database
@@ -22,7 +23,7 @@ import com.github.beijingstrongbow.Time;
  * @author Eric
  */
 public class WebScraper {
-	
+		
 	/**
 	 * Populate the text database on the hard drive and the Course.courses hashmap with data from the
 	 * online database
@@ -30,11 +31,12 @@ public class WebScraper {
 	 * @param year
 	 * @param semester
 	 */
-	public void populateDatabases(String year, String semester){
+	public void populateDatabases(String year, String semester, LoadingProgressWindow progress){
 		ArrayList<URL> urls = getUrls(year, semester);
+		double progressIncrement = 100.0 / urls.size();
 		for(URL url : urls){
 			scrapeUrl(url);
-			System.out.println(url.getPath());
+			progress.addProgress(progressIncrement);
 		}
 	}
 	

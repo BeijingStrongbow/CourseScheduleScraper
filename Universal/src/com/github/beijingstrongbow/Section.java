@@ -1,5 +1,7 @@
 package com.github.beijingstrongbow;
 
+import java.util.ArrayList;
+
 /**
  * Represents a specitic section of a course
  * 
@@ -381,6 +383,24 @@ public class Section implements Comparable<Section>{
 		}
 		else{
 			return false;
+		}
+	}
+	
+	public static void sort(ArrayList<Section> list){
+		Section element;
+
+		for(int i = 0; i < list.size(); i++){
+			element = list.get(i);
+			int j;
+			for(j = i-1; j >= 0; j--){
+				if(element.compareTo(list.get(j)) < 0){
+					list.set(j+1, list.get(j));
+				}
+				else{
+					break;
+				}
+			}
+			list.set(j+1, element);
 		}
 	}
 }

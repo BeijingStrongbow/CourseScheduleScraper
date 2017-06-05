@@ -9,7 +9,10 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JList;
 import javax.swing.JLabel;
+
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -31,20 +34,22 @@ public class ScheduleBuilderWindow {
 	private DefaultListModel<Course> searchResults;
 	
 	private DefaultListModel<Course> selectedCourses;
+	
+	private ScheduleBuilderManager manager;
 
 	/**
 	 * Create the application.
 	 */
 	public ScheduleBuilderWindow(ScheduleBuilderManager manager) {
-		initialize(manager);
+		this.manager = manager;
+		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(ScheduleBuilderManager manager) {
+	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 756, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("8dlu"),
@@ -57,7 +62,8 @@ public class ScheduleBuilderWindow {
 				FormSpecs.DEFAULT_COLSPEC,
 				ColumnSpec.decode("100dlu"),
 				FormSpecs.BUTTON_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
+				FormSpecs.DEFAULT_COLSPEC,
+				ColumnSpec.decode("8dlu"),},
 			new RowSpec[] {
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
@@ -89,7 +95,8 @@ public class ScheduleBuilderWindow {
 				FormSpecs.DEFAULT_ROWSPEC,
 				RowSpec.decode("53dlu"),
 				FormSpecs.UNRELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.PARAGRAPH_GAP_ROWSPEC,}));
 		
 		JLabel uxAddCourseLabel = new JLabel("Add Course");
 		uxAddCourseLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -149,6 +156,13 @@ public class ScheduleBuilderWindow {
 		frame.getContentPane().add(uxCreateScheduleButton, "10, 31, 1, 1");
 		
 		frame.getRootPane().setDefaultButton(uxSearchButton);
+				
+		frame.pack();
+		
+		Dimension frameSize = frame.getSize();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		
+		frame.setLocation((int) (0.5 * (screenSize.getWidth() - frameSize.getWidth())), (int) (0.5 * (screenSize.getHeight() - frameSize.getHeight())));
 	}
 	
 	public void setVisible(boolean visible){

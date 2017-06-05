@@ -132,7 +132,6 @@ public class ScheduleBuilderManager {
 	            	temp.add(c.getQuiz());
 		        }
 		    }
-		    //open the schedule viewer and generate the schedule
 		    Main.setState(ProgramState.SCHEDULE_VIEWER);
 		}
 	}
@@ -158,6 +157,16 @@ public class ScheduleBuilderManager {
                 return SearchMethod.INVALID;
             }
 
+	}
+	
+	public ArrayList<Course> getSelectedCourses(){
+		DefaultListModel<Course> selected = window.getSelectedCourses();
+		ArrayList<Course> list = new ArrayList<Course>();
+		
+		for(int i = 0; i < selected.size(); i++){
+			list.add(selected.getElementAt(i));
+		}
+		return list;
 	}
 	
 }
