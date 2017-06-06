@@ -16,6 +16,7 @@ import com.github.beijingstrongbow.userinterface.managers.InitializationDialogMa
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class InitializationDialog{
 	 */
 	public InitializationDialog(InitializationDialogManager manager) {
 		dialog = new JDialog();
+		
 		dialog.addWindowListener(manager.new CloseWindowListener());
 		dialog.getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(15, 5, 15, 15));

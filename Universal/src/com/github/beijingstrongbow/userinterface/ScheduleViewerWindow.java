@@ -179,6 +179,7 @@ public class ScheduleViewerWindow {
 		frame.getContentPane().add(uxSectionNumberField, "8, 14, fill, default");
 		uxSectionNumberField.setColumns(10);
 		
+		frame.getRootPane().setDefaultButton(uxUseThisButton);
 		frame.pack();
 		
 		Dimension frameSize = frame.getSize();
@@ -189,6 +190,13 @@ public class ScheduleViewerWindow {
 	
 	public void setVisible(boolean visible){
 		frame.setVisible(visible);
+	}
+	
+	public void setDefaultText(){
+		uxInstructorField.setText("(e.g. Higgins, Daniel A)");
+		uxSectionNumberField.setText("(e.g. 11451)");
+		uxStartTimeField.setText("(e.g. 3:40 p.m.)");
+		uxSectionTypeField.setText("");
 	}
 	
 	public void dispose(){
@@ -225,5 +233,12 @@ public class ScheduleViewerWindow {
 	
 	public int getSelectedSchedule(){
 		return uxSchedulesList.getSelectedIndex();
+	}
+	
+	public void clearSearchFields(){
+		uxInstructorField.setText("");
+		uxSectionNumberField.setText("");
+		uxSectionTypeField.setText("");
+		uxStartTimeField.setText("");
 	}
 }

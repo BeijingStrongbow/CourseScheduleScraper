@@ -36,10 +36,10 @@ public class ScheduleViewerManager {
 		window.setVisible(true);
 	}
 	
-	public void generateSchedules(ArrayList<Course> selected){
+	public boolean generateSchedules(ArrayList<Course> selected){
 		if(selected.size() <= 0){
 			JOptionPane.showMessageDialog(null, "No courses were selected", "Error", JOptionPane.ERROR_MESSAGE);
-			return;
+			return false;
 		}
         validSchedules.clear();
 
@@ -47,21 +47,19 @@ public class ScheduleViewerManager {
         
         if(validSchedules.size() <= 0){
             JOptionPane.showMessageDialog(null, "No valid schedules found", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+            return false;
         }
         window.getSchedulesList().removeAllElements();
         for (int i = 1; i <= validSchedules.size(); i++){
             window.getSchedulesList().addElement(Integer.toString(i));
         }
-        
-        showWindow();
+        return true;
     }
 	
 	private void iterateSections(ArrayList<Course> courses, int index, ArrayList<Section> schedule){
         for(Section s : courses.get(index).getSections()){
             schedule.add(s);
             boolean valid = true;
-            System.out.println(s);
             if(index == courses.size() - 1){
                 for(int i = 0; i < schedule.size(); i++){
                     for(int j = i+1; j < schedule.size(); j++){
@@ -98,12 +96,12 @@ public class ScheduleViewerManager {
 		
         if (startTimeText.length() > 0 && startTimeText.charAt(0) != '(' &&
             (instructorText.length() == 0 || instructorText.charAt(0) == '(') &&
-            sectionNumberText.equals("")){
+            (sectionNumberText.equals("") || sectionNumberText.charAt(0) == '(')){
             return SearchCriteria.START_TIME;
         }
         else if (instructorText.length() > 0 && instructorText.charAt(0) != '(' &&
             (startTimeText.length() == 0 || startTimeText.charAt(0) == '(') &&
-            sectionNumberText.equals("")){
+            (sectionNumberText.equals("") || sectionNumberText.charAt(0) == '(')){
             return SearchCriteria.INSTRUCTOR;
         }
         else if(!sectionNumberText.equals("") &&
@@ -188,12 +186,13 @@ public class ScheduleViewerManager {
                 try{
                     String time = window.getStartTimeText();
                     int hour = Integer.parseInt(time.substring(0, time.indexOf(':')));
-                    int minute = Integer.parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(' ') - 2));
+                    int minute = Integer.parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(':') + 3));
                     if (time.contains("p")){
                         hour += 12;
                     }
 
                     Time startTime = new Time(hour, minute);
+                    System.out.println(hour + " " + minute);
                     for(int i = 0; i < validSchedules.size(); i++){
                         for (Section s : validSchedules.get(i)){
                             if (s.getCourse().getNumber().equals(courseNumber) && s.getType().equals(sectionType) && !startTime.equals(s.getStartTime())){
@@ -255,6 +254,7 @@ public class ScheduleViewerManager {
                     validSchedules.remove(toRemove.get(i).intValue());
                     window.getSchedulesList().remove(toRemove.get(i).intValue());
                 }
+                window.setDefaultText();
             }
 		}
 	}

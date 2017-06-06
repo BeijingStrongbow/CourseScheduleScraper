@@ -11,6 +11,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -147,7 +148,9 @@ public class ScheduleBuilderWindow {
 		selectedCourses = new DefaultListModel<Course>();
 		uxSelectedCoursesList = new JList<Course>(selectedCourses);
 		uxSelectedCoursesList.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxSelectedCoursesList, "3, 16, 4, 14, default, fill");
+		
+		JScrollPane scrollPane2 = new JScrollPane(uxSelectedCoursesList);
+		frame.getContentPane().add(scrollPane2, "3, 16, 4, 14, default, fill");
 		
 		JButton uxRemoveCourseButton = new JButton("Remove Course");
 		uxRemoveCourseButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
