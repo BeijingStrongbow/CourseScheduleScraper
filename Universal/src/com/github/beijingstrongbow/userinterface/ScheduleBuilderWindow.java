@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
 
@@ -44,7 +45,13 @@ public class ScheduleBuilderWindow {
 	 */
 	public ScheduleBuilderWindow(ScheduleBuilderManager manager) {
 		this.manager = manager;
-		initialize();
+		EventQueue.invokeLater(new Runnable(){
+			
+			@Override
+			public void run(){
+				initialize();
+			}
+		});
 	}
 
 	/**

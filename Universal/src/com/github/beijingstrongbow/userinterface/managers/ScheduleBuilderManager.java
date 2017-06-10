@@ -88,10 +88,23 @@ public class ScheduleBuilderManager {
 			if(e.getClickCount() == 2){
 				if(e.getSource() instanceof JList){
 					JList<Course> j = (JList<Course>) e.getSource();
+					
 					if((DefaultListModel<Course>) j.getModel() == window.getSearchResults()){
+						
 						Course selected = j.getSelectedValue();
-						window.getSearchResults().removeElement(selected);
-						window.getSelectedCourses().addElement(selected);
+						boolean present = false;
+						
+						for(int i = 0; i < window.getSelectedCourses().size(); i++){
+							if(selected.equals(window.getSelectedCourses().getElementAt(i))){
+								present = true;
+								break;
+							}
+						}
+						
+						if(!present){
+							window.getSearchResults().removeElement(selected);
+							window.getSelectedCourses().addElement(selected);
+						}
 					}
 				}
 			}

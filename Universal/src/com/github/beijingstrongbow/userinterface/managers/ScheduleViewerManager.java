@@ -1,16 +1,20 @@
 package com.github.beijingstrongbow.userinterface.managers;
 
+import java.awt.EventQueue;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Section;
 import com.github.beijingstrongbow.Time;
+import com.github.beijingstrongbow.userinterface.CalendarPanel;
 import com.github.beijingstrongbow.userinterface.ScheduleViewerWindow;
 
 public class ScheduleViewerManager {
@@ -33,6 +37,7 @@ public class ScheduleViewerManager {
 	
 	public void showWindow(){
 		window.getDetailsList().removeAllElements();
+		window.viewDetails();
 		window.setVisible(true);
 	}
 	
@@ -141,6 +146,7 @@ public class ScheduleViewerManager {
 		}
 		
 		private void showDetails(){
+			window.viewDetails();
             window.getDetailsList().removeAllElements();
             int index = window.getSelectedSchedule();
             
@@ -256,6 +262,28 @@ public class ScheduleViewerManager {
                 }
                 window.setDefaultText();
             }
+		}
+	}
+	
+	public class ViewCalendarListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int index = window.getSelectedSchedule();
+			
+			if(index < 0){
+				return;
+			}
+			else{
+				int numAppointments = 0;
+				
+				for(Section s : validSchedules.get(index)){
+					if(s.isAppointment()) numAppointments++;
+				}
+				
+				CalendarPanel calendar = new CalendarPanel(validSchedules.get(index));
+				window.viewCalendar(calendar, numAppointments);
+			}
 		}
 	}
 }

@@ -327,4 +327,16 @@ public class Course implements Comparable<Course>{
 		
 		return ints;
 	}
+	
+	@Override
+	public boolean equals(Object c){
+		if(c instanceof Course){
+			Course course = (Course) c;
+			if(this._number.equals(course._number)){
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }

@@ -31,7 +31,13 @@ public class LoadingProgressWindow {
 	 * Create the application.
 	 */
 	public LoadingProgressWindow() {
-		initialize();
+		EventQueue.invokeLater(new Runnable(){
+			
+			@Override
+			public void run(){
+				initialize();
+			}
+		});
 	}
 
 	public void showWindow(){

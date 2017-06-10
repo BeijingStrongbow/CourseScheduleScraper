@@ -1,6 +1,10 @@
 package com.github.beijingstrongbow.userinterface;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import com.jgoodies.forms.layout.FormLayout;
 import com.github.beijingstrongbow.Section;
@@ -34,6 +38,16 @@ public class ScheduleViewerWindow {
 	private DefaultListModel<String> schedules;
 	
 	private DefaultListModel<Section> details;
+	
+	private JScrollPane detailsScrollPane;
+	
+	private JList<Section> uxDetailsList;
+	
+	private JLabel uxAppointmentWarning;
+	
+	private final String appointmentWarning = "*There is an appointment section not shown";
+	
+	private final String appointmentsWarning = "*There are appointment sections not shown";
 
 	/**
 	 * Create the application.
@@ -43,7 +57,13 @@ public class ScheduleViewerWindow {
 		details = new DefaultListModel<Section>();
 		
 		this.manager = manager;
-		initialize();
+		EventQueue.invokeLater(new Runnable(){
+			
+			@Override
+			public void run(){
+				initialize();
+			}
+		});
 	}
 
 	/**
@@ -73,9 +93,10 @@ public class ScheduleViewerWindow {
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("120dlu"),
+				RowSpec.decode("105dlu"),
 				RowSpec.decode("30dlu"),
-				RowSpec.decode("120dlu"),
+				RowSpec.decode("30dlu"),
+				RowSpec.decode("105dlu"),
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.LINE_GAP_ROWSPEC,
@@ -101,82 +122,92 @@ public class ScheduleViewerWindow {
 		
 		JScrollPane scrollPane1 = new JScrollPane();
 		scrollPane1.setViewportView(uxSchedulesList);
-		frame.getContentPane().add(scrollPane1, "4, 4, 1, 3");
+		frame.getContentPane().add(scrollPane1, "4, 4, 1, 4");
 		
-		JList<Section> uxDetailsList = new JList<Section>();
+		uxDetailsList = new JList<Section>();
 		uxDetailsList.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		uxDetailsList.setModel(details);
 		
-		JScrollPane scrollPane2 = new JScrollPane();
-		scrollPane2.setViewportView(uxDetailsList);
-		frame.getContentPane().add(scrollPane2, "8, 4, 7, 3, fill, fill");
+		detailsScrollPane = new JScrollPane();
+		detailsScrollPane.setViewportView(uxDetailsList);
+		frame.getContentPane().add(detailsScrollPane, "8, 4, 7, 4, fill, fill");
 		
-		JButton uxViewSchedulesButton = new JButton("View Schedule");
-		uxViewSchedulesButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxViewSchedulesButton, "6, 5");
-		uxViewSchedulesButton.addActionListener(manager.new ShowDetailsListener());
+		JButton uxViewDetailsButton = new JButton("View Details"); 
+		uxViewDetailsButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		frame.getContentPane().add(uxViewDetailsButton, "6, 5");
+		uxViewDetailsButton.addActionListener(manager.new ShowDetailsListener());
+		
+		JButton uxViewCalendarButton = new JButton("View Calendar");
+		uxViewCalendarButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		frame.getContentPane().add(uxViewCalendarButton, "6, 6");
+		uxViewCalendarButton.addActionListener(manager.new ViewCalendarListener());
 		
 		JLabel uxNarrowResultsLabel = new JLabel("Narrow Results");
 		uxNarrowResultsLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxNarrowResultsLabel, "4, 8, 3, 1");
+		frame.getContentPane().add(uxNarrowResultsLabel, "4, 9, 3, 1");
+		
+		uxAppointmentWarning = new JLabel();
+		uxAppointmentWarning.setFont(new Font("Tahoma", Font.BOLD, 14));
+		uxAppointmentWarning.setForeground(Color.RED);
+		frame.getContentPane().add(uxAppointmentWarning, "12, 9, 3, 1");
 		
 		JLabel uxCourseNumberLabel = new JLabel("Course Number");
 		uxCourseNumberLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxCourseNumberLabel, "4, 10, 3, 1");
+		frame.getContentPane().add(uxCourseNumberLabel, "4, 11, 3, 1");
 		
 		JLabel uxStartTimeLabel = new JLabel("Start Time");
 		uxStartTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxStartTimeLabel, "8, 10");
+		frame.getContentPane().add(uxStartTimeLabel, "8, 11");
 		
 		JLabel uxInstructorLabel = new JLabel("Instructor");
 		uxInstructorLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxInstructorLabel, "10, 10");
+		frame.getContentPane().add(uxInstructorLabel, "10, 11");
 		
 		JLabel uxInstructorSubtitle = new JLabel("Exactly as in course catalog");
-		frame.getContentPane().add(uxInstructorSubtitle, "11, 10");
+		frame.getContentPane().add(uxInstructorSubtitle, "11, 11");
 		
 		uxCourseNumberField = new JTextField();
 		uxCourseNumberField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxCourseNumberField, "4, 11, 3, 1, fill, default");
+		frame.getContentPane().add(uxCourseNumberField, "4, 12, 3, 1, fill, default");
 		uxCourseNumberField.setColumns(10);
 		
 		uxStartTimeField = new JTextField();
 		uxStartTimeField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		uxStartTimeField.setText("(e.g. 3:40 p.m.)");
-		frame.getContentPane().add(uxStartTimeField, "8, 11, fill, default");
+		frame.getContentPane().add(uxStartTimeField, "8, 12, fill, default");
 		uxStartTimeField.setColumns(10);
 		
 		uxInstructorField = new JTextField();
 		uxInstructorField.setText("(e.g. Higgins, Daniel A)");
 		uxInstructorField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxInstructorField, "10, 11, 2, 1, fill, default");
+		frame.getContentPane().add(uxInstructorField, "10, 12, 2, 1, fill, default");
 		uxInstructorField.setColumns(10);
 		
 		JButton uxUseThisButton = new JButton("Use This");
 		uxUseThisButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxUseThisButton, "13, 11");
+		frame.getContentPane().add(uxUseThisButton, "13, 12");
 		uxUseThisButton.addActionListener(manager.new NarrowResultsListener());
 		
 		JLabel uxSectionTypeLabel = new JLabel("Section Type");
 		uxSectionTypeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxSectionTypeLabel, "4, 13");
+		frame.getContentPane().add(uxSectionTypeLabel, "4, 14");
 		
 		JLabel uxSectionTypeSubtitle = new JLabel("Only if Lab, Rec, Qz");
-		frame.getContentPane().add(uxSectionTypeSubtitle, "6, 13");
+		frame.getContentPane().add(uxSectionTypeSubtitle, "6, 14");
 		
 		JLabel uxSectionNumberLabel = new JLabel("Section Number");
 		uxSectionNumberLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxSectionNumberLabel, "8, 13");
+		frame.getContentPane().add(uxSectionNumberLabel, "8, 14");
 		
 		uxSectionTypeField = new JTextField();
 		uxSectionTypeField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxSectionTypeField, "4, 14, 3, 1, fill, default");
+		frame.getContentPane().add(uxSectionTypeField, "4, 15, 3, 1, fill, default");
 		uxSectionTypeField.setColumns(10);
 		
 		uxSectionNumberField = new JTextField();
 		uxSectionNumberField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		uxSectionNumberField.setText("(e.g. 11451)");
-		frame.getContentPane().add(uxSectionNumberField, "8, 14, fill, default");
+		frame.getContentPane().add(uxSectionNumberField, "8, 15, fill, default");
 		uxSectionNumberField.setColumns(10);
 		
 		frame.getRootPane().setDefaultButton(uxUseThisButton);
@@ -240,5 +271,21 @@ public class ScheduleViewerWindow {
 		uxSectionNumberField.setText("");
 		uxSectionTypeField.setText("");
 		uxStartTimeField.setText("");
+	}
+	
+	public void viewCalendar(CalendarPanel calendar, int numAppointments){
+		calendar.setSize(detailsScrollPane.getSize());
+		detailsScrollPane.setViewportView(calendar);
+		
+		if(numAppointments <= 0) uxAppointmentWarning.setText("");
+
+		else if(numAppointments == 1) uxAppointmentWarning.setText(appointmentWarning);
+		
+		else uxAppointmentWarning.setText(appointmentsWarning);
+	}
+	
+	public void viewDetails(){
+		detailsScrollPane.setViewportView(uxDetailsList);
+		uxAppointmentWarning.setText("");
 	}
 }

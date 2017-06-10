@@ -13,13 +13,9 @@
 	<classpathentry kind="lib" path="C:/Users/ericd/.p2/pool/plugins/org.eclipse.ui.workbench_3.108.2.v20161025-2029.jar" sourcepath="C:/Users/ericd/.p2/pool/plugins/org.eclipse.ui.workbench_3.108.2.v20161025-2029.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ericd/.p2/pool/plugins/com.ibm.icu_56.1.0.v201601250100.jar" sourcepath="C:/Users/ericd/.p2/pool/plugins/com.ibm.icu_56.1.0.v201601250100.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ericd/.p2/pool/plugins/org.eclipse.ui.forms_3.7.0.v20160518-1929.jar" sourcepath="C:/Users/ericd/.p2/pool/plugins/org.eclipse.ui.forms_3.7.0.v20160518-1929.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ericd/Downloads/jsoup-1.10.2.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/ericd/Downloads/jsoup-1.10.2-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/ericd/workspace/CourseScheduleScraper/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ericd/workspace/CourseScheduleScraper/jgoodies-common-1.8.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_80"/>
+	<classpathentry kind="lib" path="C:/Users/ericd/workspace/CourseScheduleScraper/jsoup-1.10.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

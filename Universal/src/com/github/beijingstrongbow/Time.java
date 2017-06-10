@@ -55,4 +55,28 @@ public class Time implements Comparable<Time>{
 			return false;
 		}
 	}
+	
+	@Override
+	public String toString(){
+		int hour = this.hour;
+		
+		String time;
+		
+		String minute;
+		
+		if(this.minute < 10){
+			minute = "0" + this.minute;
+		}
+		else{
+			minute = Integer.toString(this.minute);
+		}
+		
+		if(hour == 12) time = hour + ":" + minute + " p.m.";
+		
+		else if(hour < 12) time = hour + ":" + minute + " a.m.";
+		
+		else time = (hour - 12) + ":" + minute + " p.m.";
+		
+		return time;
+	}
 }
