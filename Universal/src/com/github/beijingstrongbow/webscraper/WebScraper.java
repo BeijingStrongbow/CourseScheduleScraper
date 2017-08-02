@@ -105,15 +105,16 @@ public class WebScraper {
 		String name = "";
 		String type = "";
 		Element sessionLabel = null;
+		Course current = null;
 		
 		for(Element e : courses){
 
 			if(headers.contains(e)){
 				number = e.getElementsByClass("number").text();
 				name = e.getElementsByClass("name").text();
-				addCourseToDatabase(number, name, Course.courses);
+				current = addCourseToDatabase(number, name, Course.courses);
 			}
-			else if(!closed.contains(e) && !cancelled.contains(e)){
+			else {
 				for(Element r : e.getElementsByTag("tr")){
 					for(Element row : r.getElementsByClass("st")){
 						Elements data = row.getElementsByTag("td");
@@ -125,10 +126,20 @@ public class WebScraper {
 						}
 						
 						if(data.size() == 10 && (!data.get(5).text().equals("") || !data.get(6).text().equals(""))){
-							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(8).text(), "");
+							
+							if(!closed.contains(e) && !cancelled.contains(e)) {
+								addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(8).text(), "", current);
+							}
+							
+							current.setShouldHaveSection(data.get(1).text());
 						}
 						else if(data.size() == 11 && (!data.get(5).text().equals("") || !data.get(6).text().equals(""))){
-							addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(9).text(), "");
+							
+							if(!closed.contains(e) && !cancelled.contains(e)) {
+								addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(9).text(), "", current);
+							}
+							
+							current.setShouldHaveSection(data.get(1).text());
 						}
 						else if(data.size() == 9){
 							section = sanitizeText(data.get(0).text(), "something");
@@ -136,7 +147,10 @@ public class WebScraper {
 							number = sanitizeText(data.get(2).text(), "something");
 						}
 						else if(data.size() == 6 && (!data.get(0).text().equals("") || !data.get(1).text().equals(""))){							
-							addSectionToDatabase(section, type, Integer.parseInt(number), data.get(1).text(), sanitizeText(data.get(0).text(), "day") + sessionLabel.text(), data.get(4).text(), sessionLabel.text());
+							if(!closed.contains(e) && !cancelled.contains(e)) {
+								addSectionToDatabase(section, type, Integer.parseInt(number), data.get(1).text(), sanitizeText(data.get(0).text(), "day") + sessionLabel.text(), data.get(4).text(), sessionLabel.text(), current);
+							}
+							current.setShouldHaveSection(type);
 						}
 					}
 				}
@@ -145,27 +159,24 @@ public class WebScraper {
 	}
 	
 	/**
-	 * Represents the current course being processed in addCourseToDatabase and addSectionToDatabase
-	 */
-	private Course current = new Course();
-	
-	/**
 	 * Adds a new Course to the database
 	 * 
 	 * @param number The number of the course to add (i.e. PHYS214)
 	 * @param name The name of the course to add (i.e. Engineering Physics 2)
 	 * @param database The database to add the Course to
 	 */
-	private void addCourseToDatabase(String number, String name, HashMap<String, Course> database){
-		if(!database.containsKey(number)){
-			current = new Course(number, name);
-			database.put(number, current);
+	private Course addCourseToDatabase(String number, String name, HashMap<String, Course> database){
+		if(!database.containsKey(number) || !database.get(number).getName().equals(name)){
+			Course current = new Course(number, name);
+			database.put(name, current);
+			return current;
 		}
+		
+		else return database.get(number);
 	}
 	
 	/**
-	 * Adds a new Section to the database. This method call must directly follow the call to 
-	 * addCourseToDatabase for the course this section belongs to!
+	 * Adds a new Section to the database. 
 	 * 
 	 * @param letter The letter of the section
 	 * @param type The section's type (i.e. LAB)
@@ -174,8 +185,9 @@ public class WebScraper {
 	 * @param days The days of the week and starting and ending date (if applicable) for this section
 	 * @param instructor The instructor for this section
 	 * @param date The start and end dates for this Section, or "" if default
+	 * @param course The course this section should be added to
 	 */
-	private void addSectionToDatabase(String letter, String type, int number, String time, String days, String instructor, String date){
+	private void addSectionToDatabase(String letter, String type, int number, String time, String days, String instructor, String date, Course course){
 		Date startDate = new Date();
 		Date endDate = new Date();
 		
@@ -238,22 +250,22 @@ public class WebScraper {
 
             if(!startDate.equals(new Date()))
             {
-                current.AddSection(new Section(letter, number, startTime, endTime, days, instructor, startDate, endDate, current), type);
+                course.AddSection(new Section(letter, number, startTime, endTime, days, instructor, startDate, endDate, course), type);
             }
             else
             {
-                current.AddSection(new Section(letter, number, startTime, endTime, days, instructor, current), type);
+                course.AddSection(new Section(letter, number, startTime, endTime, days, instructor, course), type);
             }
         }
         else
         {
             if(!startDate.equals(new Date()))
             {
-                current.AddSection(new Section(letter, number, days, instructor, startDate, endDate, current), type);
+                course.AddSection(new Section(letter, number, days, instructor, startDate, endDate, course), type);
             }
             else
             {
-                current.AddSection(new Section(letter, number, days, instructor, current), type);
+                course.AddSection(new Section(letter, number, days, instructor, course), type);
             }
         }
 	}

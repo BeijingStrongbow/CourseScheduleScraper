@@ -42,9 +42,9 @@ public class ScheduleBuilderManager {
             
             if(searchMethod == SearchMethod.COURSE_NAME){
                 String name = window.getCourseNameSearchText().trim();
-                for(Course c : Course.courses.values()){
-                    if (c.getName().toUpperCase().contains(name.toUpperCase())){
-                        unsortedResults.add(c);
+                for(String courseName : Course.courses.keySet()){
+                    if (courseName.toUpperCase().contains(name.toUpperCase())){
+                        unsortedResults.add(Course.courses.get(courseName));
                         found = true;
                     }
                 }
@@ -55,9 +55,8 @@ public class ScheduleBuilderManager {
             else if(searchMethod == SearchMethod.COURSE_NUMBER){
                 String number = window.getCourseNumSearchText().replaceAll("\\s+", "");
                 
-                for(String n : Course.courses.keySet()){
-                    if(n.toUpperCase().contains(number.toUpperCase())){
-                    	Course c = Course.courses.get(n);
+                for(Course c : Course.courses.values()){
+                    if(c.getNumber().toUpperCase().contains(number.toUpperCase())){
                     	unsortedResults.add(c);
                     	found = true;
                     }
@@ -101,13 +100,41 @@ public class ScheduleBuilderManager {
 							}
 						}
 						
-						if(!present){
+						if(!present && checkSectionsPresent(selected)){
 							window.getSearchResults().removeElement(selected);
 							window.getSelectedCourses().addElement(selected);
 						}
 					}
 				}
 			}
+		}
+		/**
+		 * Check if all the required sections for each course have at least one open section
+		 * 
+		 * @param selected The list of courses to check
+		 * @return Whether all sections that should be present are present
+		 */
+		private boolean checkSectionsPresent(Course c) {
+			boolean toReturn = true;
+			
+			if(c.shouldHaveSection("LAB") && c.getLab() == null) {
+                JOptionPane.showMessageDialog(null, c.getNumber() + " has no open LAB sections", "Error", JOptionPane.ERROR_MESSAGE);
+                toReturn = false;
+			}	
+			else if(c.shouldHaveSection("QZ") && c.getQuiz() == null) {
+                JOptionPane.showMessageDialog(null, c.getNumber() + " has no open QZ sections", "Error", JOptionPane.ERROR_MESSAGE);
+                toReturn = false;
+			}
+			else if(c.shouldHaveSection("REC") && c.getRec() == null) {
+                JOptionPane.showMessageDialog(null, c.getNumber() + " has no open REC sections", "Error", JOptionPane.ERROR_MESSAGE);
+                toReturn = false;
+			}
+			else if(c.shouldHaveSection("LEC") && (c.getSections() == null || c.getSections().size() == 0)) {
+                JOptionPane.showMessageDialog(null, c.getNumber() + " has no open LEC/other sections", "Error", JOptionPane.ERROR_MESSAGE);
+                toReturn = false;
+			}
+			
+			return toReturn;
 		}
 
 		@Override

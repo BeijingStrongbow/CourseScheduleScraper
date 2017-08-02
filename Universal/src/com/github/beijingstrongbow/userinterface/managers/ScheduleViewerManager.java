@@ -47,7 +47,7 @@ public class ScheduleViewerManager {
 			return false;
 		}
         validSchedules.clear();
-
+        
         iterateSections(selected, 0, new ArrayList<Section>());
         
         if(validSchedules.size() <= 0){

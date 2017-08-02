@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class Course implements Comparable<Course>{
 	
 	/**
-	 * The list of all courses
+	 * The list of all courses. The key is the course name
 	 */
 	public static HashMap<String, Course> courses = new HashMap<String, Course>();
 	
@@ -47,6 +47,26 @@ public class Course implements Comparable<Course>{
 	 * it is required that each student enroll in one of these sections
 	 */
 	private Course _lab;
+	
+	/**
+	 * Whether this course should have lecture sections
+	 */
+	private boolean _hasLec = false;
+	
+	/**
+	 * Whether this course should have lab sections
+	 */
+	private boolean _hasLab = false;
+	
+	/*
+	 * Whether this course should have quiz sections
+	 */
+	private boolean _hasQz = false;
+	
+	/**
+	 * Whether this course should have rec sections
+	 */
+	private boolean _hasRec = false;
 	
 	/**
 	 * Get the course number (i.e. CIS300)
@@ -338,5 +358,48 @@ public class Course implements Comparable<Course>{
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * Set whether a section type should be included when making the schedule.
+	 * 
+	 * @param type The type of section. Valid values are "LAB", "STD", "REC", "QZ", and "LEC".
+	 */
+	public void setShouldHaveSection(String type) {
+		switch(type) {
+			case "LAB":
+			case "STD":
+				_hasLab = true;
+				break;
+			case "REC":
+				_hasRec = true;
+				break;
+			case "QZ":
+				_hasQz = true;
+				break;
+			default:
+				_hasLec = true;
+				break;
+		}
+	}
+	
+	/**
+	 * Get whether this course should have a certain type of section
+	 * 
+	 * @param type The type of section to check. Valid values are LEC, LAB, QZ, or REC
+	 * @return Whether this course should have a certain type of section
+	 */
+	public boolean shouldHaveSection(String type) {
+		switch(type) {
+			case "LAB":
+			case "STD":
+				return _hasLab;
+			case "REC":
+				return _hasRec;
+			case "QZ":
+				return _hasQz;
+			default:
+				return _hasLec;
+		}
 	}
 }

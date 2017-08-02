@@ -172,8 +172,8 @@ public class CalendarPanel extends JPanel{
 		for(char day : s.getDays().toCharArray()){
 			for(int i = 0; i < columns.length; i++){
 				if(columns[i].getDayLetter() == day){
-					x = (int) (columns[i].getX() + 1.0/8 * this.width);
-					width = (int) (0.75 * this.width);
+					x = (int) (columns[i].getX());
+					width = (int) (this.width);
 				}
 			}
 		
