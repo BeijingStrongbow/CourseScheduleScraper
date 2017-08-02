@@ -118,7 +118,7 @@ public class ScheduleViewerWindow {
 		uxSchedulesList = new JList<String>();
 		uxSchedulesList.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		uxSchedulesList.setModel(schedules);
-		uxSchedulesList.addMouseListener(manager.new ShowDetailsListener());
+		uxSchedulesList.addMouseListener(manager.new ShowCalendarListener());
 		
 		JScrollPane scrollPane1 = new JScrollPane();
 		scrollPane1.setViewportView(uxSchedulesList);
@@ -134,13 +134,13 @@ public class ScheduleViewerWindow {
 		
 		JButton uxViewDetailsButton = new JButton("View Details"); 
 		uxViewDetailsButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxViewDetailsButton, "6, 5");
+		frame.getContentPane().add(uxViewDetailsButton, "6, 6");
 		uxViewDetailsButton.addActionListener(manager.new ShowDetailsListener());
 		
 		JButton uxViewCalendarButton = new JButton("View Calendar");
 		uxViewCalendarButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxViewCalendarButton, "6, 6");
-		uxViewCalendarButton.addActionListener(manager.new ViewCalendarListener());
+		frame.getContentPane().add(uxViewCalendarButton, "6, 5");
+		uxViewCalendarButton.addActionListener(manager.new ShowCalendarListener());
 		
 		JLabel uxNarrowResultsLabel = new JLabel("Narrow Results");
 		uxNarrowResultsLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));

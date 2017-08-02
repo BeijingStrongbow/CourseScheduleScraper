@@ -23,6 +23,10 @@ public class ScheduleViewerManager {
 	
 	private ScheduleViewerWindow window;
 	
+	private boolean isCalendarMode = true;
+	
+	private int selectedIndex = -1;
+	
 	private enum SearchCriteria{
 		INSTRUCTOR,
 		START_TIME,
@@ -94,7 +98,6 @@ public class ScheduleViewerManager {
 	
 	private SearchCriteria getSearchCriteria(){
 		
-		String sectionTypeText = window.getSectionTypeText();
 		String startTimeText = window.getStartTimeText();
 		String sectionNumberText = window.getSectionNumberText();
 		String instructorText = window.getInstructorText();
@@ -118,47 +121,6 @@ public class ScheduleViewerManager {
             return SearchCriteria.INVALID;
         }
     }
-	
-	public class ShowDetailsListener implements ActionListener, MouseListener{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			if(e.getClickCount() == 2){
-				showDetails();
-			}
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {}
-
-		@Override
-		public void mouseExited(MouseEvent e) {}
-
-		@Override
-		public void actionPerformed(ActionEvent e){
-			showDetails();
-		}
-		
-		private void showDetails(){
-			window.viewDetails();
-            window.getDetailsList().removeAllElements();
-            int index = window.getSelectedSchedule();
-            
-            if(index >= 0){
-            	ArrayList<Section> schedule = validSchedules.get(window.getSelectedSchedule());
-                Section.sort(schedule);
-                for(Section s : schedule){
-                    window.getDetailsList().addElement(s);
-                }
-            }
-        }
-	}
 	
 	public class NarrowResultsListener implements ActionListener{
 
@@ -265,25 +227,90 @@ public class ScheduleViewerManager {
 		}
 	}
 	
-	public class ViewCalendarListener implements ActionListener{
+	public class ShowCalendarListener implements ActionListener, MouseListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int index = window.getSelectedSchedule();
-			
-			if(index < 0){
-				return;
-			}
-			else{
-				int numAppointments = 0;
-				
-				for(Section s : validSchedules.get(index)){
-					if(s.isAppointment()) numAppointments++;
+			isCalendarMode = true;
+			showCalendar();
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if(selectedIndex != window.getSelectedSchedule()) {
+				selectedIndex = window.getSelectedSchedule();
+				if(isCalendarMode) {
+					showCalendar();
 				}
-				
-				CalendarPanel calendar = new CalendarPanel(validSchedules.get(index));
-				window.viewCalendar(calendar, numAppointments);
+				else {
+					showDetails();
+				}
 			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+	
+	public class ShowDetailsListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e){
+			showDetails();
+			isCalendarMode = false;
+		}
+	}
+	
+	private void showDetails(){
+		window.viewDetails();
+        window.getDetailsList().removeAllElements();
+        int index = window.getSelectedSchedule();
+        
+        if(index >= 0){
+        	ArrayList<Section> schedule = validSchedules.get(window.getSelectedSchedule());
+            Section.sort(schedule);
+            for(Section s : schedule){
+                window.getDetailsList().addElement(s);
+            }
+        }
+    }
+
+	private void showCalendar() {
+		int selectedIndex = window.getSelectedSchedule();
+		
+		if(selectedIndex < 0){
+			return;
+		}
+		else{
+			int numAppointments = 0;
+			
+			for(Section s : validSchedules.get(selectedIndex)){
+				if(s.isAppointment()) numAppointments++;
+			}
+			
+			CalendarPanel calendar = new CalendarPanel(validSchedules.get(selectedIndex));
+			window.viewCalendar(calendar, numAppointments);
 		}
 	}
 }
