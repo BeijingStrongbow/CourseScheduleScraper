@@ -8,7 +8,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Paint;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -41,7 +44,7 @@ public class CalendarPanel extends JPanel{
 	
 	private ArrayList<Section> sections;
 	
-	private HashMap<Section, Color> sectionsAdded;
+	private static HashMap<CalendarBlock, Section> sectionsAdded;
 	
 	public CalendarPanel(ArrayList<Section> sections){
 		setLayout(new GridLayout(1, 1));
@@ -92,7 +95,7 @@ public class CalendarPanel extends JPanel{
 		
 		this.colors = colors;
 		
-		sectionsAdded = new HashMap<Section, Color>();
+		sectionsAdded = new HashMap<CalendarBlock, Section>();
 	}
 	
 	@Override
@@ -201,28 +204,53 @@ public class CalendarPanel extends JPanel{
 			textY = (int) (y + metrics.getHeight() - 5);
 			
 			boolean colorSet = false;
+			CalendarBlock block = new CalendarBlock(new Rectangle(x, y, width, height));
 			
-			for(Section e : sectionsAdded.keySet()){
-				if(e.getCourse().equals(s.getCourse())){
-					graphics.setPaint(sectionsAdded.get(e));
-					sectionsAdded.put(s, sectionsAdded.get(e));
+			for(CalendarBlock b : sectionsAdded.keySet()){
+				if(sectionsAdded.get(b).getCourse().equals(s.getCourse())){
+					//graphics.setPaint(sectionsAdded.get(e).getColor());
+					block.setColor(b.getColor());
+					//sectionsAdded.put(s, sectionsAdded.get(e));
 					colorSet = true;
 					break;
 				}
 			}
 			
 			if(!colorSet){
-				graphics.setPaint(colors[currentColor]);
-				sectionsAdded.put(s, colors[currentColor]);
+				//graphics.setPaint(colors[currentColor]);
+				block.setColor(colors[currentColor]);
+				//sectionsAdded.put(s, colors[currentColor]);
 				
 				if(currentColor < colors.length - 1) currentColor++;
 				else currentColor = 0;
 			}
 			
-			graphics.fill(new Rectangle(x, y, width, height));
+			sectionsAdded.put(block, s);
+			//graphics.fill(new Rectangle(x, y, width, height));
+			block.paint(graphics);
 			drawString(s.getCourse().getNumber(), textX, textY);
 		}
 		
+	}
+	
+	/**
+	 * Get the Section that was clicked
+	 * 
+	 * @param e The MouseEvent describing the click event
+	 * @return The Section that was clicked
+	 */
+	public Section getSectionClicked(MouseEvent e) {
+		Point click = new Point(e.getX(), e.getY());
+		
+		for(CalendarBlock b : sectionsAdded.keySet()) {
+			Rectangle r = b.getRectangle();
+
+			if(b.getRectangle().contains(click)) {
+				return sectionsAdded.get(b);
+			}
+		}
+		
+		return null;
 	}
 	
 	private class Row {
@@ -271,5 +299,99 @@ public class CalendarPanel extends JPanel{
 				return day.charAt(0);
 			}
 		}
+	}
+	
+	/**
+	 * Represents a rectangle on the calendar
+	 * 
+	 * @author ericd
+	 */
+	private class CalendarBlock {
+		
+		/**
+		 * The Rectangle instance defining the bounds of the block
+		 */
+		private Rectangle rectangle;
+		
+		/**
+		 * The color the block should be drawn in
+		 */
+		private Color color;
+		
+		/**
+		 * Initialize this CalendarBlock with only a bounds, and no color
+		 * 
+		 * @param rectangle The Rectangle instance defining the bounds of the block
+		 */
+		private CalendarBlock(Rectangle rectangle) {
+			this.rectangle = rectangle;
+		}
+		
+		/**
+		 * Initialize this CalendarBlock with only a color, and no bounds
+		 * 
+		 * @param color The color the block should be drawn in
+		 */
+		private CalendarBlock(Color color) {
+			this.color = color;
+		}
+		
+		/**
+		 * Initialize a new block on the calendar
+		 * 
+		 * @param rectangle The Rectangle instance defining the bounds of the block
+		 * @param color The color the block should be drawn in
+		 */
+		private CalendarBlock(Rectangle rectangle, Color color) {
+			this.rectangle = rectangle;
+			this.color = color;
+		}
+		
+		/**
+		 * Get the color of this CalendarBlock
+		 * 
+		 * @return The color of this CalendarBlock
+		 */
+		private Color getColor() {
+			return color;
+		}
+		
+		/**
+		 * Get the Rectangle that defines the bounds of this CalendarBlock
+		 * 
+		 * @return The Rectangle that defines the bounds of this CalendarBlock
+		 */
+		private Rectangle getRectangle() {
+			return rectangle;
+		}
+		
+		/**
+		 * Set the Color this block should be drawn in
+		 * 
+		 * @param color The Color this block should be drawn in
+		 */
+		private void setColor(Color color) {
+			this.color = color;
+		}
+		
+		/**
+		 * Set the Rectangle defining the bounds of this block
+		 * 
+		 * @param rectangle The Rectangle defining the bounds of this block
+		 */
+		private void setRectangle(Rectangle rectangle) {
+			this.rectangle = rectangle;
+		}
+		
+		/**
+		 * Draw the block on the calendar
+		 * 
+		 * @param graphics The Graphics2D instance that should be used to draw the block
+		 */
+		private void paint(Graphics2D graphics) {
+			graphics.setPaint(color);
+			graphics.fill(rectangle);
+		}
+		
 	}
 }

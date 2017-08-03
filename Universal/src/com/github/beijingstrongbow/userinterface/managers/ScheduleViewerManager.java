@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -26,6 +28,8 @@ public class ScheduleViewerManager {
 	private boolean isCalendarMode = true;
 	
 	private int selectedIndex = -1;
+	
+	private CalendarPanel currentCalendar;
 	
 	private enum SearchCriteria{
 		INSTRUCTOR,
@@ -122,7 +126,95 @@ public class ScheduleViewerManager {
         }
     }
 	
-	public class NarrowResultsListener implements ActionListener{
+	private void showDetails(int selectedIndex){
+		window.viewDetails();
+        window.getDetailsList().removeAllElements();
+        int index = window.getSelectedSchedule();
+        
+        if(index >= 0){
+        	ArrayList<Section> schedule = validSchedules.get(window.getSelectedSchedule());
+            Section.sort(schedule);
+            for(Section s : schedule){
+                window.getDetailsList().addElement(s);
+            }
+        }
+    }
+
+	private void showCalendar(int selectedIndex) {
+		
+		if(selectedIndex < 0){
+			return;
+		}
+		else{
+			int numAppointments = 0;
+			
+			for(Section s : validSchedules.get(selectedIndex)){
+				if(s.isAppointment()) numAppointments++;
+			}
+			
+			currentCalendar = new CalendarPanel(validSchedules.get(selectedIndex));
+			currentCalendar.addMouseListener(new CalendarClickListener());
+			window.viewCalendar(currentCalendar, numAppointments);
+		}
+	}
+	
+	/**
+	 * Remove a list of schedules from the list of possible schedules on the UI
+	 * 
+	 * @param toRemove The list of the indices of the schedules to remove
+	 */
+	private void removeSchedules(ArrayList<Integer> toRemove) {
+		if(toRemove.size() == validSchedules.size()){
+        	JOptionPane.showMessageDialog(null, "No schedules found", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            for(int i = toRemove.size() - 1; i >= 0; i--){
+                validSchedules.remove(toRemove.get(i).intValue());
+                window.getSchedulesList().remove(toRemove.get(i).intValue());
+            }
+            window.setDefaultText();
+        }
+	}
+	
+	public class CalendarClickListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			Section clicked = currentCalendar.getSectionClicked(e);
+			
+			int choice = JOptionPane.showOptionDialog(null, "Are you sure you want to narrow results by requiring " + clicked.getCourse().getNumber() + " to be at " + clicked.getStartTime() + " on " + clicked.getDays() + "?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						
+			ArrayList<Integer> toRemove = new ArrayList<Integer>();
+			
+			if(clicked != null && choice == 0) {
+                for (int i = 0; i < validSchedules.size(); i++){
+                    for(Section s : validSchedules.get(i)){
+                        if (s.getCourse().getNumber().equals(clicked.getCourse().getNumber()) && s.getType().equals(clicked.getType()) && s.getNumber() != clicked.getNumber()){
+                            toRemove.add(i);
+                        }
+                    }
+                }
+                
+                removeSchedules(toRemove);
+                JOptionPane.showMessageDialog(null, "Results narrowed. All schedules now have section number " + clicked.getNumber() + " for " + clicked.getCourse().getNumber());
+			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {}
+
+		@Override
+		public void mouseExited(MouseEvent e) {}
+		
+	}
+	
+	public class NarrowResultsListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -212,64 +304,75 @@ public class ScheduleViewerManager {
             }
 
 
-            if(toRemove.size() == validSchedules.size()){
-            	JOptionPane.showMessageDialog(null, "No schedules found", "Error", JOptionPane.ERROR_MESSAGE);
-
-                return;
-            }
-            else{
-                for(int i = toRemove.size() - 1; i >= 0; i--){
-                    validSchedules.remove(toRemove.get(i).intValue());
-                    window.getSchedulesList().remove(toRemove.get(i).intValue());
-                }
-                window.setDefaultText();
-            }
+            removeSchedules(toRemove);
 		}
 	}
 	
-	public class ShowCalendarListener implements ActionListener, MouseListener {
+	public class ShowCalendarListener implements ActionListener, MouseListener, KeyListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			isCalendarMode = true;
-			showCalendar();
+			showCalendar(window.getSelectedSchedule());
 		}
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			if(selectedIndex != window.getSelectedSchedule()) {
-				selectedIndex = window.getSelectedSchedule();
-				if(isCalendarMode) {
-					showCalendar();
+			changeScheduleView(window.getSelectedSchedule());
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if(e.getKeyCode() == KeyEvent.VK_UP) {
+				if(window.getSelectedSchedule() != selectedIndex - 1 && selectedIndex > 0) {
+					changeScheduleView(selectedIndex - 1);
 				}
 				else {
-					showDetails();
+					changeScheduleView(window.getSelectedSchedule());
+				}
+			}
+			else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+				if(window.getSelectedSchedule() != selectedIndex + 1 && selectedIndex < window.getSchedulesList().size() - 1) {
+					changeScheduleView(selectedIndex + 1);
+				}
+				else {
+					changeScheduleView(window.getSelectedSchedule());
 				}
 			}
 		}
+		
+		@Override
+		public void keyTyped(KeyEvent e) {}
+		
+		@Override
+		public void mousePressed(MouseEvent e) {}
 
 		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mouseReleased(MouseEvent e) {}
 
 		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mouseEntered(MouseEvent e) {}
 
 		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mouseExited(MouseEvent e) {}
 
 		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
+		public void keyReleased(KeyEvent e) {}
+		
+		/**
+		 * Change the calendar or details view to match the selected index in the schedules list
+		 */
+		private void changeScheduleView(int index) {
+			System.out.println(index + 1);
+			if(selectedIndex != index) {
+				selectedIndex = index;
+				if(isCalendarMode) {
+					showCalendar(index);
+				}
+				else {
+					showDetails(index);
+				}
+			}
 		}
 	}
 	
@@ -277,40 +380,8 @@ public class ScheduleViewerManager {
 
 		@Override
 		public void actionPerformed(ActionEvent e){
-			showDetails();
+			showDetails(window.getSelectedSchedule());
 			isCalendarMode = false;
-		}
-	}
-	
-	private void showDetails(){
-		window.viewDetails();
-        window.getDetailsList().removeAllElements();
-        int index = window.getSelectedSchedule();
-        
-        if(index >= 0){
-        	ArrayList<Section> schedule = validSchedules.get(window.getSelectedSchedule());
-            Section.sort(schedule);
-            for(Section s : schedule){
-                window.getDetailsList().addElement(s);
-            }
-        }
-    }
-
-	private void showCalendar() {
-		int selectedIndex = window.getSelectedSchedule();
-		
-		if(selectedIndex < 0){
-			return;
-		}
-		else{
-			int numAppointments = 0;
-			
-			for(Section s : validSchedules.get(selectedIndex)){
-				if(s.isAppointment()) numAppointments++;
-			}
-			
-			CalendarPanel calendar = new CalendarPanel(validSchedules.get(selectedIndex));
-			window.viewCalendar(calendar, numAppointments);
 		}
 	}
 }

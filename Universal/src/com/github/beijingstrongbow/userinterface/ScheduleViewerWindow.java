@@ -119,6 +119,7 @@ public class ScheduleViewerWindow {
 		uxSchedulesList.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		uxSchedulesList.setModel(schedules);
 		uxSchedulesList.addMouseListener(manager.new ShowCalendarListener());
+		uxSchedulesList.addKeyListener(manager.new ShowCalendarListener());
 		
 		JScrollPane scrollPane1 = new JScrollPane();
 		scrollPane1.setViewportView(uxSchedulesList);

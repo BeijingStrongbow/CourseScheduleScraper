@@ -1,6 +1,6 @@
 TO DO (for the Universal version - Windows is deprecated)
 * ~~BUG: Don't allow schedules with a class that has, for example, no lab sections open~~
-* Click on the calendar view to "lock" a course
+* ~~Click on the calendar view to "lock" a course~~
 * ~~Make the boxes a little bigger, so it looks like you have more classes~~
 * BUG: Include online courses (probably loaded similarly to appointment sections)
 * ~~When you're on calendar "mode" or detail "mode," change the schedule being displayed when the selection changes~~
@@ -11,3 +11,7 @@ TO DO (for the Universal version - Windows is deprecated)
 * Export as an Excel file (probably as a CSV), or allow printing the detail view
 * Add check boxes to limit a section to only T/U or M/W/F
 * ~~Make sure all sections for a course are the same color (including rec, lab, etc.)~~
+* Auto-update feature (probably pull the jar from github)
+* ~~Allow using arrow keys to scroll between schedules~~
+* ~~Keep the same colors for each class on every schedule option~~
+* Automatically clear example text from text fields when the user clicks on it
