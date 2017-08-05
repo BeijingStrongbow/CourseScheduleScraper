@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Section;
@@ -376,7 +377,7 @@ public class ScheduleViewerManager {
 		}
 	}
 	
-	public class ShowDetailsListener implements ActionListener{
+	public class ShowDetailsListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e){

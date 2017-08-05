@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 public class ScheduleViewerWindow {
 
 	private JFrame frame;
+	
 	private JTextField uxCourseNumberField;
 	private JTextField uxSectionTypeField;
 	private JTextField uxStartTimeField;

@@ -39,6 +39,10 @@ public class ScheduleBuilderWindow {
 	private DefaultListModel<Course> selectedCourses;
 	
 	private ScheduleBuilderManager manager;
+	
+	private final String courseNumberDefaultText = "(e.g. CHM110)";
+	
+	private final String courseNameDefaultText = "(e.g. General Chemistry)";
 
 	/**
 	 * Create the application.
@@ -132,20 +136,24 @@ public class ScheduleBuilderWindow {
 		frame.getContentPane().add(scrollPane, "8, 6, 3, 24, fill, fill");
 		
 		uxCourseNumberField = new JTextField();
-		uxCourseNumberField.setText("(e.g. CHM110)");
+		uxCourseNumberField.setText(courseNumberDefaultText);
+		uxCourseNumberField.setForeground(Color.GRAY);
 		uxCourseNumberField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxCourseNumberField, "3, 8, 4, 1, fill, default");
 		uxCourseNumberField.setColumns(10);
+		uxCourseNumberField.addFocusListener(manager.new TextFieldDefaultHandler());
 		
 		JLabel uxCourseNameLabel = new JLabel("Course name");
 		uxCourseNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxCourseNameLabel, "3, 10, 7, 1");
 		
 		uxCourseNameField = new JTextField();
-		uxCourseNameField.setText("(e.g. General Chemistry)");
+		uxCourseNameField.setText(courseNameDefaultText);
+		uxCourseNameField.setForeground(Color.GRAY);
 		uxCourseNameField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxCourseNameField, "3, 12, 4, 1, fill, default");
 		uxCourseNameField.setColumns(10);
+		uxCourseNameField.addFocusListener(manager.new TextFieldDefaultHandler());
 		
 		JButton uxSearchButton = new JButton("Search");
 		uxSearchButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -195,8 +203,16 @@ public class ScheduleBuilderWindow {
 		uxCourseNameField.setText(text);
 	}
 	
+	public void setCourseNameColor(Color c) {
+		uxCourseNameField.setForeground(c);
+	}
+	
 	public void setCourseNumSearchText(String text){
 		uxCourseNumberField.setText(text);
+	}
+	
+	public void setCourseNumColor(Color c) {
+		uxCourseNumberField.setForeground(c);
 	}
 	
 	public DefaultListModel<Course> getSearchResults(){
@@ -214,6 +230,23 @@ public class ScheduleBuilderWindow {
 		}
 		else if(selectedCourses.size() == 1){
 			selectedCourses.remove(0);
+		}
+	}
+	
+	public void setDefaultText(JTextField field) {
+		if(uxCourseNumberField.equals(field)) {
+			field.setText(courseNumberDefaultText);
+			field.setForeground(Color.GRAY);
+		}
+		else if(uxCourseNameField.equals(field)) {
+			field.setText(courseNameDefaultText);
+			field.setForeground(Color.GRAY);
+		}
+		else {
+			uxCourseNumberField.setText(courseNumberDefaultText);
+			uxCourseNumberField.setForeground(Color.GRAY);
+			uxCourseNameField.setText(courseNameDefaultText);
+			uxCourseNameField.setForeground(Color.GRAY);
 		}
 	}
 }

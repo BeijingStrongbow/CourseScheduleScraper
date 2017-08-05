@@ -1,8 +1,11 @@
 package com.github.beijingstrongbow.userinterface.managers;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -10,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Main;
@@ -75,8 +79,7 @@ public class ScheduleBuilderManager {
             	searchResults.addElement(c);
             }
             
-            window.setCourseNameSearchText("");
-            window.setCourseNumSearchText("");
+            window.setDefaultText(new JTextField());
 		}
 	}
 	
@@ -212,5 +215,26 @@ public class ScheduleBuilderManager {
 	        }
 	    }
 	    return temp;
+	}
+	
+	public class TextFieldDefaultHandler implements FocusListener {
+
+		@Override
+		public void focusGained(FocusEvent e) {
+			if(e.getComponent() instanceof JTextField) {
+				JTextField field = (JTextField) e.getComponent();
+				field.setForeground(Color.BLACK);
+				field.setText("");
+			}
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			if(e.getComponent() instanceof JTextField) {
+				JTextField field = (JTextField) e.getComponent();
+				field.setForeground(Color.GRAY);
+				window.setDefaultText(field);
+			}
+		}
 	}
 }
