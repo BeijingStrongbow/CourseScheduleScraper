@@ -15,6 +15,6 @@ TO DO (for the Universal version - Windows is deprecated)
 * ~~Allow using arrow keys to scroll between schedules~~
 * ~~Keep the same colors for each class on every schedule option~~
 * ~~Automatically clear example text from text fields when the user clicks on it~~
-* BUG: Fix the "URL could not be parsed" error so that it doesn't print to the console
+* ~~BUG: Fix the "URL could not be parsed" error so that it doesn't print to the console~~
 * When a class has no lectures, it only shows "Recitation," which is confusing
   * E.g. ENGL100
