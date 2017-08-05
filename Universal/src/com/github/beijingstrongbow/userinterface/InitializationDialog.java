@@ -111,9 +111,9 @@ public class InitializationDialog{
 	}
 
 	public String getSemester(){
-		String semester = uxSemesterField.getText().toLowerCase();
+		String semester = uxSemesterField.getText();
 		
-		if(semester.equals("spring") || semester.equals("summer") || semester.equals("fall")){
+		if(semester.equalsIgnoreCase("spring") || semester.equalsIgnoreCase("summer") || semester.equalsIgnoreCase("fall")){
 			return semester;
 		}
 		else{

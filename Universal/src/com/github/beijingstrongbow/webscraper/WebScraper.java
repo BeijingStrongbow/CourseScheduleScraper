@@ -6,6 +6,8 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.JOptionPane;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -30,14 +32,22 @@ public class WebScraper {
 	 * 
 	 * @param year
 	 * @param semester
+	 * @return Whether the operation was successful
 	 */
-	public void populateDatabases(String year, String semester, LoadingProgressWindow progress){
+	public boolean populateDatabases(String year, String semester, LoadingProgressWindow progress){
 		ArrayList<URL> urls = getUrls(year, semester);
+		
+		if(urls == null) {
+			return false;
+		}
+		
 		double progressIncrement = 100.0 / urls.size();
 		for(URL url : urls){
 			scrapeUrl(url);
 			progress.addProgress(progressIncrement);
 		}
+		
+		return true;
 	}
 	
 	/**
@@ -70,7 +80,8 @@ public class WebScraper {
 			
 		}
 		catch(IOException ex){
-			System.err.println("URL could not be parsed!");
+			JOptionPane.showMessageDialog(null, "Couldn't process input " + semester + " " + year + ".", "Error", JOptionPane.ERROR_MESSAGE);
+			return null;
 		}
 		
 		
@@ -90,7 +101,7 @@ public class WebScraper {
 			html = Jsoup.parse(url, 5000);
 		}
 		catch(IOException ex){
-			System.err.print("Couldn't parse url " + url);
+			JOptionPane.showMessageDialog(null, "Couldn't parse url " + url, "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		

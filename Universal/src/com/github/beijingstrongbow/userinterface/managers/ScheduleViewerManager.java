@@ -1,13 +1,18 @@
 package com.github.beijingstrongbow.userinterface.managers;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -34,7 +39,6 @@ public class ScheduleViewerManager {
 	
 	private enum SearchCriteria{
 		INSTRUCTOR,
-		START_TIME,
 		SECTION_NUMBER,
 		INVALID;
 	}
@@ -103,22 +107,14 @@ public class ScheduleViewerManager {
 	
 	private SearchCriteria getSearchCriteria(){
 		
-		String startTimeText = window.getStartTimeText();
 		String sectionNumberText = window.getSectionNumberText();
 		String instructorText = window.getInstructorText();
 		
-        if (startTimeText.length() > 0 && startTimeText.charAt(0) != '(' &&
-            (instructorText.length() == 0 || instructorText.charAt(0) == '(') &&
-            (sectionNumberText.equals("") || sectionNumberText.charAt(0) == '(')){
-            return SearchCriteria.START_TIME;
-        }
-        else if (instructorText.length() > 0 && instructorText.charAt(0) != '(' &&
-            (startTimeText.length() == 0 || startTimeText.charAt(0) == '(') &&
+        if (instructorText.length() > 0 && instructorText.charAt(0) != '(' &&
             (sectionNumberText.equals("") || sectionNumberText.charAt(0) == '(')){
             return SearchCriteria.INSTRUCTOR;
         }
         else if(!sectionNumberText.equals("") &&
-            (startTimeText.length() == 0 || startTimeText.charAt(0) == '(') &&
             (instructorText.length() == 0 || instructorText.charAt(0) == '(')){
             return SearchCriteria.SECTION_NUMBER;
         }
@@ -173,7 +169,7 @@ public class ScheduleViewerManager {
                 validSchedules.remove(toRemove.get(i).intValue());
                 window.getSchedulesList().remove(toRemove.get(i).intValue());
             }
-            window.setDefaultText();
+            window.setDefaultText(null);
         }
 	}
 	
@@ -221,81 +217,70 @@ public class ScheduleViewerManager {
 		public void actionPerformed(ActionEvent e) {
 			SearchCriteria searchType = getSearchCriteria();
             String courseNumber = window.getCourseNumberText().trim();
-            String sectionType = window.getSectionTypeText().trim();
+            courseNumber = courseNumber.replace(" ", "");
             ArrayList<Integer> toRemove = new ArrayList<Integer>();
 
-            if(!sectionType.equals("")){
-                if (sectionType.toUpperCase().contains("Q")){
-                    sectionType = "QZ";
-                }
-                else if (sectionType.toUpperCase().contains("R")){
-                    sectionType = "REC";
-                }
-                else if (sectionType.toUpperCase().contains("L") || sectionType.toUpperCase().contains("D")){
-                    sectionType = "LAB";
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Invalid section type! Valid types are Lab, Std, Rec, and Quiz", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-            else{
-                sectionType = "LEC";
-            }
-
-            if(searchType == SearchCriteria.START_TIME){
-                try{
-                    String time = window.getStartTimeText();
-                    int hour = Integer.parseInt(time.substring(0, time.indexOf(':')));
-                    int minute = Integer.parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(':') + 3));
-                    if (time.contains("p")){
-                        hour += 12;
-                    }
-
-                    Time startTime = new Time(hour, minute);
-                    System.out.println(hour + " " + minute);
-                    for(int i = 0; i < validSchedules.size(); i++){
-                        for (Section s : validSchedules.get(i)){
-                            if (s.getCourse().getNumber().equals(courseNumber) && s.getType().equals(sectionType) && !startTime.equals(s.getStartTime())){
-                                toRemove.add(i);
-                            }
-                        }
-                    }
-                }
-                catch (IndexOutOfBoundsException ex){
-                	JOptionPane.showMessageDialog(null, "Time should be formatted as hh:mm/h:mm a.m./p.m. (e.g. 4:30 p.m.)", "Error", JOptionPane.ERROR_MESSAGE);
-                	return;
-                }
-                catch(NumberFormatException ex){
-                	JOptionPane.showMessageDialog(null, "Time should be formatted as hh:mm/h:mm a.m./p.m. (e.g. 4:30 p.m.)", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-            else if(searchType == SearchCriteria.INSTRUCTOR){
+            if(searchType == SearchCriteria.INSTRUCTOR){
                 String instructor = window.getInstructorText();
 
                 for(int i = 0; i < validSchedules.size(); i++){
                     for(Section s : validSchedules.get(i)){
-                        if(s.getCourse().getNumber().equals(courseNumber) && s.getType().equals(sectionType) && !s.getInstructor().toLowerCase().equals(instructor.toLowerCase())){
+                        if(s.getCourse().getNumber().equals(courseNumber) && s.getType().equals("LEC") && !s.getInstructor().toLowerCase().equals(instructor.toLowerCase())){
                             toRemove.add(i);
                         }
                     }
                 }
             }
             else if(searchType == SearchCriteria.SECTION_NUMBER){
-                try{
-                    int number = Integer.parseInt(window.getSectionNumberText());
-
-                    for (int i = 0; i < validSchedules.size(); i++){
-                        for(Section s : validSchedules.get(i)){
-                            if (s.getCourse().getNumber().equals(courseNumber) && s.getType().equals(sectionType) && s.getNumber() != number){
-                                toRemove.add(i);
-                            }
+            	Course course = null;
+            	String sectionType = "";
+            	int sectionNumber;
+            	
+            	try {
+                	sectionNumber = Integer.parseInt(window.getSectionNumberText());
+            	}
+            	catch(NumberFormatException ex) {
+                	JOptionPane.showMessageDialog(null, "Section number must be an integer", "Error", JOptionPane.ERROR_MESSAGE);
+                	return;
+            	}
+            	
+            	for(Course c : Course.courses.values()) {
+            		if(c.getNumber().toUpperCase().equals(courseNumber.toUpperCase())) {
+            			course = c;
+            			break;
+            		}
+            	}
+            	
+            	if(course == null) {
+                	JOptionPane.showMessageDialog(null, "Invalid course number", "Error", JOptionPane.ERROR_MESSAGE);
+                	return;
+            	}
+            	
+            	for(Section s : course.getSections()) {
+            		if(s.getNumber() == sectionNumber) sectionType = "LEC";
+            	}
+            	if(course.getLab() != null && sectionType.equals("")) {
+            		for(Section s : course.getLab().getSections()) {
+            			if(s.getNumber() == sectionNumber) sectionType = "LAB";
+            		}
+            	}
+            	if(course.getQuiz() != null && sectionType.equals("")) {
+            		for(Section s : course.getQuiz().getSections()) {
+            			if(s.getNumber() == sectionNumber) sectionType = "QZ";
+            		}
+            	}
+            	if(course.getRec() != null && sectionType.equals("")) {
+            		for(Section s : course.getRec().getSections()) {
+            			if(s.getNumber() == sectionNumber) sectionType = "REC";
+            		}
+            	}
+            	
+            	for (int i = 0; i < validSchedules.size(); i++){
+                    for(Section s : validSchedules.get(i)){
+                        if (s.getCourse().getNumber().equals(courseNumber) && s.getType().equals(sectionType) && s.getNumber() != sectionNumber){
+                            toRemove.add(i);
                         }
                     }
-                }
-                catch (NumberFormatException ex){
-                	JOptionPane.showMessageDialog(null, "Invalid section number", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
                 }
             }
             else{
@@ -364,7 +349,6 @@ public class ScheduleViewerManager {
 		 * Change the calendar or details view to match the selected index in the schedules list
 		 */
 		private void changeScheduleView(int index) {
-			System.out.println(index + 1);
 			if(selectedIndex != index) {
 				selectedIndex = index;
 				if(isCalendarMode) {
@@ -384,5 +368,58 @@ public class ScheduleViewerManager {
 			showDetails(window.getSelectedSchedule());
 			isCalendarMode = false;
 		}
+	}
+	
+	/**
+	 * Handles showing the default text in each text field (the example text)
+	 * 
+	 * @author ericd
+	 */
+	public class TextFieldDefaultHandler implements FocusListener {
+
+		@Override
+		public void focusGained(FocusEvent e) {
+			if(e.getComponent() instanceof JTextField) {
+				JTextField field = (JTextField) e.getComponent();
+				
+				if(field.getForeground().equals(Color.GRAY)) {
+					field.setForeground(Color.BLACK);
+					field.setText("");
+				}
+			}
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			if(e.getComponent() instanceof JTextField) {
+				JTextField field = (JTextField) e.getComponent();
+				if(field.getText().equals("")) {
+					field.setForeground(Color.GRAY);
+					window.setDefaultText(field);
+				}
+			}
+		}
+	}
+	
+	public class WindowCloseListener implements WindowListener {
+
+		@Override
+		public void windowOpened(WindowEvent e) {}
+		@Override
+		public void windowClosing(WindowEvent e) {
+			selectedIndex = -1;
+		}
+
+		@Override
+		public void windowClosed(WindowEvent e) {
+		}
+		@Override
+		public void windowIconified(WindowEvent e) {	}
+		@Override
+		public void windowDeiconified(WindowEvent e) {	}
+		@Override
+		public void windowActivated(WindowEvent e) {}
+		@Override
+		public void windowDeactivated(WindowEvent e) {}
 	}
 }

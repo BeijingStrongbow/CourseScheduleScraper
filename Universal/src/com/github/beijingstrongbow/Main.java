@@ -52,8 +52,9 @@ public class Main {
 				case PROCESS_WEB_DATA:
 					initDialog.hideWindow();
 					progressWindow.showWindow();
-					scraper.populateDatabases(Integer.toString(initDialog.getYear()), initDialog.getSemester(), progressWindow);
-					state = ProgramState.SCHEDULE_BUILDER;
+					boolean success = scraper.populateDatabases(Integer.toString(initDialog.getYear()), initDialog.getSemester(), progressWindow);
+					if(success) state = ProgramState.SCHEDULE_BUILDER;
+					else state = ProgramState.INITIALIZATION;
 					break;
 				case SCHEDULE_BUILDER:
 					builder.showWindow();

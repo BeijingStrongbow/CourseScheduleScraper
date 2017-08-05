@@ -27,10 +27,12 @@ public class ScheduleViewerWindow {
 	private JFrame frame;
 	
 	private JTextField uxCourseNumberField;
-	private JTextField uxSectionTypeField;
-	private JTextField uxStartTimeField;
 	private JTextField uxSectionNumberField;
 	private JTextField uxInstructorField;
+	
+	private final String courseNumberDefaultText = "(e.g. PHYS214)";
+	private final String sectionNumberDefaultText = "(e.g. 11451)";
+	private final String instructorDefaultText = "(e.g. Higgins, Daniel A)";
 	
 	private JList<String> uxSchedulesList;
 	
@@ -46,9 +48,9 @@ public class ScheduleViewerWindow {
 	
 	private JLabel uxAppointmentWarning;
 	
-	private final String appointmentWarning = "*There is an appointment section not shown";
+	private final String appointmentWarning = "There is an appointment section not shown";
 	
-	private final String appointmentsWarning = "*There are appointment sections not shown";
+	private final String appointmentsWarning = "There are appointment sections not shown";
 
 	/**
 	 * Create the application.
@@ -157,10 +159,6 @@ public class ScheduleViewerWindow {
 		uxCourseNumberLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxCourseNumberLabel, "4, 11, 3, 1");
 		
-		JLabel uxStartTimeLabel = new JLabel("Start Time");
-		uxStartTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxStartTimeLabel, "8, 11");
-		
 		JLabel uxInstructorLabel = new JLabel("Instructor");
 		uxInstructorLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxInstructorLabel, "10, 11");
@@ -169,49 +167,39 @@ public class ScheduleViewerWindow {
 		frame.getContentPane().add(uxInstructorSubtitle, "11, 11");
 		
 		uxCourseNumberField = new JTextField();
+		uxCourseNumberField.setText(courseNumberDefaultText);
 		uxCourseNumberField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxCourseNumberField, "4, 12, 3, 1, fill, default");
 		uxCourseNumberField.setColumns(10);
-		
-		uxStartTimeField = new JTextField();
-		uxStartTimeField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		uxStartTimeField.setText("(e.g. 3:40 p.m.)");
-		frame.getContentPane().add(uxStartTimeField, "8, 12, fill, default");
-		uxStartTimeField.setColumns(10);
+		uxCourseNumberField.setForeground(Color.GRAY);
+		uxCourseNumberField.addFocusListener(manager.new TextFieldDefaultHandler());
 		
 		uxInstructorField = new JTextField();
-		uxInstructorField.setText("(e.g. Higgins, Daniel A)");
+		uxInstructorField.setText(instructorDefaultText);
 		uxInstructorField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxInstructorField, "10, 12, 2, 1, fill, default");
 		uxInstructorField.setColumns(10);
+		uxInstructorField.setForeground(Color.GRAY);
+		uxInstructorField.addFocusListener(manager.new TextFieldDefaultHandler());
 		
 		JButton uxUseThisButton = new JButton("Use This");
 		uxUseThisButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(uxUseThisButton, "13, 12");
 		uxUseThisButton.addActionListener(manager.new NarrowResultsListener());
 		
-		JLabel uxSectionTypeLabel = new JLabel("Section Type");
-		uxSectionTypeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxSectionTypeLabel, "4, 14");
-		
-		JLabel uxSectionTypeSubtitle = new JLabel("Only if Lab, Rec, Qz");
-		frame.getContentPane().add(uxSectionTypeSubtitle, "6, 14");
-		
 		JLabel uxSectionNumberLabel = new JLabel("Section Number");
 		uxSectionNumberLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxSectionNumberLabel, "8, 14");
-		
-		uxSectionTypeField = new JTextField();
-		uxSectionTypeField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.getContentPane().add(uxSectionTypeField, "4, 15, 3, 1, fill, default");
-		uxSectionTypeField.setColumns(10);
+		frame.getContentPane().add(uxSectionNumberLabel, "8, 11");
 		
 		uxSectionNumberField = new JTextField();
 		uxSectionNumberField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		uxSectionNumberField.setText("(e.g. 11451)");
-		frame.getContentPane().add(uxSectionNumberField, "8, 15, fill, default");
+		uxSectionNumberField.setText(sectionNumberDefaultText);
+		frame.getContentPane().add(uxSectionNumberField, "8, 12, fill, default");
 		uxSectionNumberField.setColumns(10);
+		uxSectionNumberField.setForeground(Color.GRAY);
+		uxSectionNumberField.addFocusListener(manager.new TextFieldDefaultHandler());
 		
+		frame.addWindowListener(manager.new WindowCloseListener());
 		frame.getRootPane().setDefaultButton(uxUseThisButton);
 		frame.pack();
 		
@@ -223,13 +211,6 @@ public class ScheduleViewerWindow {
 	
 	public void setVisible(boolean visible){
 		frame.setVisible(visible);
-	}
-	
-	public void setDefaultText(){
-		uxInstructorField.setText("(e.g. Higgins, Daniel A)");
-		uxSectionNumberField.setText("(e.g. 11451)");
-		uxStartTimeField.setText("(e.g. 3:40 p.m.)");
-		uxSectionTypeField.setText("");
 	}
 	
 	public void dispose(){
@@ -248,14 +229,6 @@ public class ScheduleViewerWindow {
 		return uxCourseNumberField.getText();
 	}
 	
-	public String getSectionTypeText(){
-		return uxSectionTypeField.getText();
-	}
-	
-	public String getStartTimeText(){
-		return uxStartTimeField.getText();
-	}
-	
 	public String getSectionNumberText(){
 		return uxSectionNumberField.getText();
 	}
@@ -266,13 +239,6 @@ public class ScheduleViewerWindow {
 	
 	public int getSelectedSchedule(){
 		return uxSchedulesList.getSelectedIndex();
-	}
-	
-	public void clearSearchFields(){
-		uxInstructorField.setText("");
-		uxSectionNumberField.setText("");
-		uxSectionTypeField.setText("");
-		uxStartTimeField.setText("");
 	}
 	
 	public void viewCalendar(CalendarPanel calendar, int numAppointments){
@@ -290,4 +256,30 @@ public class ScheduleViewerWindow {
 		detailsScrollPane.setViewportView(uxDetailsList);
 		uxAppointmentWarning.setText("");
 	}
+		
+	public void setDefaultText(JTextField field) {
+		if(uxCourseNumberField.equals(field)) {
+			field.setText(courseNumberDefaultText);
+			field.setForeground(Color.GRAY);
+		}
+		else if(uxSectionNumberField.equals(field)) {
+			field.setText(sectionNumberDefaultText);
+			field.setForeground(Color.GRAY);
+		}
+		else if(uxInstructorField.equals(field)) {
+			field.setText(instructorDefaultText);
+			field.setForeground(Color.GRAY);
+		}
+		else {
+			uxCourseNumberField.setText(courseNumberDefaultText);
+			uxCourseNumberField.setForeground(Color.GRAY);
+			
+			uxSectionNumberField.setText(sectionNumberDefaultText);
+			uxSectionNumberField.setForeground(Color.GRAY);
+			
+			uxInstructorField.setText(instructorDefaultText);
+			uxInstructorField.setForeground(Color.GRAY);
+		}
+	}
 }
+

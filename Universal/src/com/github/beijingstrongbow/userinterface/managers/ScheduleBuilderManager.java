@@ -75,12 +75,23 @@ public class ScheduleBuilderManager {
             
             Course.sort(unsortedResults);
             
-            for(Course c : unsortedResults){
-            	searchResults.addElement(c);
+            if(unsortedResults.size() == 1) {
+            	window.getSelectedCourses().addElement(unsortedResults.get(0));
+            	
+            	if(searchMethod == SearchMethod.COURSE_NAME) {
+            		window.setCourseNameSearchText("");
+            	}
+            	else {
+            		window.setCourseNumSearchText("");
+            	}
             }
-            
-            window.setDefaultText(new JTextField());
-		}
+            else {
+            	for(Course c : unsortedResults){
+                	searchResults.addElement(c);
+                    window.setDefaultText(new JTextField());
+                }
+            }
+   		}
 	}
 	
 	public class ResultsDoubleClickListener implements MouseListener{
@@ -104,7 +115,6 @@ public class ScheduleBuilderManager {
 						}
 						
 						if(!present && checkSectionsPresent(selected)){
-							window.getSearchResults().removeElement(selected);
 							window.getSelectedCourses().addElement(selected);
 						}
 					}
@@ -217,14 +227,22 @@ public class ScheduleBuilderManager {
 	    return temp;
 	}
 	
+	/**
+	 * Handles showing the default text in each text field (the example text)
+	 * 
+	 * @author ericd
+	 */
 	public class TextFieldDefaultHandler implements FocusListener {
 
 		@Override
 		public void focusGained(FocusEvent e) {
 			if(e.getComponent() instanceof JTextField) {
 				JTextField field = (JTextField) e.getComponent();
-				field.setForeground(Color.BLACK);
-				field.setText("");
+				
+				if(field.getForeground().equals(Color.GRAY)) {
+					field.setForeground(Color.BLACK);
+					field.setText("");
+				}
 			}
 		}
 
@@ -232,8 +250,11 @@ public class ScheduleBuilderManager {
 		public void focusLost(FocusEvent e) {
 			if(e.getComponent() instanceof JTextField) {
 				JTextField field = (JTextField) e.getComponent();
-				field.setForeground(Color.GRAY);
-				window.setDefaultText(field);
+				
+				if(field.getText().equals("")) {
+					field.setForeground(Color.GRAY);
+					window.setDefaultText(field);
+				}
 			}
 		}
 	}
