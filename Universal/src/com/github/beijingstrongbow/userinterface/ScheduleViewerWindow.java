@@ -159,7 +159,7 @@ public class ScheduleViewerWindow {
 		uxAppointmentWarning = new JLabel();
 		uxAppointmentWarning.setFont(new Font("Tahoma", Font.BOLD, 14));
 		uxAppointmentWarning.setForeground(Color.RED);
-		frame.getContentPane().add(uxAppointmentWarning, "12, 9, 3, 1");
+		frame.getContentPane().add(uxAppointmentWarning, "12, 9, 4, 1");
 		
 		JLabel uxCourseNumberLabel = new JLabel("Course Number");
 		uxCourseNumberLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -250,18 +250,24 @@ public class ScheduleViewerWindow {
 	public void viewCalendar(CalendarPanel calendar, int numAppointments, int numOnline){
 		calendar.setSize(detailsScrollPane.getSize());
 		detailsScrollPane.setViewportView(calendar);
+		if(numAppointments <= 0 || numOnline <= 0) {
+			if(numAppointments <= 0 && numOnline <= 0) uxAppointmentWarning.setText("");
 
-		if(numAppointments <= 0 && numOnline <= 0) uxAppointmentWarning.setText("");
-
-		else if(numAppointments == 1 && numOnline == 0) uxAppointmentWarning.setText(appointmentWarning);
+			else if(numAppointments == 1 && numOnline == 0) uxAppointmentWarning.setText(appointmentWarning);
+			
+			else if(numAppointments == 0 && numOnline == 1) uxAppointmentWarning.setText(onlineWarning);
+			
+			else if(numAppointments == 0 && numOnline > 1) uxAppointmentWarning.setText(onlinesWarning);
+			
+			else if(numAppointments > 1 && numOnline == 0) uxAppointmentWarning.setText(appointmentsWarning);
+			
+			uxAppointmentWarning.setFont(new Font("Tahoma", Font.BOLD, 14));
+		}
 		
-		else if(numAppointments == 0 && numOnline == 1) uxAppointmentWarning.setText(onlineWarning);
-		
-		else if(numAppointments == 0 && numOnline > 1) uxAppointmentWarning.setText(onlinesWarning);
-		
-		else if(numAppointments > 1 && numOnline == 0) uxAppointmentWarning.setText(appointmentsWarning);
-		
-		else uxAppointmentWarning.setText(onlineAndAppointmentWarning);
+		else {
+			uxAppointmentWarning.setText(onlineAndAppointmentWarning);
+			uxAppointmentWarning.setFont(new Font("Tahoma", Font.BOLD, 12));
+		}
 	}
 	
 	public void viewDetails(){
