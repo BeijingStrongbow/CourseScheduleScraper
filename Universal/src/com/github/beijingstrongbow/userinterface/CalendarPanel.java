@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 
 import com.github.beijingstrongbow.Section;
 import com.github.beijingstrongbow.Time;
+import com.github.beijingstrongbow.Section.SectionBasis;
 
 public class CalendarPanel extends JPanel{
 	
@@ -159,7 +160,7 @@ public class CalendarPanel extends JPanel{
 		
 	private void addSection(Section s){
 		
-		if(s.isAppointment()){
+		if(s.getSectionBasis() == SectionBasis.APPOINTMENT || s.getSectionBasis() == SectionBasis.ONLINE){
 			return;
 		}
 		

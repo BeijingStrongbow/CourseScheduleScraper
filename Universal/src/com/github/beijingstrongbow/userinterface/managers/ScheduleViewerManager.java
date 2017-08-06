@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 
 import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Section;
+import com.github.beijingstrongbow.Section.SectionBasis;
 import com.github.beijingstrongbow.Time;
 import com.github.beijingstrongbow.userinterface.CalendarPanel;
 import com.github.beijingstrongbow.userinterface.ScheduleViewerWindow;
@@ -144,14 +145,16 @@ public class ScheduleViewerManager {
 		}
 		else{
 			int numAppointments = 0;
+			int numOnline = 0;
 			
 			for(Section s : validSchedules.get(selectedIndex)){
-				if(s.isAppointment()) numAppointments++;
+				if(s.getSectionBasis() == SectionBasis.APPOINTMENT) numAppointments++;
+				else if(s.getSectionBasis() == SectionBasis.ONLINE) numOnline++;
 			}
 			
 			currentCalendar = new CalendarPanel(validSchedules.get(selectedIndex));
 			currentCalendar.addMouseListener(new CalendarClickListener());
-			window.viewCalendar(currentCalendar, numAppointments);
+			window.viewCalendar(currentCalendar, numAppointments, numOnline);
 		}
 	}
 	

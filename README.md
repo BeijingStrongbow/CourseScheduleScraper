@@ -2,7 +2,7 @@ TO DO (for the Universal version - Windows is deprecated)
 * ~~BUG: Don't allow schedules with a class that has, for example, no lab sections open~~
 * ~~Click on the calendar view to "lock" a course~~
 * ~~Make the boxes a little bigger, so it looks like you have more classes~~
-* BUG: Include online courses (probably loaded similarly to appointment sections)
+* ~~BUG: Include online courses (probably loaded similarly to appointment sections)~~
 * ~~When you're on calendar "mode" or detail "mode," change the schedule being displayed when the selection changes~~
 * ~~BUG: Count courses with the same number but different names as separate courses~~
   * ~~Test with KIN101~~

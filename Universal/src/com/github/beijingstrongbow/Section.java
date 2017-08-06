@@ -9,6 +9,12 @@ import java.util.ArrayList;
  */
 public class Section implements Comparable<Section>{
 	
+	public enum SectionBasis {
+		REGULAR,
+		APPOINTMENT,
+		ONLINE;
+	}
+	
 	/*
 	 * The letter representing this Section
 	 */
@@ -30,9 +36,9 @@ public class Section implements Comparable<Section>{
 	private Time _endTime;
 	
 	/**
-	 * Whether this class is scheduled on an appointment basis
+	 * Whether this class is scheduled on an appointment/online/regular basis
 	 */
-	private boolean _isAppointment;
+	private SectionBasis _sectionBasis;
 	
 	/**
 	 * The days of the week this Section is held on
@@ -72,16 +78,18 @@ public class Section implements Comparable<Section>{
 	 * @param days The days of the week this Section is held on
 	 * @param instructor The instructor for this Section
 	 * @param course The Course that is taught in this Section
+	 * @param isAppointment Whether the section is an appointment. True = appointment, false = online
 	 */
-	public Section(String letter, int number, String days, String instructor, Course course){
+	public Section(String letter, int number, String days, String instructor, Course course, boolean isAppointment){
 		
 		_letter = letter;
 		_number = number;
-		_isAppointment = true;
 		_weekDays = days;
 		_instructor = instructor;
 		_course = course;
 		
+		if(isAppointment) _sectionBasis = SectionBasis.APPOINTMENT;
+		else _sectionBasis = SectionBasis.ONLINE;
 	}
 	
 	/**
@@ -94,8 +102,9 @@ public class Section implements Comparable<Section>{
 	 * @param fromDate The date of the first day of class for this Section
 	 * @param toDate The date of the last day of class for this Section
 	 * @param course The Course taught in this Section
+	 * @param isAppointment Whether the section is an appointment. True = appointment, false = online
 	 */
-	public Section(String letter, int number, String days, String instructor, Date fromDate, Date toDate, Course course){
+	public Section(String letter, int number, String days, String instructor, Date fromDate, Date toDate, Course course, boolean isAppointment){
 		
 		_letter = letter;
 		_number = number;
@@ -103,8 +112,10 @@ public class Section implements Comparable<Section>{
 		_instructor = instructor;
 		_fromDate = fromDate;
 		_toDate = toDate;
-		_isAppointment = true;
 		_course = course;
+		
+		if(isAppointment) _sectionBasis = SectionBasis.APPOINTMENT;
+		else _sectionBasis = SectionBasis.ONLINE;
 	}
 	
 	/**
@@ -126,7 +137,7 @@ public class Section implements Comparable<Section>{
 		_endTime = endTime;
 		_weekDays = days;
 		_instructor = instructor;
-		_isAppointment = false;
+		_sectionBasis = SectionBasis.REGULAR;
 		_course = course;
 		
 	}
@@ -154,7 +165,7 @@ public class Section implements Comparable<Section>{
 		_instructor = instructor;
 		_fromDate = fromDate;
 		_toDate = toDate;
-		_isAppointment = false;
+		_sectionBasis = SectionBasis.REGULAR;
 		_course = course;
 		
 	}
@@ -237,8 +248,8 @@ public class Section implements Comparable<Section>{
 	 * 
 	 * @return Whether this Section is held on an appointment basis
 	 */
-	public boolean isAppointment(){
-		return _isAppointment;
+	public SectionBasis getSectionBasis(){
+		return _sectionBasis;
 	}
 	
 	/**
@@ -284,7 +295,8 @@ public class Section implements Comparable<Section>{
 	 * @return True if there is any time when these two Sections are on the same day at the same time, and false otherwise.
 	 */
 	public boolean overlaps(Section s){
-		if(s.isAppointment() || _isAppointment){
+		if(s.getSectionBasis() == SectionBasis.APPOINTMENT || s.getSectionBasis() == SectionBasis.ONLINE ||
+				_sectionBasis == SectionBasis.APPOINTMENT || _sectionBasis == SectionBasis.ONLINE){
 			return false;
 		}
 		
@@ -319,10 +331,10 @@ public class Section implements Comparable<Section>{
 	 */
 	@Override
 	public int compareTo(Section arg0) {
-		if(this._isAppointment){
+		if(this._sectionBasis == SectionBasis.APPOINTMENT || this._sectionBasis == SectionBasis.ONLINE){
 			return 1;
 		}
-		else if(arg0._isAppointment){
+		else if(arg0._sectionBasis == SectionBasis.APPOINTMENT || arg0._sectionBasis == SectionBasis.ONLINE){
 			return -1;
 		}
 		else{
@@ -344,7 +356,7 @@ public class Section implements Comparable<Section>{
 		
 		String time;
 		
-		if(_isAppointment){
+		if(_sectionBasis == SectionBasis.APPOINTMENT || _sectionBasis == SectionBasis.ONLINE){
 			time = "";
 		}
 		else{

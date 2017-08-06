@@ -51,6 +51,12 @@ public class ScheduleViewerWindow {
 	private final String appointmentWarning = "There is an appointment section not shown";
 	
 	private final String appointmentsWarning = "There are appointment sections not shown";
+	
+	private final String onlineWarning = "There is an online section not shown";
+	
+	private final String onlinesWarning = "There are online sections not shown";
+	
+	private final String onlineAndAppointmentWarning = "There are online and appointment sections not shown";
 
 	/**
 	 * Create the application.
@@ -241,15 +247,21 @@ public class ScheduleViewerWindow {
 		return uxSchedulesList.getSelectedIndex();
 	}
 	
-	public void viewCalendar(CalendarPanel calendar, int numAppointments){
+	public void viewCalendar(CalendarPanel calendar, int numAppointments, int numOnline){
 		calendar.setSize(detailsScrollPane.getSize());
 		detailsScrollPane.setViewportView(calendar);
-		
-		if(numAppointments <= 0) uxAppointmentWarning.setText("");
 
-		else if(numAppointments == 1) uxAppointmentWarning.setText(appointmentWarning);
+		if(numAppointments <= 0 && numOnline <= 0) uxAppointmentWarning.setText("");
+
+		else if(numAppointments == 1 && numOnline == 0) uxAppointmentWarning.setText(appointmentWarning);
 		
-		else uxAppointmentWarning.setText(appointmentsWarning);
+		else if(numAppointments == 0 && numOnline == 1) uxAppointmentWarning.setText(onlineWarning);
+		
+		else if(numAppointments == 0 && numOnline > 1) uxAppointmentWarning.setText(onlinesWarning);
+		
+		else if(numAppointments > 1 && numOnline == 0) uxAppointmentWarning.setText(appointmentsWarning);
+		
+		else uxAppointmentWarning.setText(onlineAndAppointmentWarning);
 	}
 	
 	public void viewDetails(){

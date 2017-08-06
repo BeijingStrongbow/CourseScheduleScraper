@@ -139,7 +139,7 @@ public class WebScraper {
 						if(data.size() == 10 && (!data.get(5).text().equals("") || !data.get(6).text().equals(""))){
 							
 							if(!closed.contains(e) && !cancelled.contains(e)) {
-								addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(8).text(), "", current);
+								addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(8).text(), "", current, false);
 							}
 							
 							current.setShouldHaveSection(data.get(1).text());
@@ -147,7 +147,7 @@ public class WebScraper {
 						else if(data.size() == 11 && (!data.get(5).text().equals("") || !data.get(6).text().equals(""))){
 							
 							if(!closed.contains(e) && !cancelled.contains(e)) {
-								addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(9).text(), "", current);
+								addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), data.get(6).text(), sanitizeText(data.get(5).text(), "day"), data.get(9).text(), "", current, false);
 							}
 							
 							current.setShouldHaveSection(data.get(1).text());
@@ -159,9 +159,14 @@ public class WebScraper {
 						}
 						else if(data.size() == 6 && (!data.get(0).text().equals("") || !data.get(1).text().equals(""))){							
 							if(!closed.contains(e) && !cancelled.contains(e)) {
-								addSectionToDatabase(section, type, Integer.parseInt(number), data.get(1).text(), sanitizeText(data.get(0).text(), "day") + sessionLabel.text(), data.get(4).text(), sessionLabel.text(), current);
+								addSectionToDatabase(section, type, Integer.parseInt(number), data.get(1).text(), sanitizeText(data.get(0).text(), "day") + sessionLabel.text(), data.get(4).text(), sessionLabel.text(), current, false);
 							}
 							current.setShouldHaveSection(type);
+						}
+						else if(data.size() == 11 && data.get(0).text().contains("Z")){ //online classes
+							if(!closed.contains(e) && !cancelled.contains(e)) {
+								addSectionToDatabase(data.get(0).text(), data.get(1).text(), Integer.parseInt(data.get(2).text()), "Online", "Online", data.get(9).text(), "", current, true);
+							}
 						}
 					}
 				}
@@ -197,8 +202,9 @@ public class WebScraper {
 	 * @param instructor The instructor for this section
 	 * @param date The start and end dates for this Section, or "" if default
 	 * @param course The course this section should be added to
+	 * @param isOnline Whether the section is online
 	 */
-	private void addSectionToDatabase(String letter, String type, int number, String time, String days, String instructor, String date, Course course){
+	private void addSectionToDatabase(String letter, String type, int number, String time, String days, String instructor, String date, Course course, boolean isOnline){
 		Date startDate = new Date();
 		Date endDate = new Date();
 		
@@ -270,13 +276,16 @@ public class WebScraper {
         }
         else
         {
-            if(!startDate.equals(new Date()))
+            if(!startDate.equals(new Date()) && !isOnline)
             {
-                course.AddSection(new Section(letter, number, days, instructor, startDate, endDate, course), type);
+                course.AddSection(new Section(letter, number, days, instructor, startDate, endDate, course, true), type);
             }
-            else
+            else if(!isOnline)
             {
-                course.AddSection(new Section(letter, number, days, instructor, course), type);
+                course.AddSection(new Section(letter, number, days, instructor, course, true), type);
+            }
+            else {
+            	course.AddSection(new Section(letter, number, days, instructor, course, false), type);
             }
         }
 	}
