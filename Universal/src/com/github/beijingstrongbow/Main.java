@@ -2,6 +2,7 @@ package com.github.beijingstrongbow;
 
 import java.awt.EventQueue;
 
+import com.github.beijingstrongbow.update.UpdateHandler;
 import com.github.beijingstrongbow.userinterface.LoadingProgressWindow;
 import com.github.beijingstrongbow.userinterface.ScheduleBuilderWindow;
 import com.github.beijingstrongbow.userinterface.managers.InitializationDialogManager;
@@ -29,6 +30,7 @@ public class Main {
 		SCHEDULE_BUILDER,
 		SCHEDULE_VIEWER,
 		WAITING,
+		QUIT_FOR_UPDATE,
 		DONE;
 	}
 	
@@ -42,6 +44,11 @@ public class Main {
 		scheduleViewer = new ScheduleViewerManager();
 		progressWindow = new LoadingProgressWindow();
 		state = ProgramState.INITIALIZATION;
+		
+		UpdateHandler uh = new UpdateHandler();
+
+		uh.init();
+		uh.update();
 		
 		while(true){
 			switch(state){
@@ -66,6 +73,8 @@ public class Main {
 					if(foundSchedules) scheduleViewer.showWindow();
 					state = ProgramState.WAITING;
 					break;
+				case QUIT_FOR_UPDATE:
+					return;
 			}
 		}
 	}
