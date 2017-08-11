@@ -76,13 +76,18 @@ public class ScheduleBuilderManager {
             Course.sort(unsortedResults);
             
             if(unsortedResults.size() == 1) {
-            	window.getSelectedCourses().addElement(unsortedResults.get(0));
-            	
-            	if(searchMethod == SearchMethod.COURSE_NAME) {
-            		window.setCourseNameSearchText("");
+            	if(window.getSelectedCourses().contains(unsortedResults.get(0))) {
+            		JOptionPane.showMessageDialog(null, unsortedResults.get(0).getNumber() + " has already been selected", "Error", JOptionPane.ERROR_MESSAGE, null);
             	}
             	else {
-            		window.setCourseNumSearchText("");
+            		window.getSelectedCourses().addElement(unsortedResults.get(0));
+                	
+                	if(searchMethod == SearchMethod.COURSE_NAME) {
+                		window.setCourseNameSearchText("");
+                	}
+                	else {
+                		window.setCourseNumSearchText("");
+                	}
             	}
             }
             else {
@@ -110,6 +115,7 @@ public class ScheduleBuilderManager {
 						for(int i = 0; i < window.getSelectedCourses().size(); i++){
 							if(selected.equals(window.getSelectedCourses().getElementAt(i))){
 								present = true;
+								JOptionPane.showMessageDialog(null, selected.getNumber() + " has already been selected", "Error", JOptionPane.ERROR_MESSAGE, null);
 								break;
 							}
 						}

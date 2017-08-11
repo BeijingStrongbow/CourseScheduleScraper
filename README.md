@@ -11,7 +11,7 @@ TO DO (for the Universal version - Windows is deprecated)
 * Export as an Excel file (probably as a CSV), or allow printing the detail view
 * Add check boxes to limit a section to only T/U or M/W/F
 * ~~Make sure all sections for a course are the same color (including rec, lab, etc.)~~
-* Auto-update feature (probably pull the jar from github)
+* ~~Auto-update feature (probably pull the jar from github)~~
 * ~~Allow using arrow keys to scroll between schedules~~
 * ~~Keep the same colors for each class on every schedule option~~
 * ~~Automatically clear example text from text fields when the user clicks on it~~
