@@ -33,13 +33,13 @@ public class InitializationDialog{
 	private JTextField uxSemesterField;
 	private JTextField uxYearField;
 	
-	private JDialog dialog;
+	private JFrame dialog;
 
 	/**
 	 * Create the dialog.
 	 */
 	public InitializationDialog(InitializationDialogManager manager) {
-		dialog = new JDialog();
+		dialog = new JFrame();
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		dialog.addWindowListener(manager.new CloseWindowListener());
 		dialog.getContentPane().setLayout(new BorderLayout());

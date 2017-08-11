@@ -190,7 +190,7 @@ public class UpdateHandler {
 		
 		if(showProgress) {
 			int byteCount = 0;
-			double progressIncrement = byteCount / 100.0;
+			double progressIncrement = (1.0 / downloadSize) * 100;
 			while((byteRead = input.read()) != -1) {
 				output.write(byteRead);
 				byteCount++;
