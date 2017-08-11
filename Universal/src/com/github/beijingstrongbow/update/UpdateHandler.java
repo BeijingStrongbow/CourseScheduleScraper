@@ -20,9 +20,12 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.swing.JOptionPane;
 
 import com.github.beijingstrongbow.Main;
 import com.github.beijingstrongbow.Main.ProgramState;
+import com.github.beijingstrongbow.userinterface.LoadingProgressWindow;
+import com.github.beijingstrongbow.userinterface.LoadingProgressWindow.ProgressMode;
 
 public class UpdateHandler {
 	
@@ -33,11 +36,14 @@ public class UpdateHandler {
 	private final String versionFileName = "version.txt";
 	
 	private final String tempLocation = "tmp.jar";
-		
+	
+	private final LoadingProgressWindow downloadProgress;
+	
 	/**
 	 * Creates the version file if one doesn't already exist
 	 */
-	public void init() {
+	public UpdateHandler(LoadingProgressWindow downloadProgress) {
+		this.downloadProgress = downloadProgress;
 		File file = new File(getDefaultSavePath());
 		boolean needVersionFile = true;
 		boolean needUpdateScript = true;
@@ -76,7 +82,7 @@ public class UpdateHandler {
 		
 		if(needUpdateScript) {
 			try {
-				downloadAndSaveFile(new URL(updateScriptURL), new File(getDefaultSavePath() + getUpdateScriptName()));
+				downloadAndSaveFile(new URL(updateScriptURL), new File(getDefaultSavePath() + getUpdateScriptName()), 0, false);
 			}
 			catch(IOException ex) {
 				ex.printStackTrace();
@@ -99,13 +105,20 @@ public class UpdateHandler {
 			String version = getVersionFromJSON(json);
 			
 			String currentVersion = getVersion();
+			
 			String oldSave = getCurrentJARLocation();
+			
+			int downloadSize = getDownloadSizeFromJSON(json);
+			System.out.println(downloadSize);
 			if(!currentVersion.equals(version)) {
-				System.out.println("downloading update...");
-				downloadAndSaveFile(new URL(download), new File(getDefaultSavePath() + tempLocation));
-				saveVersion(version);
-				Runtime.getRuntime().exec(getDefaultSavePath() + getUpdateScriptName() + " \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
-				System.exit(0);
+				int option = JOptionPane.showOptionDialog(null, "An update is available. Do you want to download it?", "Update", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+				if(option == 0) {
+					downloadProgress.showWindow();
+					downloadAndSaveFile(new URL(download), new File(getDefaultSavePath() + tempLocation), downloadSize, true);
+					saveVersion(version);
+					Runtime.getRuntime().exec(getDefaultSavePath() + getUpdateScriptName() + " \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
+					System.exit(0);
+				}
 			}
 		}
 		catch(IOException ex) {
@@ -140,9 +153,11 @@ public class UpdateHandler {
 	 * 
 	 * @param downloadURL The URL to download from
 	 * @param saveFile The location to save the JAR file to
+	 * @param downloadSize The size of the file that is being downloaded
+	 * @param showProgress Whether to update the progress on the progress window
 	 * @throws IOException
 	 */
-	private void downloadAndSaveFile(URL downloadURL, File saveFile) throws IOException{
+	private void downloadAndSaveFile(URL downloadURL, File saveFile, int downloadSize, boolean showProgress) throws IOException{
 		
 		HttpsURLConnection downloadConnection = (HttpsURLConnection) downloadURL.openConnection();
 		downloadConnection.setRequestMethod("GET");
@@ -171,10 +186,21 @@ public class UpdateHandler {
 		});
 		
 		fileWriter.start();*/
-		
 		int byteRead;
-		while((byteRead = input.read()) != -1) {
-			output.write(byteRead);	
+		
+		if(showProgress) {
+			int byteCount = 0;
+			double progressIncrement = byteCount / 100.0;
+			while((byteRead = input.read()) != -1) {
+				output.write(byteRead);
+				byteCount++;
+				downloadProgress.addProgress(progressIncrement);
+			}
+		}
+		else {
+			while((byteRead = input.read()) != -1) {
+				output.write(byteRead);
+			}
 		}
 		
 		output.writeTo(fileOut);
@@ -230,6 +256,19 @@ public class UpdateHandler {
 		String download = json.substring(httpsIndex, json.indexOf('"', httpsIndex));
 		
 		return download;
+	}
+	
+	/**
+	 * Get the size of the JAR file that will be downloaded
+	 * 
+	 * @param json The json string recieved from GitHub
+	 * @return The size of the JAR file
+	 */
+	private int getDownloadSizeFromJSON(String json) {
+		int startIndex = json.indexOf("\"size\"") + 7;
+		int endIndex = json.indexOf(',', startIndex);
+		
+		return Integer.parseInt(json.substring(startIndex, endIndex));
 	}
 	
 	/**

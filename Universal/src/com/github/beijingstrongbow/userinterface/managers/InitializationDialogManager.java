@@ -61,7 +61,9 @@ public class InitializationDialogManager {
 		public void windowOpened(WindowEvent e) {}
 
 		@Override
-		public void windowClosing(WindowEvent e) {}
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
+		}
 
 		@Override
 		public void windowIconified(WindowEvent e) {}

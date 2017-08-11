@@ -4,23 +4,13 @@ import java.awt.EventQueue;
 
 import com.github.beijingstrongbow.update.UpdateHandler;
 import com.github.beijingstrongbow.userinterface.LoadingProgressWindow;
-import com.github.beijingstrongbow.userinterface.ScheduleBuilderWindow;
+import com.github.beijingstrongbow.userinterface.LoadingProgressWindow.ProgressMode;
 import com.github.beijingstrongbow.userinterface.managers.InitializationDialogManager;
 import com.github.beijingstrongbow.userinterface.managers.ScheduleBuilderManager;
 import com.github.beijingstrongbow.userinterface.managers.ScheduleViewerManager;
 import com.github.beijingstrongbow.webscraper.WebScraper;
 
 public class Main {
-		
-	private static ScheduleBuilderManager builder;
-	
-	private static WebScraper scraper;
-	
-	private static InitializationDialogManager initDialog;
-	
-	private static ScheduleViewerManager scheduleViewer;
-	
-	private static LoadingProgressWindow progressWindow;
 	
 	private static ProgramState state;
 	
@@ -38,21 +28,21 @@ public class Main {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		initDialog = new InitializationDialogManager();
-		builder = new ScheduleBuilderManager();
-		scraper = new WebScraper();
-		scheduleViewer = new ScheduleViewerManager();
-		progressWindow = new LoadingProgressWindow();
-		state = ProgramState.INITIALIZATION;
+		InitializationDialogManager initDialog = new InitializationDialogManager();
+		ScheduleBuilderManager builder = new ScheduleBuilderManager();
+		WebScraper scraper = new WebScraper();
+		ScheduleViewerManager scheduleViewer = new ScheduleViewerManager();
+		LoadingProgressWindow progressWindow = new LoadingProgressWindow(ProgressMode.COURSE_DATA);
+		LoadingProgressWindow downloadProgress = new LoadingProgressWindow(ProgressMode.UPDATE);		
+		UpdateHandler updater = new UpdateHandler(downloadProgress);
 		
-		UpdateHandler uh = new UpdateHandler();
-
-		uh.init();
-		uh.update();
+		state = ProgramState.INITIALIZATION;
 		
 		while(true){
 			switch(state){
 				case INITIALIZATION:
+					updater.update();
+					downloadProgress.dispose();
 					initDialog.showWindow();
 					state = ProgramState.WAITING;
 					break;

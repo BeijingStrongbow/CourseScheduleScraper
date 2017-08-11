@@ -45,7 +45,9 @@ public class CalendarPanel extends JPanel{
 	
 	private ArrayList<Section> sections;
 	
-	private static HashMap<CalendarBlock, Section> sectionsAdded;
+	private static HashMap<CalendarBlock, Section> sectionsAdded = new HashMap<CalendarBlock, Section>();
+	
+	private static ArrayList<Color> usedColors = new ArrayList<Color>();
 	
 	public CalendarPanel(ArrayList<Section> sections){
 		setLayout(new GridLayout(1, 1));
@@ -95,8 +97,6 @@ public class CalendarPanel extends JPanel{
 		};
 		
 		this.colors = colors;
-		
-		sectionsAdded = new HashMap<CalendarBlock, Section>();
 	}
 	
 	@Override
@@ -209,29 +209,28 @@ public class CalendarPanel extends JPanel{
 			
 			for(CalendarBlock b : sectionsAdded.keySet()){
 				if(sectionsAdded.get(b).getCourse().equals(s.getCourse())){
-					//graphics.setPaint(sectionsAdded.get(e).getColor());
 					block.setColor(b.getColor());
-					//sectionsAdded.put(s, sectionsAdded.get(e));
 					colorSet = true;
 					break;
 				}
 			}
 			
 			if(!colorSet){
-				//graphics.setPaint(colors[currentColor]);
-				block.setColor(colors[currentColor]);
-				//sectionsAdded.put(s, colors[currentColor]);
+				while(usedColors.contains(colors[currentColor])) {
+					if(currentColor < colors.length - 1) {
+						currentColor++;
+					}
+					else currentColor = 0;
+				}
 				
-				if(currentColor < colors.length - 1) currentColor++;
-				else currentColor = 0;
+				block.setColor(colors[currentColor]);
+				usedColors.add(colors[currentColor]);
 			}
 			
 			sectionsAdded.put(block, s);
-			//graphics.fill(new Rectangle(x, y, width, height));
 			block.paint(graphics);
 			drawString(s.getCourse().getNumber(), textX, textY);
 		}
-		
 	}
 	
 	/**

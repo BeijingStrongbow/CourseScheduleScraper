@@ -26,11 +26,19 @@ public class LoadingProgressWindow {
 	private JProgressBar uxProgressBar;
 	
 	private double currentProgress;
+	
+	private ProgressMode mode;
+	
+	public enum ProgressMode {
+		UPDATE,
+		COURSE_DATA;
+	}
 
 	/**
 	 * Create the application.
 	 */
-	public LoadingProgressWindow() {
+	public LoadingProgressWindow(ProgressMode mode) {
+		this.mode = mode;
 		EventQueue.invokeLater(new Runnable(){
 			
 			@Override
@@ -59,7 +67,14 @@ public class LoadingProgressWindow {
 		
 		JLabel uxLoadingLabel = new JLabel();
 		uxLoadingLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		uxLoadingLabel.setText("Loading course data...");
+		
+		if(mode == ProgressMode.COURSE_DATA) {
+			uxLoadingLabel.setText("Loading course data...");
+		}
+		else if(mode == ProgressMode.UPDATE) {
+			uxLoadingLabel.setText("Downloading update...");
+		}
+		
 		uxLoadingLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPanel.add(uxLoadingLabel);
 		

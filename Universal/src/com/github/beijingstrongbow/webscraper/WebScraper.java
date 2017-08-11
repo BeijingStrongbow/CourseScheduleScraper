@@ -1,6 +1,7 @@
 package com.github.beijingstrongbow.webscraper;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -36,7 +37,6 @@ public class WebScraper {
 	 */
 	public boolean populateDatabases(String year, String semester, LoadingProgressWindow progress){
 		ArrayList<URL> urls = getUrls(year, semester);
-		
 		if(urls == null) {
 			return false;
 		}
@@ -59,7 +59,7 @@ public class WebScraper {
 	 */
 	private ArrayList<URL> getUrls(String year, String semester){
 		String url = "https://courses.k-state.edu/" + semester.toLowerCase() + year + "/schedule.html";
-		
+		System.out.println(url);
 		//the URLs that need to be parsed to get all the courses
 		ArrayList<URL> urls = new ArrayList<URL>();
 		
@@ -79,7 +79,12 @@ public class WebScraper {
 			}
 			
 		}
+		catch(SocketTimeoutException ex) {
+			JOptionPane.showMessageDialog(null, "Connection to the course database timed out. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
+			return null;
+		}
 		catch(IOException ex){
+			ex.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Couldn't process input " + semester + " " + year + ".", "Error", JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
