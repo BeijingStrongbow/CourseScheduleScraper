@@ -122,7 +122,7 @@ public class UpdateHandler {
 					if(System.getProperty("os.name").toUpperCase().contains("WIN")) {
 						Runtime.getRuntime().exec("\"" + getDefaultSavePath() + getUpdateScriptName() + "\" \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
 					}
-					else if(System.getProperty("os.name").toUpperCase().contains("MAC")) {
+					else if(System.getProperty("os.name").toUpperCase().contains("MAC") || System.getProperty("os.name").toUpperCase().contains("NUX")) {
 						System.out.println("sh \"" + getDefaultSavePath() + getUpdateScriptName() + "\" \"/" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
 						Process cmd = Runtime.getRuntime().exec(new String[] {"sh", getDefaultSavePath() + getUpdateScriptName(), "/" + oldSave, getDefaultSavePath() + tempLocation});
 						BufferedReader error = new BufferedReader(new InputStreamReader(cmd.getErrorStream()));
@@ -341,11 +341,8 @@ public class UpdateHandler {
 		if(operatingSystem.contains("WIN")) {
 			name = "UpdateScriptWin.bat";
 		}
-		else if(operatingSystem.contains("MAC")) {
+		else if(operatingSystem.contains("MAC") || operatingSystem.contains("NUX")) {
 			name = "UpdateScriptMac.sh";
-		}
-		else if(operatingSystem.contains("NUX")) {
-			name = "UpdateScriptLinux.sh";
 		}
 		return name;
 	}
