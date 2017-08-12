@@ -18,3 +18,5 @@ TO DO (for the Universal version - Windows is deprecated)
 * ~~BUG: Fix the "URL could not be parsed" error so that it doesn't print to the console~~
 * When a class has no lectures, it only shows "Recitation," which is confusing
   * E.g. ENGL100
+* Save course selections for reviewing later
+* Block off time (i.e. no courses on Friday, none before a certain time, etc.)

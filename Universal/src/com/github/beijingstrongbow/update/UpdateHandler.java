@@ -116,7 +116,14 @@ public class UpdateHandler {
 					downloadProgress.showWindow();
 					downloadAndSaveFile(new URL(download), new File(getDefaultSavePath() + tempLocation), downloadSize, true);
 					saveVersion(version);
-					Runtime.getRuntime().exec(getDefaultSavePath() + getUpdateScriptName() + " \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
+
+					if(System.getProperty("os.name").toUpperCase().contains("WIN")) {
+						Runtime.getRuntime().exec(getDefaultSavePath() + getUpdateScriptName() + " \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
+					}
+					else if(System.getProperty("os.name").toUpperCase().contains("MAC")) {
+						Runtime.getRuntime().exec("sh " + getDefaultSavePath() + getUpdateScriptName() + " \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
+					}
+					
 					System.exit(0);
 				}
 			}
@@ -306,7 +313,7 @@ public class UpdateHandler {
 			path = System.getenv("APPDATA") + "\\ScheduleGenerator\\";
 		}
 		else if(operatingSystem.contains("MAC")) {
-			path = System.getProperty("user.home") + "/Library/Application Support/ScheduleGenerator";
+			path = System.getProperty("user.home") + "/Library/Application Support/ScheduleGenerator/";
 		}
 		else if(operatingSystem.contains("NUX")) {
 			path = System.getProperty("user.home") + "/.config/ScheduleGenerator/";
