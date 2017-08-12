@@ -2,6 +2,7 @@ package com.github.beijingstrongbow.update;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
@@ -31,7 +33,7 @@ public class UpdateHandler {
 	
 	private final String updateURL = "https://api.github.com/repos/BeijingStrongbow/CourseScheduleScraper/releases/latest";
 			
-	private final String updateScriptURL = "https://raw.githubusercontent.com/BeijingStrongbow/CourseScheduleScraper/master/Universal/target/UpdateScriptWin.bat";
+	private final String updateScriptURL = "https://raw.githubusercontent.com/BeijingStrongbow/CourseScheduleScraper/master/Universal/target/";
 	
 	private final String versionFileName = "version.txt";
 	
@@ -82,7 +84,7 @@ public class UpdateHandler {
 		
 		if(needUpdateScript) {
 			try {
-				downloadAndSaveFile(new URL(updateScriptURL), new File(getDefaultSavePath() + getUpdateScriptName()), 0, false);
+				downloadAndSaveFile(new URL(updateScriptURL + getUpdateScriptName()), new File(getDefaultSavePath() + getUpdateScriptName()), 0, false);
 			}
 			catch(IOException ex) {
 				ex.printStackTrace();
@@ -118,10 +120,17 @@ public class UpdateHandler {
 					saveVersion(version);
 
 					if(System.getProperty("os.name").toUpperCase().contains("WIN")) {
-						Runtime.getRuntime().exec(getDefaultSavePath() + getUpdateScriptName() + " \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
+						Runtime.getRuntime().exec("\"" + getDefaultSavePath() + getUpdateScriptName() + "\" \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
 					}
 					else if(System.getProperty("os.name").toUpperCase().contains("MAC")) {
-						Runtime.getRuntime().exec("sh " + getDefaultSavePath() + getUpdateScriptName() + " \"" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
+						System.out.println("sh \"" + getDefaultSavePath() + getUpdateScriptName() + "\" \"/" + oldSave + "\" \"" + getDefaultSavePath() + tempLocation + "\"");
+						Process cmd = Runtime.getRuntime().exec(new String[] {"sh", getDefaultSavePath() + getUpdateScriptName(), "/" + oldSave, getDefaultSavePath() + tempLocation});
+						BufferedReader error = new BufferedReader(new InputStreamReader(cmd.getErrorStream()));
+						
+						String line;
+						while((line = error.readLine()) != null) {
+							System.out.println(line);
+						}
 					}
 					
 					System.exit(0);
