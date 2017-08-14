@@ -96,8 +96,9 @@ public class ScheduleViewerWindow {
 				ColumnSpec.decode("15dlu"),
 				FormSpecs.DEFAULT_COLSPEC,
 				ColumnSpec.decode("120dlu"),
-				FormSpecs.DEFAULT_COLSPEC,
-				ColumnSpec.decode("12dlu"),},
+				FormSpecs.BUTTON_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				},
 			new RowSpec[] {
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
@@ -140,7 +141,7 @@ public class ScheduleViewerWindow {
 		
 		detailsScrollPane = new JScrollPane();
 		detailsScrollPane.setViewportView(uxDetailsList);
-		frame.getContentPane().add(detailsScrollPane, "8, 4, 7, 4, fill, fill");
+		frame.getContentPane().add(detailsScrollPane, "8, 4, 8, 4, fill, fill");
 		
 		JButton uxViewDetailsButton = new JButton("View Details"); 
 		uxViewDetailsButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -204,6 +205,11 @@ public class ScheduleViewerWindow {
 		uxSectionNumberField.setColumns(10);
 		uxSectionNumberField.setForeground(Color.GRAY);
 		uxSectionNumberField.addFocusListener(manager.new TextFieldDefaultHandler());
+		
+		JButton uxSaveScheduleButton = new JButton("Save Schedule");
+		uxSaveScheduleButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		frame.getContentPane().add(uxSaveScheduleButton, "15, 12");
+		uxSaveScheduleButton.addActionListener(manager.new SaveScheduleListener());
 		
 		frame.addWindowListener(manager.new WindowCloseListener());
 		frame.getRootPane().setDefaultButton(uxUseThisButton);

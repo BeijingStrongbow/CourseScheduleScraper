@@ -59,7 +59,6 @@ public class WebScraper {
 	 */
 	private ArrayList<URL> getUrls(String year, String semester){
 		String url = "https://courses.k-state.edu/" + semester.toLowerCase() + year + "/schedule.html";
-		System.out.println(url);
 		//the URLs that need to be parsed to get all the courses
 		ArrayList<URL> urls = new ArrayList<URL>();
 		

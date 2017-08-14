@@ -349,6 +349,39 @@ public class Section implements Comparable<Section>{
 	 */
 	@Override
 	public String toString(){
+		return _course.getNumber() + ": " + _course.getName() + " (" + _number + ") " + _weekDays + " " + timeAsString() + " " + _instructor;
+	}
+	
+	@Override
+	public boolean equals(Object other){
+		if(other instanceof Section){
+			Section s = (Section) other;
+			return s._number == this._number && s._fromDate == this._fromDate && s._toDate == this._toDate;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public static void sort(ArrayList<Section> list){
+		Section element;
+
+		for(int i = 0; i < list.size(); i++){
+			element = list.get(i);
+			int j;
+			for(j = i-1; j >= 0; j--){
+				if(element.compareTo(list.get(j)) < 0){
+					list.set(j+1, list.get(j));
+				}
+				else{
+					break;
+				}
+			}
+			list.set(j+1, element);
+		}
+	}
+	
+	public String timeAsString() {
 		int startHour;
 		int startMinute;
 		int endHour;
@@ -391,36 +424,6 @@ public class Section implements Comparable<Section>{
 				time = startHour + ":" + stringStartMinute + " - " + endHour + ":" + stringEndMinute + " p.m.";
 			}
 		}
-		
-		return _course.getNumber() + ": " + _course.getName() + " (" + _number + ") " + _weekDays + " " + time + " " + _instructor;
-	}
-	
-	@Override
-	public boolean equals(Object other){
-		if(other instanceof Section){
-			Section s = (Section) other;
-			return s._number == this._number && s._fromDate == this._fromDate && s._toDate == this._toDate;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	public static void sort(ArrayList<Section> list){
-		Section element;
-
-		for(int i = 0; i < list.size(); i++){
-			element = list.get(i);
-			int j;
-			for(j = i-1; j >= 0; j--){
-				if(element.compareTo(list.get(j)) < 0){
-					list.set(j+1, list.get(j));
-				}
-				else{
-					break;
-				}
-			}
-			list.set(j+1, element);
-		}
+		return time;
 	}
 }

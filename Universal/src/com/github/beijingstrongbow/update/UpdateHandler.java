@@ -111,7 +111,6 @@ public class UpdateHandler {
 			String oldSave = getCurrentJARLocation();
 			
 			int downloadSize = getDownloadSizeFromJSON(json);
-			System.out.println(downloadSize);
 			if(!currentVersion.equals(version)) {
 				int option = JOptionPane.showOptionDialog(null, "An update is available. Do you want to download it?", "Update", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 				if(option == 0) {

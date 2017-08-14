@@ -13,15 +13,25 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Section;
 import com.github.beijingstrongbow.Section.SectionBasis;
+import com.github.beijingstrongbow.update.UpdateHandler;
 import com.github.beijingstrongbow.Time;
 import com.github.beijingstrongbow.userinterface.CalendarPanel;
 import com.github.beijingstrongbow.userinterface.ScheduleViewerWindow;
@@ -424,5 +434,102 @@ public class ScheduleViewerManager {
 		public void windowActivated(WindowEvent e) {}
 		@Override
 		public void windowDeactivated(WindowEvent e) {}
+	}
+	
+	/**
+	 * Saves the schedule the user has selected to a CSV file. Specifically, this saves the
+	 * details view.
+	 * 
+	 * @author ericd
+	 */
+	public class SaveScheduleListener implements ActionListener {
+
+		/**
+		 * Called when the user clicks the Save Schedule button
+		 */
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(selectedIndex < 0) {
+				JOptionPane.showMessageDialog(null, "No schedule was selected to save", "Error", JOptionPane.ERROR_MESSAGE, null);
+				return;
+			}
+			
+			File currentLoc;
+			try {
+				currentLoc = new File(UpdateHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath().substring(1));
+			} catch (URISyntaxException ex) {
+				ex.printStackTrace();
+				return;
+			}
+			
+			currentLoc = currentLoc.getParentFile();
+			JFileChooser saveLocChooser = new JFileChooser();
+			saveLocChooser.setCurrentDirectory(currentLoc);
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Files", "csv", "txt");
+			saveLocChooser.setFileFilter(filter);
+			saveLocChooser.showSaveDialog(null);
+			
+			if(saveLocChooser.getSelectedFile() == null) {
+				return;
+			}
+			
+			try {
+				File saveFile = processFileExtension(saveLocChooser.getSelectedFile());
+				if(!saveFile.exists()) {
+					saveFile.createNewFile();
+				}
+		
+				writeFile(new PrintWriter(new FileOutputStream(saveFile), true), validSchedules.get(window.getSelectedSchedule()));
+			}
+			catch(IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		/**
+		 * Adds a file extension if the user didn't provide one. If the user did give an
+		 * extension, that extension is kept - even if it isn't .csv
+		 * 
+		 * @param f The file chosen by the user
+		 * @return The new file, with a proper extension.
+		 */
+		public File processFileExtension(File f) {
+			int extensionIndex = f.getPath().lastIndexOf('.');
+			File newFile;
+			
+			if(extensionIndex < 0) {
+				newFile = new File(f.getPath() + ".csv");
+			}
+			else {
+				newFile = f;
+			}
+			return newFile;
+		}
+		
+		/**
+		 * Write the data to the file
+		 * 
+		 * @param output The file to write to
+		 */
+		public void writeFile(PrintWriter output, ArrayList<Section> schedule) {
+			Section.sort(schedule);
+			
+			output.write("Course Number,Course Name,Section Number,Days,Time,Instructor\n");
+			
+			for(Section s : schedule) {
+		
+				output.write(s.getCourse().getNumber() + "," + 
+						s.getCourse().getName() + "," + 
+						s.getNumber() + "," +
+						s.getDays() + "," +
+						s.timeAsString() + "," + 
+						s.getInstructor().replaceAll(",", "") + "\n");
+			}
+			
+			output.flush();
+			output.close();
+			
+			JOptionPane.showMessageDialog(null, "Schedule saved", "Info", JOptionPane.INFORMATION_MESSAGE, null);
+		}
 	}
 }
