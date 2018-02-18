@@ -7,18 +7,16 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.JOptionPane;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.github.beijingstrongbow.Course;
+import com.github.beijingstrongbow.Database;
 import com.github.beijingstrongbow.Date;
 import com.github.beijingstrongbow.Section;
 import com.github.beijingstrongbow.Time;
-import com.github.beijingstrongbow.userinterface.LoadingProgressWindow;
 
 /**
  * Contains functions related to scraping the course database
@@ -26,25 +24,60 @@ import com.github.beijingstrongbow.userinterface.LoadingProgressWindow;
  * @author Eric
  */
 public class WebScraper {
-		
+	
 	/**
-	 * Populate the text database on the hard drive and the Course.courses hashmap with data from the
+	 * Populates all course data from every semester available online
+	 * 
+	 * @return Whether the operation was successful
+	 */
+	public void populateAllDatabases(Database database) {
+		try {
+			Document semesters = Jsoup.parse(new URL("http://courses.k-state.edu/"), 5000);
+			
+			Element wrapperDiv = semesters.getElementById("ksu-wrapper");
+			Element innerContentDiv = semesters.getElementById("ksu-inner-wrapper");
+			Element mainContentDiv = semesters.getElementById("ksu-main-content");
+					
+			//The available schedules are contained in the second div in the main content div
+			Element scheduleDiv = mainContentDiv.getElementsByTag("div").get(2); 
+			
+			Elements availableSemesters = scheduleDiv.getElementsByTag("ul").get(0).getElementsByTag("li");
+			
+			for(int i = 0; i < availableSemesters.size(); i++) {
+				String text = availableSemesters.get(i).text();
+				String[] data = text.split(" ");
+				
+				if(data.length == 2) {
+					String semester = data[0];
+					String year = data[1];
+					HashMap<String, Course> semesterDatabase = new HashMap<String, Course>();
+					System.out.println("Loading database for " + semester + " " + year);
+					populateDatabase(year, semester, semesterDatabase);
+					database.putDatabaseForSemester(semesterDatabase, year, semester);
+				}
+			}
+		}
+		catch(IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Populate the Course.courses HashMap with data from the
 	 * online database
 	 * 
 	 * @param year
 	 * @param semester
 	 * @return Whether the operation was successful
 	 */
-	public boolean populateDatabases(String year, String semester, LoadingProgressWindow progress){
+	private boolean populateDatabase(String year, String semester, HashMap<String, Course> database){
 		ArrayList<URL> urls = getUrls(year, semester);
 		if(urls == null) {
 			return false;
 		}
 		
-		double progressIncrement = 100.0 / urls.size();
 		for(URL url : urls){
-			scrapeUrl(url);
-			progress.addProgress(progressIncrement);
+			scrapeUrl(url, database);
 		}
 		
 		return true;
@@ -79,12 +112,10 @@ public class WebScraper {
 			
 		}
 		catch(SocketTimeoutException ex) {
-			JOptionPane.showMessageDialog(null, "Connection to the course database timed out. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
 		catch(IOException ex){
 			ex.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Couldn't process input " + semester + " " + year + ".", "Error", JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
 		
@@ -97,7 +128,7 @@ public class WebScraper {
 	 * 
 	 * @param url The URL to process
 	 */
-	private void scrapeUrl(URL url){
+	private void scrapeUrl(URL url, HashMap<String, Course> database){
 		
 		Document html;
 		
@@ -105,7 +136,6 @@ public class WebScraper {
 			html = Jsoup.parse(url, 5000);
 		}
 		catch(IOException ex){
-			JOptionPane.showMessageDialog(null, "Couldn't parse url " + url, "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
@@ -127,7 +157,7 @@ public class WebScraper {
 			if(headers.contains(e)){
 				number = e.getElementsByClass("number").text();
 				name = e.getElementsByClass("name").text();
-				current = addCourseToDatabase(number, name, Course.courses);
+				current = addCourseToDatabase(number, name, database);
 			}
 			else {
 				for(Element r : e.getElementsByTag("tr")){

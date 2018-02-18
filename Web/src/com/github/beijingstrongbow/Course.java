@@ -11,11 +11,6 @@ import java.util.HashMap;
 public class Course implements Comparable<Course>{
 	
 	/**
-	 * The list of all courses. The key is the course name
-	 */
-	public static HashMap<String, Course> courses = new HashMap<String, Course>();
-	
-	/**
 	 * The sections in which this Course is taught
 	 */
 	private ArrayList<Section> _sections;
