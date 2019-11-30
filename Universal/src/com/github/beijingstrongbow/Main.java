@@ -59,7 +59,7 @@ public class Main {
 					state = ProgramState.WAITING;
 					break;
 				case SCHEDULE_VIEWER:
-					boolean foundSchedules = scheduleViewer.generateSchedules(builder.getSelectedCourses());
+					boolean foundSchedules = scheduleViewer.generateSchedules(builder.getSelectedCourses(), builder.showOnlineCourses());
 					if(foundSchedules) scheduleViewer.showWindow();
 					state = ProgramState.WAITING;
 					break;

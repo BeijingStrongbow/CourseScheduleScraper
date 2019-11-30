@@ -65,14 +65,14 @@ public class ScheduleViewerManager {
 		window.setVisible(true);
 	}
 	
-	public boolean generateSchedules(ArrayList<Course> selected){
+	public boolean generateSchedules(ArrayList<Course> selected, boolean showOnline){
 		if(selected.size() <= 0){
 			JOptionPane.showMessageDialog(null, "No courses were selected", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
         validSchedules.clear();
         
-        iterateSections(selected, 0, new ArrayList<Section>());
+        iterateSections(selected, showOnline, 0, new ArrayList<Section>());
         
         if(validSchedules.size() <= 0){
             JOptionPane.showMessageDialog(null, "No valid schedules found", "Error", JOptionPane.ERROR_MESSAGE);
@@ -85,9 +85,15 @@ public class ScheduleViewerManager {
         return true;
     }
 	
-	private void iterateSections(ArrayList<Course> courses, int index, ArrayList<Section> schedule){
+	private void iterateSections(ArrayList<Course> courses, boolean showOnline, int index, ArrayList<Section> schedule){
         for(Section s : courses.get(index).getSections()){
-            schedule.add(s);
+            if (showOnline || s.getSectionBasis() != SectionBasis.ONLINE) {
+            	schedule.add(s);
+            }
+            else {
+            	continue;
+            }
+
             boolean valid = true;
             if(index == courses.size() - 1){
                 for(int i = 0; i < schedule.size(); i++){
@@ -110,7 +116,7 @@ public class ScheduleViewerManager {
                 }
             }
             else{
-                iterateSections(courses, index + 1, schedule);
+                iterateSections(courses, showOnline, index + 1, schedule);
             }
             schedule.remove(s);
         }

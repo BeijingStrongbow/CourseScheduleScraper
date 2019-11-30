@@ -19,6 +19,7 @@ import java.awt.Toolkit;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 
@@ -154,6 +155,11 @@ public class ScheduleBuilderWindow {
 		frame.getContentPane().add(uxCourseNameField, "3, 12, 4, 1, fill, default");
 		uxCourseNameField.setColumns(10);
 		uxCourseNameField.addFocusListener(manager.new TextFieldDefaultHandler());
+		
+		JCheckBox uxCheckBox = new JCheckBox("Show Global Campus");
+		uxCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		frame.getContentPane().add(uxCheckBox, "3, 13, 2, 2");
+		uxCheckBox.addActionListener(manager.new GlobalCampusListener());
 		
 		JButton uxSearchButton = new JButton("Search");
 		uxSearchButton.setFont(new Font("Tahoma", Font.PLAIN, 18));

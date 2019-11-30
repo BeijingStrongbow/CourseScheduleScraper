@@ -3,8 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/ericd/CodeProjects/CourseScheduleScraper/Universal/resources/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ericd/CodeProjects/CourseScheduleScraper/Universal/resources/jgoodies-common-1.8.0.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_80"/>
 	<classpathentry kind="lib" path="C:/Users/ericd/CodeProjects/CourseScheduleScraper/Universal/resources/jsoup-1.10.3.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/com.ibm.icu_58.2.0.v20170418-1837.jar" sourcepath="C:/Program Files/Eclipse/plugins/com.ibm.icu_58.2.0.v20170418-1837.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_80"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JCheckBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -19,18 +20,29 @@ import com.github.beijingstrongbow.Course;
 import com.github.beijingstrongbow.Main;
 import com.github.beijingstrongbow.Main.ProgramState;
 import com.github.beijingstrongbow.Section;
+import com.github.beijingstrongbow.Section.SectionBasis;
 import com.github.beijingstrongbow.userinterface.ScheduleBuilderWindow;
 
 public class ScheduleBuilderManager {
 	
 	private ScheduleBuilderWindow window;
+	private boolean showOnline;
 	
 	public ScheduleBuilderManager(){
 		window = new ScheduleBuilderWindow(this);
+		showOnline = false;
 	}
 	
 	public void showWindow(){
 		window.setVisible(true);
+	}
+	
+	public class GlobalCampusListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			showOnline = ((JCheckBox) e.getSource()).isSelected();
+		}
 	}
 	
 	public class SearchButtonListener implements ActionListener{
@@ -231,6 +243,10 @@ public class ScheduleBuilderManager {
 	        }
 	    }
 	    return temp;
+	}
+	
+	public boolean showOnlineCourses() {
+		return showOnline;
 	}
 	
 	/**
