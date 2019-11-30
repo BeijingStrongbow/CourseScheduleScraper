@@ -41,8 +41,8 @@ public class Main {
 		while(true){
 			switch(state){
 				case INITIALIZATION:
-					updater.update();
-					downloadProgress.dispose();
+					//updater.update();
+					//downloadProgress.dispose();
 					initDialog.showWindow();
 					state = ProgramState.WAITING;
 					break;
